@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-navy-800 antialiased;
+  }
+
+  ::selection {
+    @apply bg-steel-200 text-navy-800;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.steel.500");
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .container-page {
+    @apply mx-auto w-full max-w-8xl px-6 lg:px-10;
+  }
+
+  .section-y {
+    @apply py-20 lg:py-28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

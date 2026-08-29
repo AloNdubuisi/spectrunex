@@ -1,0 +1,16 @@
+{
+  "name": "Spectrunex",
+  "short_name": "Spectrunex",
+  "description": "Construction, cleaning, software, mobile apps & AI automation under one roof.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1930",
+  "theme_color": "#0A1930",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
