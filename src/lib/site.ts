@@ -123,6 +123,7 @@ export const pillars = flagshipPlatforms.map((p) => ({
   title: p.trademark,
   eyebrow: p.eyebrow,
   description: p.description,
+  bullets: p.features,
   href: "/services",
 }));
 
