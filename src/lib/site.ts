@@ -111,7 +111,6 @@ export const flagshipPlatforms: PlatformPillar[] = [
   },
 ];
 
-// Alias for compatibility with JsonLd and existing references
 export const services = flagshipPlatforms.map((p) => ({
   id: p.id,
   title: p.trademark,
@@ -119,7 +118,6 @@ export const services = flagshipPlatforms.map((p) => ({
   details: p.features,
 }));
 
-// Added pillars export to satisfy PillarsSection imports
 export const pillars = flagshipPlatforms.map((p) => ({
   id: p.id,
   title: p.trademark,
