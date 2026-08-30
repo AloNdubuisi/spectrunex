@@ -1,218 +1,148 @@
 export const siteConfig = {
   name: "Spectrunex",
-  legalName: "Spectrunex, LLC",
+  legalName: "Spectrunex Networks, LLC",
   domain: "spectrunex.com",
   url: "https://www.spectrunex.com",
-  tagline: "Build. Maintain. Automate.",
+  tagline: "Leader in Enterprise Cyber Protection & AI-Powered Infrastructure",
   description:
-    "Spectrunex delivers construction, commercial cleaning, custom software, mobile apps, and AI automation under one roof — helping organizations build, run, and modernize with a single trusted partner.",
+    "Spectrunex delivers unified enterprise cybersecurity, precision AI automation, cloud security, and next-generation infrastructure — protecting organizations from code to cloud and edge to endpoint.",
   keywords: [
     "Spectrunex",
-    "construction services",
-    "commercial cleaning services",
-    "custom software development",
-    "mobile app development",
-    "AI automation",
-    "AI agents for business",
-    "facilities and technology partner",
-    "process automation",
+    "Cybersecurity Leader",
+    "Network Security",
+    "Cloud Security",
+    "Security Operations",
+    "Precision AI",
+    "Zero Trust Architecture",
+    "Next-Gen Firewall",
+    "Cortex XSIAM",
+    "Prisma Cloud",
+    "Unit 42 Threat Intelligence",
+    "AI Automation",
   ],
-  email: "hello@spectrunex.com",
-  phone: "+1 (800) 555-0142",
+  email: "contact@spectrunex.com",
+  phone: "+1 (800) 732-8786",
   address: {
-    street: "1201 Market Street, Suite 400",
-    city: "Wilmington",
-    region: "DE",
-    postalCode: "19801",
+    street: "3000 Tannery Way",
+    city: "Santa Clara",
+    region: "CA",
+    postalCode: "95054",
     country: "US",
   },
   social: {
     linkedin: "https://www.linkedin.com/company/spectrunex",
     twitter: "https://x.com/spectrunex",
+    youtube: "https://www.youtube.com/spectrunex",
   },
 } as const;
 
-export type Pillar = {
+export type PlatformPillar = {
   id: string;
+  name: string;
+  trademark: string;
+  category: string;
   eyebrow: string;
-  title: string;
+  tagline: string;
   description: string;
-  bullets: string[];
+  badge: string;
+  stats: { label: string; value: string };
+  features: string[];
+  copilotName: string;
 };
 
-export const pillars: Pillar[] = [
+export const flagshipPlatforms: PlatformPillar[] = [
   {
-    id: "facilities",
-    eyebrow: "Build & Maintain",
-    title: "Construction & Facilities",
+    id: "strata",
+    name: "Strata",
+    trademark: "Strata™",
+    category: "Network Security",
+    eyebrow: "AI-Powered Network Security",
+    tagline: "Prevent unknown zero-day threats in real-time across your entire network.",
     description:
-      "Ground-up construction, renovation, and ongoing commercial cleaning that keep physical spaces running the way your business needs them to.",
-    bullets: [
-      "Commercial Construction",
-      "Renovation & Fit-Out",
-      "Commercial Cleaning",
-      "Facilities Maintenance",
+      "Transform your network defense with machine-learning-driven Next-Generation Firewalls, unified Strata Cloud Manager, and Zero Trust access across edge, data center, and branch locations.",
+    badge: "Next-Gen Firewall & SASE",
+    stats: { label: "Zero-Day Inline Prevention", value: "99.9%" },
+    features: [
+      "AI-Powered Next-Gen Firewalls (Hardware & Virtual)",
+      "Strata Cloud Manager with AI-driven operations",
+      "Advanced Threat Prevention & DNS Security",
+      "Zero Trust Network Architecture (ZTNA 2.0)",
     ],
+    copilotName: "Strata Copilot",
   },
   {
-    id: "digital",
-    eyebrow: "Design & Develop",
-    title: "Software & Mobile",
+    id: "prisma",
+    name: "Prisma",
+    trademark: "Prisma® Cloud",
+    category: "Cloud Security",
+    eyebrow: "Code to Cloud Protection",
+    tagline: "Secure applications, infrastructure, and AI workloads across multi-cloud.",
     description:
-      "Custom software and mobile apps built for how your team actually works, from first prototype through production and long-term support.",
-    bullets: [
-      "Custom Software Development",
-      "Mobile App Development",
-      "Web & Cloud Platforms",
-      "Product Design (UI/UX)",
+      "A complete Cloud Native Application Protection Platform (CNAPP) with Prisma AIRS to protect AI models, supply chain vulnerabilities, container runtimes, and cloud permissions.",
+    badge: "CNAPP & AI Security (AIRS)",
+    stats: { label: "Cloud Threat Reduction", value: "85%" },
+    features: [
+      "AI Security (Prisma AIRS) & LLM Defense",
+      "Cloud Security Posture Management (CSPM)",
+      "Cloud Workload Protection & Container Defense",
+      "Code Security & Supply Chain Vulnerability Scan",
     ],
+    copilotName: "Prisma Cloud Copilot",
   },
   {
-    id: "automation",
-    eyebrow: "Automate & Scale",
-    title: "AI & Automation",
+    id: "cortex",
+    name: "Cortex",
+    trademark: "Cortex®",
+    category: "Security Operations",
+    eyebrow: "Autonomous SecOps with XSIAM",
+    tagline: "Revolutionize the SOC with AI-first security operations and automation.",
     description:
-      "AI agents and workflow automation that remove repetitive work, connect your systems, and give your team time back.",
-    bullets: [
-      "AI Automation & Agents",
-      "Workflow & Process Automation",
-      "Systems Integration",
-      "AI Strategy & Advisory",
+      "Empower your SecOps team with Cortex XSIAM. Replace legacy SIEMs with autonomous incident triage, multi-source telemetry correlation, and instant threat neutralization.",
+    badge: "AI-Driven SOC & XSIAM",
+    stats: { label: "MTTR Reduction", value: "92%" },
+    features: [
+      "Cortex XSIAM (Extended Security Intelligence)",
+      "Cortex XDR (Detection & Automated Response)",
+      "Cortex XSOAR (Security Orchestration)",
+      "Unit 42 Managed Threat Hunting & Incident Response",
     ],
+    copilotName: "Cortex Copilot",
   },
 ];
 
-export type Service = {
-  id: string;
-  pillarId: string;
-  title: string;
-  summary: string;
-  details: string[];
-};
-
-export const services: Service[] = [
-  {
-    id: "commercial-construction",
-    pillarId: "facilities",
-    title: "Commercial Construction",
-    summary:
-      "New builds and structural work delivered on schedule, with a single point of contact from permitting to final walkthrough.",
-    details: [
-      "Ground-up commercial construction",
-      "Permitting and code compliance coordination",
-      "General contracting and subcontractor management",
-      "On-site project supervision",
-    ],
-  },
-  {
-    id: "renovation-fitout",
-    pillarId: "facilities",
-    title: "Renovation & Fit-Out",
-    summary:
-      "Office, retail, and facility renovations that minimize disruption to your ongoing operations.",
-    details: [
-      "Interior fit-out and space reconfiguration",
-      "Phased renovation for occupied buildings",
-      "Electrical, HVAC, and finish coordination",
-      "Post-renovation inspection support",
-    ],
-  },
-  {
-    id: "commercial-cleaning",
-    pillarId: "facilities",
-    title: "Commercial Cleaning",
-    summary:
-      "Scheduled and on-demand cleaning programs for offices, facilities, and post-construction sites.",
-    details: [
-      "Recurring janitorial programs",
-      "Post-construction and move-in cleaning",
-      "Deep cleaning and sanitation",
-      "Floor care and specialty surfaces",
-    ],
-  },
-  {
-    id: "custom-software",
-    pillarId: "digital",
-    title: "Custom Software Development",
-    summary:
-      "Web platforms and internal tools built around your actual workflow, not a generic template.",
-    details: [
-      "Product discovery and technical scoping",
-      "Full-stack web application development",
-      "API design and third-party integrations",
-      "Ongoing maintenance and support",
-    ],
-  },
-  {
-    id: "mobile-apps",
-    pillarId: "digital",
-    title: "Mobile App Development",
-    summary:
-      "Native and cross-platform apps for iOS and Android, from first release through App Store maintenance.",
-    details: [
-      "iOS and Android app development",
-      "Cross-platform builds (React Native)",
-      "App Store and Play Store release management",
-      "Post-launch updates and support",
-    ],
-  },
-  {
-    id: "web-cloud",
-    pillarId: "digital",
-    title: "Web & Cloud Platforms",
-    summary:
-      "Scalable web platforms and cloud infrastructure, designed and deployed by engineers who also maintain them.",
-    details: [
-      "Cloud architecture and deployment",
-      "Performance and SEO-focused builds",
-      "Database and infrastructure design",
-      "DevOps and CI/CD pipelines",
-    ],
-  },
-  {
-    id: "ai-automation",
-    pillarId: "automation",
-    title: "AI Automation & Agents",
-    summary:
-      "AI agents that handle repetitive, well-defined work inside your existing systems.",
-    details: [
-      "AI agent design and deployment",
-      "Customer support and internal-ops automation",
-      "Document and data processing agents",
-      "Human-in-the-loop workflow design",
-    ],
-  },
-  {
-    id: "process-automation",
-    pillarId: "automation",
-    title: "Workflow & Process Automation",
-    summary:
-      "Connecting the tools you already use so information moves without manual handoffs.",
-    details: [
-      "Business process mapping",
-      "Workflow automation (RPA and no-code/low-code)",
-      "Systems and API integration",
-      "Automation monitoring and support",
-    ],
-  },
-  {
-    id: "ai-advisory",
-    pillarId: "automation",
-    title: "AI Strategy & Advisory",
-    summary:
-      "A clear, practical roadmap for where AI actually saves your organization time and money.",
-    details: [
-      "AI readiness assessment",
-      "Use-case prioritization and roadmap",
-      "Build-vs-buy guidance",
-      "Team training and enablement",
-    ],
-  },
+export const telemetryStats = [
+  { value: "65,000+", label: "Global Enterprises Protected", sub: "Across 150+ countries" },
+  { value: "4.8B+", label: "Daily Attacks Prevented", sub: "Inline deep learning & AI" },
+  { value: "< 10ms", label: "Autonomous Remediation", sub: "Real-time Precision AI™ action" },
+  { value: "#1 Leader", label: "Gartner® Magic Quadrant™", sub: "Network & Cloud Security" },
 ];
 
-export const stats = [
-  { label: "Services under one roof", value: "5" },
-  { label: "Avg. client relationship", value: "3+ yrs" },
-  { label: "Projects delivered", value: "120+" },
-  { label: "Client satisfaction", value: "98%" },
+export const threatIntelligenceNews = [
+  {
+    id: "unit42-report-2026",
+    tag: "Unit 42 Threat Brief",
+    title: "2026 Ransomware Threat Report: State-Sponsored AI Attack Vectors",
+    desc: "Detailed telemetry analysis of multi-stage autonomous intrusions and actionable remediation defense strategies.",
+    date: "August 2026",
+    readTime: "6 min read",
+    author: "Unit 42 Threat Research Team",
+  },
+  {
+    id: "prisma-airs-whitepaper",
+    tag: "AI Security Advisory",
+    title: "Securing Generative AI Pipelines: Mitigating Prompt Injections & Model Theft",
+    desc: "Architectural guidelines for deploying enterprise LLMs safely with Prisma AIRS security control planes.",
+    date: "July 2026",
+    readTime: "8 min read",
+    author: "Cloud Security Architecture Group",
+  },
+  {
+    id: "xsiam-soc-benchmark",
+    tag: "SecOps Benchmark",
+    title: "From 48 Hours to 3 Minutes: The ROI of Autonomous SOC Operations",
+    desc: "How Global 2000 enterprises slashed Mean Time to Respond (MTTR) by 92% utilizing Cortex XSIAM.",
+    date: "June 2026",
+    readTime: "5 min read",
+    author: "SecOps Engineering Practice",
+  },
 ];

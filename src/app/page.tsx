@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
-import PillarsSection from "@/components/PillarsSection";
-import StatsSection from "@/components/StatsSection";
-import ServicesGrid from "@/components/ServicesGrid";
+import AIWorldSection from "@/components/AIWorldSection";
+import PlatformsOverview from "@/components/PlatformsOverview";
+import PrecisionAISimulator from "@/components/PrecisionAISimulator";
+import ThreatRadarSection from "@/components/ThreatRadarSection";
+import RecommendedSection from "@/components/RecommendedSection";
+import AnalystSection from "@/components/AnalystSection";
 import CTASection from "@/components/CTASection";
-import { ServicesJsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Construction, Cleaning, Software & AI Automation`,
+  title: `${siteConfig.name} | Leader in Cybersecurity Protection & Precision AI™`,
   description: siteConfig.description,
   alternates: { canonical: "/" },
 };
@@ -16,11 +18,13 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <ServicesJsonLd />
       <Hero />
-      <StatsSection />
-      <PillarsSection />
-      <ServicesGrid />
+      <AIWorldSection />
+      <PlatformsOverview />
+      <PrecisionAISimulator />
+      <ThreatRadarSection />
+      <RecommendedSection />
+      <AnalystSection />
       <CTASection />
     </>
   );

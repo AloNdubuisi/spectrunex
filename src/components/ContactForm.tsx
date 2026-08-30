@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { services } from "@/lib/site";
+import { Send, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import { flagshipPlatforms } from "@/lib/site";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
@@ -9,21 +10,20 @@ export default function ContactForm() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
-
-    // TODO: wire this up to your form endpoint (e.g. Formspree, Resend, or
-    // an API route) — this UI submits nowhere until you connect it.
     setTimeout(() => setStatus("sent"), 600);
   }
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-card">
-        <h3 className="font-display text-xl font-bold text-navy-800">
-          Thanks — we&apos;ll be in touch shortly.
+      <div className="rounded-3xl border border-pan-dark-border bg-[#0F141E] p-8 sm:p-12 shadow-2xl text-center">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 mb-6">
+          <CheckCircle2 className="h-8 w-8" />
+        </div>
+        <h3 className="font-display text-2xl font-bold text-white">
+          Security Request Received
         </h3>
-        <p className="mt-2 text-sm text-navy-500">
-          A member of the Spectrunex team will follow up within one business
-          day.
+        <p className="mt-3 text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+          A Spectrunex cybersecurity solutions architect will contact you within one business day with technical scoping and demo materials.
         </p>
       </div>
     );
@@ -32,12 +32,17 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-slate-200 bg-white p-8 shadow-card"
+      className="rounded-3xl border border-pan-dark-border bg-[#0F141E] p-8 sm:p-10 shadow-2xl space-y-5 font-sans"
     >
+      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-pan-orange mb-2">
+        <ShieldCheck className="h-4 w-4" />
+        <span>Enterprise Scoping &amp; Demo Request</span>
+      </div>
+
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="text-sm font-medium text-navy-700">
-            Full name
+          <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-slate-300">
+            Full Name *
           </label>
           <input
             id="name"
@@ -45,12 +50,13 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="name"
-            className="mt-1.5 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-navy-800 outline-none transition focus:border-steel-500 focus:ring-2 focus:ring-steel-100"
+            placeholder="Jane Doe"
+            className="mt-1.5 w-full rounded-xl border border-pan-dark-border bg-[#090D14] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-pan-orange focus:ring-1 focus:ring-pan-orange"
           />
         </div>
         <div>
-          <label htmlFor="email" className="text-sm font-medium text-navy-700">
-            Work email
+          <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-slate-300">
+            Work Email *
           </label>
           <input
             id="email"
@@ -58,64 +64,66 @@ export default function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            className="mt-1.5 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-navy-800 outline-none transition focus:border-steel-500 focus:ring-2 focus:ring-steel-100"
+            placeholder="jane@company.com"
+            className="mt-1.5 w-full rounded-xl border border-pan-dark-border bg-[#090D14] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-pan-orange focus:ring-1 focus:ring-pan-orange"
           />
         </div>
       </div>
 
-      <div className="mt-5">
-        <label htmlFor="company" className="text-sm font-medium text-navy-700">
-          Company
-        </label>
-        <input
-          id="company"
-          name="company"
-          type="text"
-          className="mt-1.5 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-navy-800 outline-none transition focus:border-steel-500 focus:ring-2 focus:ring-steel-100"
-        />
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="company" className="text-xs font-bold uppercase tracking-wider text-slate-300">
+            Organization / Company *
+          </label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            required
+            placeholder="Acme Enterprise"
+            className="mt-1.5 w-full rounded-xl border border-pan-dark-border bg-[#090D14] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-pan-orange focus:ring-1 focus:ring-pan-orange"
+          />
+        </div>
+        <div>
+          <label htmlFor="platform" className="text-xs font-bold uppercase tracking-wider text-slate-300">
+            Primary Area of Interest
+          </label>
+          <select
+            id="platform"
+            name="platform"
+            className="mt-1.5 w-full rounded-xl border border-pan-dark-border bg-[#090D14] px-4 py-3 text-sm text-white outline-none transition focus:border-pan-orange focus:ring-1 focus:ring-pan-orange"
+            defaultValue="all"
+          >
+            <option value="all">Complete Cybersecurity Platform (Strata + Prisma + Cortex)</option>
+            <option value="strata">Strata™ Next-Gen Firewalls &amp; SASE</option>
+            <option value="prisma">Prisma® Cloud &amp; AI Security (AIRS)</option>
+            <option value="cortex">Cortex® XSIAM Autonomous SOC</option>
+            <option value="unit42">Unit 42® Incident Response / Retainer</option>
+          </select>
+        </div>
       </div>
 
-      <div className="mt-5">
-        <label htmlFor="service" className="text-sm font-medium text-navy-700">
-          What are you looking for?
-        </label>
-        <select
-          id="service"
-          name="service"
-          className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-navy-800 outline-none transition focus:border-steel-500 focus:ring-2 focus:ring-steel-100"
-          defaultValue=""
-        >
-          <option value="" disabled>
-            Select a service
-          </option>
-          {services.map((service) => (
-            <option key={service.id} value={service.id}>
-              {service.title}
-            </option>
-          ))}
-          <option value="other">Something else</option>
-        </select>
-      </div>
-
-      <div className="mt-5">
-        <label htmlFor="message" className="text-sm font-medium text-navy-700">
-          Tell us about the project
+      <div>
+        <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-slate-300">
+          Project Details / Security Requirements
         </label>
         <textarea
           id="message"
           name="message"
-          rows={5}
+          rows={4}
           required
-          className="mt-1.5 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-navy-800 outline-none transition focus:border-steel-500 focus:ring-2 focus:ring-steel-100"
+          placeholder="Tell us about your current infrastructure, cloud environment, or upcoming compliance initiatives..."
+          className="mt-1.5 w-full rounded-xl border border-pan-dark-border bg-[#090D14] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-pan-orange focus:ring-1 focus:ring-pan-orange"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-steel-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-steel-600 disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-pan-orange hover:bg-pan-orange-hover px-8 py-4 text-xs font-bold uppercase tracking-wider text-white transition-all shadow-xl shadow-pan-orange/25 hover:shadow-pan-orange/40 disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending..." : "Send message"}
+        <Send className="h-4 w-4" />
+        {status === "submitting" ? "Processing..." : "Submit Technical Request"}
       </button>
     </form>
   );

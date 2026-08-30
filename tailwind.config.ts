@@ -8,51 +8,71 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: "#0A1930",
-          50: "#EEF2F8",
-          100: "#D8E1EE",
-          200: "#B1C3DD",
-          300: "#8AA5CC",
-          400: "#4C74A3",
-          500: "#26497A",
-          600: "#16305C",
-          700: "#0F2247",
-          800: "#0A1930",
-          900: "#060F1D",
-        },
-        steel: {
-          DEFAULT: "#1D5FCC",
-          50: "#EAF1FE",
-          100: "#CFE0FD",
-          200: "#9FC0FA",
-          300: "#6FA1F8",
-          400: "#3F81F5",
-          500: "#1D5FCC",
-          600: "#164AA3",
-          700: "#10367A",
-        },
-        slate: {
-          25: "#FAFBFC",
-          50: "#F5F7FA",
-          100: "#E9EDF3",
-          200: "#DCE3EC",
+        pan: {
+          orange: {
+            DEFAULT: "#FA582D",
+            hover: "#FF6F47",
+            light: "#FF8A65",
+            dark: "#D94118",
+            subtle: "rgba(250, 88, 45, 0.12)",
+          },
+          dark: {
+            DEFAULT: "#0B0E14",
+            canvas: "#070A0F",
+            surface: "#111722",
+            card: "#151D2A",
+            cardHover: "#1A2434",
+            border: "#232F42",
+            borderLight: "rgba(255, 255, 255, 0.1)",
+          },
+          cyan: {
+            DEFAULT: "#00D2FF",
+            glow: "#00E5FF",
+            soft: "#8AD3DE",
+            subtle: "rgba(0, 210, 255, 0.12)",
+          },
+          steel: {
+            DEFAULT: "#2563EB",
+            50: "#EFF6FF",
+            100: "#DBEAFE",
+            400: "#60A5FA",
+            500: "#3B82F6",
+            600: "#2563EB",
+            700: "#1D4ED8",
+          },
         },
       },
       fontFamily: {
-        display: ["var(--font-display)"],
-        body: ["var(--font-body)"],
+        sans: ["var(--font-primary)", "system-ui", "-apple-system", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       maxWidth: {
         "8xl": "90rem",
       },
-      boxShadow: {
-        card: "0 1px 2px rgba(10,25,48,0.04), 0 8px 24px rgba(10,25,48,0.06)",
-        "card-hover": "0 4px 12px rgba(10,25,48,0.08), 0 16px 32px rgba(10,25,48,0.10)",
-      },
       backgroundImage: {
-        "grid-pattern":
-          "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+        "cyber-grid": "linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)",
+        "radial-orange": "radial-gradient(circle at 50% 50%, rgba(250, 88, 45, 0.15) 0%, transparent 60%)",
+        "radial-cyan": "radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.12) 0%, transparent 60%)",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.6", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.05)" },
+        },
+        scanline: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(1000%)" },
+        },
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
+        pulseGlow: "pulseGlow 4s ease-in-out infinite",
+        scanline: "scanline 8s linear infinite",
       },
     },
   },

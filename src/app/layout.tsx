@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Sora, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,29 +8,22 @@ import AnalyticsTag from "@/components/AnalyticsTag";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site";
 
-const display = Sora({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  weight: ["600", "700", "800"],
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-primary",
   display: "swap",
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0A1930",
+  themeColor: "#FA582D",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Construction, Cleaning, Software & AI Automation`,
+    default: `${siteConfig.name} | Leader in Cybersecurity & Precision AI™`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -57,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Construction, Cleaning, Software & AI Automation`,
+    title: `${siteConfig.name} | Leader in Cybersecurity & Precision AI™`,
     description: siteConfig.description,
     images: [
       {
@@ -70,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Construction, Cleaning, Software & AI Automation`,
+    title: `${siteConfig.name} | Leader in Cybersecurity & Precision AI™`,
     description: siteConfig.description,
     images: ["/opengraph-image"],
   },
@@ -90,18 +83,18 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="font-body">
+    <html lang="en" className={`${inter.variable} dark`}>
+      <body className="bg-[#070A0F] text-slate-200 antialiased min-h-screen flex flex-col justify-between selection:bg-pan-orange selection:text-white">
         <AnalyticsTag />
         <OrganizationJsonLd />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-navy-800 focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-pan-orange focus:px-4 focus:py-2 focus:text-white focus:shadow-lg font-bold"
         >
           Skip to content
         </a>
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
