@@ -1,4 +1,4 @@
-import { siteConfig, services } from "@/lib/site";
+import { siteConfig, flagshipPlatforms } from "@/lib/site";
 
 export function OrganizationJsonLd() {
   const data = {
@@ -7,7 +7,7 @@ export function OrganizationJsonLd() {
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.svg`,
+    logo: `${siteConfig.url}/favicon.svg`,
     description: siteConfig.description,
     email: siteConfig.email,
     telephone: siteConfig.phone,
@@ -35,22 +35,22 @@ export function ServicesJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Construction, Cleaning, Software Development, Mobile Apps, and AI Automation",
+    serviceType: "Enterprise Cybersecurity, Network Security, Cloud Security, and Autonomous SecOps",
     provider: {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
     },
-    areaServed: "US",
+    areaServed: "Global",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Spectrunex Services",
-      itemListElement: services.map((service) => ({
+      name: "Spectrunex Cybersecurity Platforms",
+      itemListElement: flagshipPlatforms.map((p) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: service.title,
-          description: service.summary,
+          name: p.trademark,
+          description: p.description,
         },
       })),
     },

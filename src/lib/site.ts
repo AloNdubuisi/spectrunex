@@ -110,6 +110,14 @@ export const flagshipPlatforms: PlatformPillar[] = [
   },
 ];
 
+// Alias for compatibility with JsonLd and existing references
+export const services = flagshipPlatforms.map((p) => ({
+  id: p.id,
+  title: p.trademark,
+  summary: p.description,
+  details: p.features,
+}));
+
 export const telemetryStats = [
   { value: "65,000+", label: "Global Enterprises Protected", sub: "Across 150+ countries" },
   { value: "4.8B+", label: "Daily Attacks Prevented", sub: "Inline deep learning & AI" },
