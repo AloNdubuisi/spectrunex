@@ -1,3 +1,4 @@
+// src/lib/site.ts
 export const siteConfig = {
   name: "Spectrunex",
   legalName: "Spectrunex Networks, LLC",
@@ -116,6 +117,14 @@ export const services = flagshipPlatforms.map((p) => ({
   title: p.trademark,
   summary: p.description,
   details: p.features,
+}));
+
+// Added pillars export to satisfy PillarsSection imports
+export const pillars = flagshipPlatforms.map((p) => ({
+  id: p.id,
+  title: p.trademark,
+  description: p.description,
+  href: "/services",
 }));
 
 export const telemetryStats = [
