@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-2">
             <Mail className="h-4 w-4 text-blue-500" />
-            info@spectrunex.com
+            <a href="mailto:contracts@spectrunex.com">contracts@spectrunex.com</a>
           </div>
           <div className="flex items-center gap-2">
             <Globe className="h-4 w-4 text-blue-500" />

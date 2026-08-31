@@ -44,7 +44,7 @@ export default function Hero() {
           <ScrollReveal speed="normal" animation="zoom-in" className="w-full">
             <div className="relative w-full max-w-[500px] mx-auto h-[380px] sm:h-[420px] rounded-2xl overflow-hidden border border-blue-500/10 shadow-[0_0_60px_rgba(37,99,235,0.05)] bg-[#0B1324]">
               <img
-                src="/assets/img/hero-image.png"
+                src="/assets/img/hero-image.PNG"
                 alt="Spectrunex Secure Capitol & Shield"
                 className="w-full h-full object-cover object-center opacity-95"
               />
