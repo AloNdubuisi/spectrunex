@@ -14,7 +14,7 @@ export default function Header() {
         {/* Brand Logo */}
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           <img
-            src="/logo.PNG"
+            src="./logo.png"
             alt="Spectrunex"
             className="h-10 sm:h-10 w-auto object-contain"
           />
