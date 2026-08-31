@@ -1,30 +1,23 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
-import AIWorldSection from "@/components/AIWorldSection";
-import PlatformsOverview from "@/components/PlatformsOverview";
-import PrecisionAISimulator from "@/components/PrecisionAISimulator";
-import ThreatRadarSection from "@/components/ThreatRadarSection";
-import RecommendedSection from "@/components/RecommendedSection";
-import AnalystSection from "@/components/AnalystSection";
+import PillarsSection from "@/components/PillarsSection";
+import OutcomesSection from "@/components/OutcomesSection";
+import ServicesGrid from "@/components/ServicesGrid";
 import CTASection from "@/components/CTASection";
-import { siteConfig } from "@/lib/site";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Leader in Cybersecurity Protection & Precision AI™`,
-  description: siteConfig.description,
-  alternates: { canonical: "/" },
+  title: "Spectrunex | Secure. Compliant. Ready to Scale.",
+  description: "Spectrunex helps organizations achieve FedRAMP, DoD DISA PA, CMMC, and other federal and state compliance.",
 };
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <AIWorldSection />
-      <PlatformsOverview />
-      <PrecisionAISimulator />
-      <ThreatRadarSection />
-      <RecommendedSection />
-      <AnalystSection />
+      <PillarsSection />
+      <OutcomesSection />
+      <ServicesGrid />
       <CTASection />
     </>
   );

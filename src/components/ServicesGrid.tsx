@@ -1,97 +1,107 @@
+// src/components/ServicesGrid.tsx
 import Link from "next/link";
-import {
-  Shield,
-  Cloud,
-  Cpu,
-  Sparkles,
-  Lock,
-  Zap,
-  Radio,
-  FileCheck,
-  Server,
-  ArrowRight,
-} from "lucide-react";
-import { flagshipPlatforms } from "@/lib/site";
+import { Cloud, Shield, Cpu, Lock, Terminal, Database, ArrowRight, Users as UsersIcon, GraduationCap as GraduationCapIcon, Sparkles } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
-export default function ServicesGrid({ withDetails = false }: { withDetails?: boolean }) {
+interface ServicesGridProps {
+  withDetails?: boolean;
+}
+
+const servicesList = [
+  {
+    title: "FedRAMP Advisory & Readiness",
+    desc: "Complete FedRAMP authorization support from scoping to ATO",
+    icon: <Cloud className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "DoD DISA PA / ILs Support",
+    desc: "Impact Level compliance and authorization assistance",
+    icon: <Shield className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "CMMC Readiness & Prep",
+    desc: "CMMC certification preparation and gap remediation",
+    icon: <Lock className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "Security Assessments",
+    desc: "Comprehensive security evaluations (PCI, ISO 27001, FedRAMP)",
+    icon: <Cpu className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "Pen Test / Vulnerability Mgmt",
+    desc: "Offensive security testing and continuous vulnerability management",
+    icon: <Terminal className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "Managed Security Services",
+    desc: "Continuous monitoring and security operations support",
+    icon: <Database className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "Secure Application Development",
+    desc: "Full-stack secure software development services",
+    icon: <Lock className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "Cyber & IT Staffing",
+    desc: "Expert security and IT professionals for your team",
+    icon: <UsersIcon className="h-6 w-6 text-blue-400" />,
+  },
+  {
+    title: "Corporate & Private Training",
+    desc: "Customized security awareness and technical training programs",
+    icon: <GraduationCapIcon className="h-6 w-6 text-blue-400" />,
+  },
+];
+
+export default function ServicesGrid({ withDetails = false }: ServicesGridProps) {
   return (
-    <section className="py-24 bg-[#070A0F] text-white font-sans border-b border-pan-dark-border">
+    <section className="py-24 bg-[#050B14] text-white font-sans">
       <div className="container-page">
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-pan-orange/40 bg-pan-orange/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-pan-orange mb-4">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Product &amp; Solution Catalog</span>
+        <ScrollReveal speed="fast" animation="fade-up">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-blue-400 mb-4">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Product &amp; Solution Catalog</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white font-display">
+              Comprehensive Security Solutions
+            </h2>
+            <p className="mt-4 text-slate-300 text-base">
+              End-to-end services to secure, certify, and scale your organization
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white font-display">
-            Comprehensive enterprise cybersecurity platforms
-          </h2>
-          <p className="mt-4 text-lg text-slate-300">
-            From Next-Gen Firewalls to Cloud Native application defense and autonomous SecOps, explore the complete portfolio.
-          </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="space-y-16">
-          {flagshipPlatforms.map((platform) => (
-            <div
-              key={platform.id}
-              id={platform.id}
-              className="rounded-3xl bg-[#0F141E] border border-pan-dark-border p-8 sm:p-12 hover:border-pan-orange/40 transition-all duration-300 shadow-2xl"
-            >
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-pan-dark-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {servicesList.map((item, idx) => (
+            <ScrollReveal key={idx} delay={idx * 0.08} speed="normal" animation="zoom-in" className="h-full">
+              <div
+                className="group rounded-2xl bg-[#0B1324] border border-blue-950/60 p-8 hover:border-blue-500/50 transition-all duration-300 shadow-xl flex flex-col justify-between h-full"
+              >
                 <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-pan-orange font-mono">
-                      {platform.badge}
-                    </span>
-                    <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">
-                      Precision AI™ Enabled
-                    </span>
+                  <div className="h-12 w-12 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center mb-6">
+                    {item.icon}
                   </div>
-                  <h3 className="text-3xl font-bold text-white font-display">
-                    {platform.trademark} — {platform.eyebrow}
+                  <h3 className="text-xl font-bold text-white font-display mb-2">
+                    {item.title}
                   </h3>
-                  <p className="text-slate-300 text-base mt-2 max-w-2xl">
-                    {platform.description}
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    {item.desc}
                   </p>
                 </div>
 
-                <div className="flex-shrink-0">
+                <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-pan-orange hover:bg-pan-orange-hover px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition shadow-lg shadow-pan-orange/20"
+                    className="text-xs font-bold uppercase tracking-wider text-blue-400 group-hover:text-blue-300 transition inline-flex items-center gap-1.5"
                   >
-                    Request Demo
-                    <ArrowRight className="h-4 w-4" />
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>
-
-              {/* Detailed Platform Capabilities */}
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {platform.features.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-xl bg-[#090D14] border border-pan-dark-border p-5 flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="h-8 w-8 rounded-lg bg-pan-cyan/10 text-pan-cyan flex items-center justify-center mb-3">
-                        <Lock className="h-4 w-4" />
-                      </div>
-                      <h4 className="font-bold text-sm text-white mb-1">
-                        {feature}
-                      </h4>
-                      <p className="text-xs text-slate-400 mt-1">
-                        Automated zero-day prevention and unified policy orchestration.
-                      </p>
-                    </div>
-                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-500 font-mono">
-                      <span>Telemetry: Active</span>
-                      <span className="text-emerald-400">99.9% Sla</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

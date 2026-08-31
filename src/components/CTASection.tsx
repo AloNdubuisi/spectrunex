@@ -1,82 +1,56 @@
-"use client";
-
-import { useState, useEffect, useRef } from "react";
+// src/components/CTASection.tsx
 import Link from "next/link";
-import { ArrowRight, Sparkles, ShieldCheck, Lock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function CTASection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.15 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-b from-[#0B0E14] via-[#111722] to-[#070A0F] py-24 sm:py-32 font-sans border-b border-pan-dark-border"
-      style={{ fontFamily: 'Helvetica, "Helvetica Neue", Arial, sans-serif' }}
-    >
-      {/* Radiant Orange and Cyan Ambient Glows */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] rounded-full bg-[#FA582D]/15 blur-[150px] pointer-events-none"
-        aria-hidden="true"
-      />
-
-      <div
-        className={`max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10 text-center transition-all duration-700 ease-out transform ${
-          isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"
-        }`}
-      >
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#FA582D]/40 bg-[#FA582D]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#FA582D] mb-6 shadow-[0_0_20px_rgba(250,88,45,0.4)]">
-          <Sparkles className="h-3.5 w-3.5 animate-spin" style={{ animationDuration: "5s" }} />
-          <span>Transform Your Cyber Defense</span>
+    <section className="py-20 bg-white text-slate-900 font-sans border-t border-slate-200 overflow-hidden">
+      <div className="container-page grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Left Branding Box */}
+        <div className="lg:col-span-5">
+          <ScrollReveal speed="normal" animation="slide-left">
+            <div className="rounded-2xl bg-[#050B14] p-10 text-white relative overflow-hidden shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent" />
+              <h2 className="relative z-10 text-2xl sm:text-3xl font-black font-display leading-snug">
+                We Craft Elegant Solutions with Powerful Technology
+              </h2>
+              <div className="mt-8 h-1 w-12 bg-blue-500 rounded-full" />
+            </div>
+          </ScrollReveal>
         </div>
 
-        <h2 className="mx-auto max-w-3xl text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-          Ready to secure your enterprise with <span className="text-[#FA582D]">Precision AI™</span>?
-        </h2>
+        {/* Right CTA Content */}
+        <div className="lg:col-span-7">
+          <ScrollReveal speed="normal" animation="fade-up">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 font-display">
+                Ready to Move Faster with Less Risk?
+              </h3>
+              <p className="mt-3 text-base text-slate-600 leading-relaxed">
+                Let&apos;s discuss how Spectrunex can accelerate your compliance journey and strengthen your security posture.
+              </p>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-slate-300 leading-relaxed">
-          Join over 65,000 global organizations safeguarding their networks, clouds, and operations with our unified security platforms.
-        </p>
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-blue-700 shadow-lg shadow-blue-600/25"
+                >
+                  Book a Consultation <span className="text-base leading-none">→</span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-7 py-3.5 text-sm font-semibold text-slate-800 transition hover:bg-slate-50"
+                >
+                  Request a Proposal <span className="text-base leading-none">→</span>
+                </Link>
+              </div>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#FA582D] hover:bg-[#ff6f47] px-8 py-4 text-xs font-bold uppercase tracking-wider text-white transition-all shadow-xl shadow-[#FA582D]/30 hover:shadow-[#FA582D]/50 hover:scale-105 transform duration-300"
-          >
-            Get Free Security Assessment
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 hover:border-white/50 bg-white/5 hover:bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-wider text-white transition-all backdrop-blur-sm hover:scale-105 transform duration-300"
-          >
-            Schedule Live Demo
-          </Link>
-        </div>
-
-        {/* Reassurance Chips with Fast Stagger */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
-          <span className="flex items-center gap-1.5 hover:text-white transition">
-            <ShieldCheck className="h-4 w-4 text-[#00D2FF]" /> Zero-Trust Verified
-          </span>
-          <span className="flex items-center gap-1.5 hover:text-white transition">
-            <Lock className="h-4 w-4 text-emerald-400" /> SOC2 Type II &amp; ISO27001 Certified
-          </span>
-          <span className="flex items-center gap-1.5 hover:text-white transition">
-            <Sparkles className="h-4 w-4 text-[#FA582D]" /> 24/7 Dedicated Support
-          </span>
+              <p className="mt-4 text-xs text-slate-500">
+                Free 30-minute consultation • No obligation • Tailored to your needs
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
