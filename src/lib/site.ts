@@ -118,21 +118,53 @@ export const services = flagshipPlatforms.map((p) => ({
   details: p.features,
 }));
 
-export const pillars = flagshipPlatforms.map((p) => ({
-  id: p.id,
-  title: p.trademark,
-  eyebrow: p.eyebrow,
-  description: p.description,
-  bullets: p.features,
-  href: "/services",
-}));
+export const pillars = [
+  {
+    id: "facilities",
+    eyebrow: "Construction & Facilities",
+    title: "Structural & Cleaning Services",
+    description: "End-to-end building execution, structural maintenance, and professional facility hygiene.",
+    bullets: [
+      "Commercial & residential construction",
+      "Routine & deep commercial cleaning",
+      "Facility maintenance management",
+    ],
+    href: "/services",
+  },
+  {
+    id: "digital",
+    eyebrow: "Software Development",
+    title: "Custom Web & Mobile Apps",
+    description: "Scalable web architectures built with PHP, Laravel, Blade templating, and React.js.",
+    bullets: [
+      "Enterprise PHP & Laravel backend architecture",
+      "Dynamic React.js & Next.js frontend interfaces",
+      "Secure GitHub repository management",
+    ],
+    href: "/services",
+  },
+  {
+    id: "automation",
+    eyebrow: "AI Automation",
+    title: "NextstersHub Workflows",
+    description: "NextstersHub automated customer follow-ups, workflow streamlining, and WhatsApp conversion pipelines.",
+    bullets: [
+      "Automate repetitive business workflows",
+      "Instant WhatsApp inquiry-to-customer conversion",
+      "Custom business automation pipelines",
+    ],
+    href: "/services",
+  },
+];
 
-export const telemetryStats = [
+export const stats = [
   { value: "65,000+", label: "Global Enterprises Protected", sub: "Across 150+ countries" },
   { value: "4.8B+", label: "Daily Attacks Prevented", sub: "Inline deep learning & AI" },
   { value: "< 10ms", label: "Autonomous Remediation", sub: "Real-time Precision AI™ action" },
   { value: "#1 Leader", label: "Gartner® Magic Quadrant™", sub: "Network & Cloud Security" },
 ];
+
+export const telemetryStats = stats;
 
 export const threatIntelligenceNews = [
   {
