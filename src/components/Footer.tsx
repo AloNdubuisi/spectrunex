@@ -6,9 +6,13 @@ export default function Footer() {
     <footer className="bg-[#03070D] text-white py-12 border-t border-white/10 font-sans">
       <div className="container-page flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/10">
         <div className="flex flex-col">
-          <span className="font-display text-2xl font-black tracking-wider uppercase">
-            SPECTRUN<span className="text-blue-500">EX</span>
-          </span>
+          <Link href="/" className="flex items-center">
+            <img
+              src="./logo.png"
+              alt="Spectrunex"
+              className="h-10 sm:h-10 w-auto object-contain"
+            />
+          </Link>
           <span className="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">
             Technology built for missions. Security built for trust.
           </span>
@@ -17,7 +21,7 @@ export default function Footer() {
         <div className="flex flex-wrap items-center gap-8 text-sm text-slate-300">
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-blue-500" />
-            Maryland, USA
+            5325 Westbard Ave, Bethesda, MD 20816
           </div>
           <div className="flex items-center gap-2">
             <Mail className="h-4 w-4 text-blue-500" />

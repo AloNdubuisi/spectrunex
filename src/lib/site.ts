@@ -22,12 +22,12 @@ export const siteConfig = {
     "AI Automation",
   ],
   email: "contact@spectrunex.com",
-  phone: "+1 (800) 732-8786",
+  phone: "(202) 948-9063",
   address: {
-    street: "3000 Tannery Way",
-    city: "Santa Clara",
-    region: "CA",
-    postalCode: "95054",
+    street: "8101 Sandy Spring Rd, Laurel, MD 20707",
+    city: "Laurel",
+    region: "MD",
+    postalCode: "20707",
     country: "US",
   },
   social: {

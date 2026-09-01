@@ -17,15 +17,15 @@ const details = [
   {
     icon: Phone,
     label: "Global Enterprise Sales",
-    value: "1-800-732-8786",
-    href: "tel:18007328786",
+    value: "(202) 948-9063",
+    href: "tel:(202) 948-9063",
     sub: "Toll-free North America",
   },
   {
     icon: ShieldAlert,
     label: "Unit 42 Emergency Hotline",
-    value: "1-866-388-7337",
-    href: "tel:18663887337",
+    value: "(202) 948-9063",
+    href: "tel:(202) 948-9063",
     sub: "24/7/365 Rapid Breach Response",
   },
   {
@@ -39,7 +39,7 @@ const details = [
     icon: MapPin,
     label: "Headquarters",
     value: `${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`,
-    sub: "Silicon Valley Cyber Campus",
+    sub: "8101 Sandy Spring Rd, Laurel, MD 20707",
   },
 ];
 

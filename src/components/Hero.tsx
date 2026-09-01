@@ -5,12 +5,26 @@ import ScrollReveal from "@/components/ScrollReveal";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#050B14] text-white py-20 lg:py-28 font-sans">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" />
+      {/* Hero background: the Capitol + shield graphic itself, not a separate dark fill.
+          It lives in a right-anchored box (not the full section width) so the whole image
+          renders — object-contain instead of object-cover, so nothing gets cropped off the
+          top of the dome or the edges of the shield — while still sitting over on the right.
+          bg-[#050B14] on the section is only the fallback if the image fails to load. */}
+      <div className="absolute inset-y-0 right-0 w-full sm:w-4/5 md:w-2/3 lg:w-3/5 xl:w-[56%]">
+        <img
+          src="./assets/img/hero-image.png"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-contain object-right"
+        />
+      </div>
+      {/* Light left-to-right and bottom-to-top scrims — just enough to guarantee text
+          contrast over whatever the image's edge looks like; not the source of the mood. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050B14] via-[#050B14]/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050B14]/50 via-transparent to-transparent" />
 
-      <div className="container-page relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column: Headline, Description & CTAs */}
-        <div className="lg:col-span-7">
+      <div className="container-page relative z-10">
+        <div className="max-w-2xl">
           <ScrollReveal speed="fast" animation="fade-up">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] font-display">
               Innovate. Protect. Prosper. <br />
@@ -35,20 +49,6 @@ export default function Hero() {
               >
                 Get a Readiness Snapshot <span className="text-base leading-none">→</span>
               </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-
-        {/* Right Column: Local Image Display */}
-        <div className="lg:col-span-5 flex justify-center w-full">
-          <ScrollReveal speed="normal" animation="zoom-in" className="w-full">
-            <div className="relative w-full max-w-[500px] mx-auto h-[380px] sm:h-[420px] rounded-2xl overflow-hidden border border-blue-500/10 shadow-[0_0_60px_rgba(37,99,235,0.05)] bg-[#0B1324]">
-              <img
-                src="./assets/img/hero-image.png"
-                alt="Spectrunex Secure Capitol & Shield"
-                className="w-full h-full object-cover object-center opacity-95"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050B14]/80 via-transparent to-transparent pointer-events-none" />
             </div>
           </ScrollReveal>
         </div>
