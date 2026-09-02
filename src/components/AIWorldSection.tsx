@@ -1,328 +1,197 @@
+// src/components/AIWorldSection.tsx
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function AIWorldSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const badNewsRef = useRef<HTMLDivElement>(null);
-  
-  const [isGoodVisible, setIsGoodVisible] = useState(false);
-  const [isBadVisible, setIsBadVisible] = useState(false);
-
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-
-  // IntersectionObserver for Good News (Re-triggers on scroll in & out)
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsGoodVisible(true);
-        } else {
-          setIsGoodVisible(false);
-          setCount1(0);
-          setCount2(0);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // IntersectionObserver for Bad News (Re-triggers on scroll in & out)
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsBadVisible(true);
-        } else {
-          setIsBadVisible(false);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (badNewsRef.current) {
-      observer.observe(badNewsRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Super-fast, smooth numerical count-up effect (~450ms)
-  useEffect(() => {
-    if (!isGoodVisible) return;
-
-    let start = 0;
-    const end1 = 78;
-    const end2 = 74;
-    const duration = 450;
-    const stepTime = 14;
-    const steps = duration / stepTime;
-    const increment1 = end1 / steps;
-    const increment2 = end2 / steps;
-
-    const timer = setInterval(() => {
-      start += 1;
-      setCount1((prev) => (prev < end1 ? Math.min(end1, Math.round(start * increment1)) : end1));
-      setCount2((prev) => (prev < end2 ? Math.min(end2, Math.round(start * increment2)) : end2));
-
-      if (start >= steps) {
-        clearInterval(timer);
-        setCount1(end1);
-        setCount2(end2);
-      }
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, [isGoodVisible]);
-
-  // Circle Geometry (radius 75 => circumference ~ 471.24)
-  const radius = 75;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset1 = isGoodVisible
-    ? circumference - (78 / 100) * circumference
-    : circumference;
-  const strokeDashoffset2 = isGoodVisible
-    ? circumference - (74 / 100) * circumference
-    : circumference;
-
   return (
-    <div className="bg-[#000000] text-white font-sans overflow-hidden" style={{ fontFamily: 'Helvetica, "Helvetica Neue", Arial, sans-serif' }}>
-      {/* 1. "A new AI world is here" & "THE GOOD NEWS" Section */}
-      <section
-        ref={sectionRef}
-        className="relative py-24 sm:py-28 overflow-hidden border-b border-white/5"
-      >
-        {/* Background Atmosphere */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] bg-[#FA582D]/10 rounded-full blur-[160px] pointer-events-none" />
+    <section className="bg-[#050B14] py-24 text-white font-sans overflow-hidden border-b border-white/10">
+      <div className="container-page">
+        {/* Main Title */}
+        <ScrollReveal speed="fast" animation="fade-up">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight mb-20">
+            A new <span className="text-blue-500">AI world</span> is here
+          </h2>
+        </ScrollReveal>
 
-        {/* Top Right Orange Diagonal Matrix Slashes */}
-        <div className="absolute top-0 right-0 w-80 h-80 pointer-events-none opacity-40">
-          <svg viewBox="0 0 200 200" fill="none" className="w-full h-full">
-            <line x1="60" y1="0" x2="200" y2="140" stroke="#FA582D" strokeWidth="2.5" />
-            <line x1="80" y1="0" x2="200" y2="120" stroke="#FA582D" strokeWidth="2.5" />
-            <line x1="100" y1="0" x2="200" y2="100" stroke="#FA582D" strokeWidth="2.5" />
-            <line x1="120" y1="0" x2="200" y2="80" stroke="#FA582D" strokeWidth="2.5" />
-            <line x1="140" y1="0" x2="200" y2="60" stroke="#FA582D" strokeWidth="2.5" />
-            <line x1="160" y1="0" x2="200" y2="40" stroke="#FA582D" strokeWidth="2.5" />
-            <line x1="180" y1="0" x2="200" y2="20" stroke="#FA582D" strokeWidth="2.5" />
-          </svg>
-        </div>
-
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
-          {/* Main Title: Slides in smoothly from left */}
-          <div
-            className={`transition-all duration-700 ease-out transform ${
-              isGoodVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-24"
-            }`}
-          >
-            <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-white tracking-tight">
-              A new <span className="text-[#FA582D]">AI world</span> is here
-            </h2>
-          </div>
-
-          {/* Body: Left "THE GOOD NEWS" + Right 2 Ultra-Fast Animated Radial Progress Gauges */}
-          <div className="mt-16 sm:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Sub-block */}
-            <div
-              className={`lg:col-span-4 space-y-4 transition-all duration-700 delay-100 ease-out transform ${
-                isGoodVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
-              }`}
-            >
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#FA582D] block">
+        {/* Top Grid: The Good News & Bigger Circular Progress Rings */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+          <div className="lg:col-span-5">
+            <ScrollReveal speed="fast" animation="slide-left">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">
                 THE GOOD NEWS
               </span>
-              <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-white leading-[1.12]">
+              <h3 className="text-3xl sm:text-4xl font-black font-display leading-tight mb-4">
                 AI is rapidly transforming your organization
               </h3>
-            </div>
+            </ScrollReveal>
+          </div>
 
-            {/* Right Two Circular Radial Progress Gauges */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-16">
-              {/* Progress Gauge 1 (78%) */}
-              <div
-                className={`flex flex-col items-center text-center transition-all duration-500 delay-200 transform ${
-                  isGoodVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 translate-y-8"
-                }`}
-              >
-                <div className="relative w-[210px] h-[210px] flex items-center justify-center">
-                  <svg className="w-full h-full -rotate-90 transform" viewBox="0 0 180 180">
-                    <circle
-                      cx="90"
-                      cy="90"
-                      r={radius}
-                      stroke="#262626"
-                      strokeWidth="16"
-                      fill="transparent"
-                    />
-                    <circle
-                      cx="90"
-                      cy="90"
-                      r={radius}
-                      stroke="#FA582D"
-                      strokeWidth="16"
-                      fill="transparent"
-                      strokeDasharray={circumference}
-                      strokeDashoffset={strokeDashoffset1}
-                      strokeLinecap="round"
-                      style={{
-                        transition: "stroke-dashoffset 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
-                      }}
-                    />
-                  </svg>
-
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-4xl sm:text-[44px] font-bold text-white tracking-tight">
-                      {count1}%
-                    </span>
-                  </div>
-                </div>
-
-                <p className="text-2xl sm:text-[28px] font-bold text-[#FA582D] mt-6">
-                  ~1.5X growth
-                </p>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-white mt-1.5 max-w-[220px]">
-                  IN USAGE IN LAST 12 MONTHS
-                </p>
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {/* Ring 1 */}
+            <ScrollReveal speed="fast" animation="slide-right" className="flex flex-col items-center sm:items-start text-center sm:text-left bg-[#0B1324] border border-white/10 rounded-2xl p-8 shadow-xl">
+              <div className="relative flex items-center justify-center w-48 h-48 mb-6">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 176 176">
+                  <circle cx="88" cy="88" r="74" stroke="currentColor" strokeWidth="12" className="text-white/10" fill="transparent" />
+                  <circle cx="88" cy="88" r="74" stroke="currentColor" strokeWidth="12" className="text-blue-500" fill="transparent" strokeDasharray="465" strokeDashoffset="102" strokeLinecap="round" />
+                </svg>
+                <span className="absolute font-display font-black text-4xl text-white">78%</span>
               </div>
+              <p className="font-display font-bold text-lg text-white mb-1">~1.5X growth</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                IN USAGE IN LAST 12 MONTHS
+              </p>
+            </ScrollReveal>
 
-              {/* Progress Gauge 2 (74%) */}
-              <div
-                className={`flex flex-col items-center text-center transition-all duration-500 delay-300 transform ${
-                  isGoodVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 translate-y-8"
-                }`}
-              >
-                <div className="relative w-[210px] h-[210px] flex items-center justify-center">
-                  <svg className="w-full h-full -rotate-90 transform" viewBox="0 0 180 180">
-                    <circle
-                      cx="90"
-                      cy="90"
-                      r={radius}
-                      stroke="#262626"
-                      strokeWidth="16"
-                      fill="transparent"
-                    />
-                    <circle
-                      cx="90"
-                      cy="90"
-                      r={radius}
-                      stroke="#FA582D"
-                      strokeWidth="16"
-                      fill="transparent"
-                      strokeDasharray={circumference}
-                      strokeDashoffset={strokeDashoffset2}
-                      strokeLinecap="round"
-                      style={{
-                        transition: "stroke-dashoffset 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
-                      }}
-                    />
-                  </svg>
-
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-4xl sm:text-[44px] font-bold text-white tracking-tight">
-                      {count2}%
-                    </span>
-                  </div>
-                </div>
-
-                <p className="text-2xl sm:text-[28px] font-bold text-[#FA582D] mt-6">
-                  development
-                </p>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#67E8F9] mt-1.5 max-w-[220px]">
-                  ENTERPRISES USING GEN AI SOFTWARE
-                </p>
+            {/* Ring 2 */}
+            <ScrollReveal speed="fast" animation="slide-right" delay={0.05} className="flex flex-col items-center sm:items-start text-center sm:text-left bg-[#0B1324] border border-white/10 rounded-2xl p-8 shadow-xl">
+              <div className="relative flex items-center justify-center w-48 h-48 mb-6">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 176 176">
+                  <circle cx="88" cy="88" r="74" stroke="currentColor" strokeWidth="12" className="text-white/10" fill="transparent" />
+                  <circle cx="88" cy="88" r="74" stroke="currentColor" strokeWidth="12" className="text-blue-500" fill="transparent" strokeDasharray="465" strokeDashoffset="28" strokeLinecap="round" />
+                </svg>
+                <span className="absolute font-display font-black text-4xl text-white">94%</span>
               </div>
-            </div>
+              <p className="font-display font-bold text-lg text-white mb-1">development</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                ENTERPRISES USING GEN AI SOFTWARE
+              </p>
+            </ScrollReveal>
           </div>
         </div>
-      </section>
 
-      {/* 2. "THE BAD NEWS" Section with Animated Horizontal Gradient Bars */}
-      <section
-        ref={badNewsRef}
-        className="relative py-24 sm:py-28 overflow-hidden border-b border-white/10"
-      >
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: 3 Animated Horizontal Progress Bars */}
-            <div className="lg:col-span-7 space-y-9">
-              {/* Bar 1 */}
-              <div
-                className={`transition-all duration-700 ease-out transform ${
-                  isBadVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-                }`}
-              >
-                <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+        {/* Bottom Grid: Threat Stats & The Bad News */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-28">
+          <div className="lg:col-span-6 space-y-8">
+            <ScrollReveal speed="fast" animation="slide-left">
+              {/* Stat 1 */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-400">
                   <span>INCREASE IN EXPLOITED ZERO DAYS (YoY, 2023)</span>
-                  <span className="text-base font-bold text-white font-mono">56%</span>
+                  <span className="text-blue-400 font-mono text-base font-black">56%</span>
                 </div>
-                <div className="w-full h-4 rounded-full bg-[#202020] overflow-hidden p-0.5">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#FA582D] to-[#FF8A65] shadow-[0_0_12px_rgba(250,88,45,0.6)] transition-all duration-700 ease-out"
-                    style={{ width: isBadVisible ? "56%" : "0%" }}
-                  />
+                <div className="h-2.5 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full w-[56%]" />
                 </div>
               </div>
 
-              {/* Bar 2 */}
-              <div
-                className={`transition-all duration-700 delay-150 ease-out transform ${
-                  isBadVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-                }`}
-              >
-                <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              {/* Stat 2 */}
+              <div className="space-y-2 pt-4">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-400">
                   <span>INCREASE IN RANSOMWARE ATTACKS (YoY, 2023)</span>
-                  <span className="text-base font-bold text-white font-mono">73%</span>
+                  <span className="text-blue-400 font-mono text-base font-black">73%</span>
                 </div>
-                <div className="w-full h-4 rounded-full bg-[#202020] overflow-hidden p-0.5">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#FA582D] to-[#FF8A65] shadow-[0_0_12px_rgba(250,88,45,0.6)] transition-all duration-700 ease-out"
-                    style={{ width: isBadVisible ? "73%" : "0%" }}
-                  />
+                <div className="h-2.5 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full w-[73%]" />
                 </div>
               </div>
 
-              {/* Bar 3 */}
-              <div
-                className={`transition-all duration-700 delay-300 ease-out transform ${
-                  isBadVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-                }`}
-              >
-                <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              {/* Stat 3 */}
+              <div className="space-y-2 pt-4">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-400">
                   <span>INCREASE IN DATA BREACHES AND LEAKS (YoY, 2023)</span>
-                  <span className="text-base font-bold text-white font-mono">56%</span>
+                  <span className="text-blue-400 font-mono text-base font-black">56%</span>
                 </div>
-                <div className="w-full h-4 rounded-full bg-[#202020] overflow-hidden p-0.5">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#FA582D] to-[#FF8A65] shadow-[0_0_12px_rgba(250,88,45,0.6)] transition-all duration-700 ease-out"
-                    style={{ width: isBadVisible ? "56%" : "0%" }}
-                  />
+                <div className="h-2.5 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full w-[56%]" />
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
+          </div>
 
-            {/* Right: "THE BAD NEWS" Headline */}
-            <div
-              className={`lg:col-span-5 space-y-4 transition-all duration-700 delay-200 ease-out transform ${
-                isBadVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
-              }`}
-            >
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#FA582D] block">
+          <div className="lg:col-span-6 lg:pl-12">
+            <ScrollReveal speed="fast" animation="slide-right">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">
                 THE BAD NEWS
               </span>
-              <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white leading-[1.12]">
+              <h3 className="text-3xl sm:text-4xl font-black font-display leading-tight text-white">
                 Attackers are supercharging their speed and scale.
               </h3>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
-      </section>
-    </div>
+
+        {/* Why Spectrunex / Platformization Header & 3-Column Stats Grid */}
+        <div className="space-y-12">
+          <ScrollReveal speed="fast" animation="fade-up">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+              <div className="max-w-3xl">
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">
+                  WHY SPECTRUNEX
+                </span>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display leading-tight text-white">
+                  Platformization empowers you to harness AI-ready infrastructure. And leverage services powered by Precision AI<sup>®</sup> to keep everything secure.
+                </h3>
+              </div>
+              <div>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-8 py-4 text-xs font-bold uppercase tracking-wider text-white transition shadow-lg shadow-blue-600/25 whitespace-nowrap"
+                >
+                  See our platform approach <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* 3 Metric Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+            {/* Card 1 */}
+            <ScrollReveal speed="fast" animation="slide-left" className="h-full">
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-[#0B1324] to-[#060D1A] p-8 flex flex-col justify-between h-full shadow-2xl hover:border-blue-500/50 transition-all">
+                <div>
+                  <div className="font-display font-black text-4xl sm:text-5xl text-blue-500 mb-3">
+                    90 %
+                  </div>
+                  <h4 className="font-display font-bold text-lg text-white mb-4">
+                    reduction in MTTR
+                  </h4>
+                </div>
+                <p className="text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4">
+                  Drive innovation and digital transformation with AI.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Card 2 */}
+            <ScrollReveal speed="fast" animation="zoom-in" delay={0.05} className="h-full">
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-[#0B1324] to-[#060D1A] p-8 flex flex-col justify-between h-full shadow-2xl hover:border-blue-500/50 transition-all">
+                <div>
+                  <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-blue-500 mb-3">
+                    up to 30.9 B
+                  </div>
+                  <h4 className="font-display font-bold text-lg text-white mb-4">
+                    inline attacks blocked per day
+                  </h4>
+                </div>
+                <p className="text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4">
+                  Proactively monitor, analyze and prevent sophisticated threats in real time with less complexity, enabling secure growth and innovation for your organization.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Card 3 */}
+            <ScrollReveal speed="fast" animation="slide-right" delay={0.1} className="h-full">
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-[#0B1324] to-[#060D1A] p-8 flex flex-col justify-between h-full shadow-2xl hover:border-blue-500/50 transition-all">
+                <div>
+                  <div className="font-display font-black text-4xl sm:text-5xl text-blue-500 mb-3">
+                    480 B
+                  </div>
+                  <h4 className="font-display font-bold text-lg text-white mb-4">
+                    endpoints scanned daily
+                  </h4>
+                </div>
+                <p className="text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4">
+                  Enable better, faster security with an integrated suite of battle-tested, AI-driven products.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }

@@ -1,50 +1,77 @@
+// src/components/Footer.tsx
 import Link from "next/link";
-import { Mail, MapPin, Globe } from "lucide-react";
+import { Shield, Lock, Cpu, Globe, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#03070D] text-white py-12 border-t border-white/10 font-sans">
-      <div className="container-page flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/10">
-        <div className="flex flex-col">
-          <Link href="/" className="flex items-center">
-            <img
-              src="./logo.png"
-              alt="Spectrunex"
-              className="h-10 sm:h-10 w-auto object-contain"
-            />
-          </Link>
-          <span className="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">
-            Technology built for missions. Security built for trust.
-          </span>
+    <footer className="bg-[#03070E] text-slate-400 font-sans border-t border-white/10 pt-16 pb-12">
+      <div className="container-page">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+          <div className="lg:col-span-2 space-y-4">
+            <Link href="/" className="flex items-center gap-2 text-white font-display font-bold text-xl">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white font-black text-sm shadow-md">
+                S
+              </span>
+              <span>SPECTRUNEX</span>
+            </Link>
+            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+              Spectrunex delivers enterprise-grade cybersecurity, FedRAMP authorization advisory, and advanced compliance solutions to secure mission-critical systems.
+            </p>
+            <div className="flex items-center gap-3 pt-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">
+                <Shield className="h-3.5 w-3.5" /> FedRAMP Ready
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">
+                <Lock className="h-3.5 w-3.5" /> CMMC Compliant
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-white mb-4">
+              Platforms
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link href="/services" className="hover:text-white transition">Network Security</Link></li>
+              <li><Link href="/services" className="hover:text-white transition">Security Operations</Link></li>
+              <li><Link href="/services" className="hover:text-white transition">Cloud Security (CNAPP)</Link></li>
+              <li><Link href="/services" className="hover:text-white transition">Identity Security</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-white mb-4">
+              Compliance & Advisory
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link href="/government" className="hover:text-white transition">FedRAMP Authorization</Link></li>
+              <li><Link href="/government" className="hover:text-white transition">DoD DISA PA / ILs</Link></li>
+              <li><Link href="/government" className="hover:text-white transition">CMMC Readiness</Link></li>
+              <li><Link href="/services" className="hover:text-white transition">Security Assessments</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-white mb-4">
+              Company
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link href="/about" className="hover:text-white transition">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition">Careers <ArrowUpRight className="inline h-3 w-3" /></Link></li>
+              <li><Link href="/contact" className="hover:text-white transition">Press & Media</Link></li>
+            </ul>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-8 text-sm text-slate-300">
-          <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-blue-500" />
-            5325 Westbard Ave, Bethesda, MD 20816
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <p>© {new Date().getFullYear()} Spectrunex, Inc. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="hover:text-slate-400 transition">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-slate-400 transition">Terms of Service</Link>
+            <Link href="/security" className="hover:text-slate-400 transition">Security Trust Center</Link>
           </div>
-          <div className="flex items-center gap-2">
-            <Mail className="h-4 w-4 text-blue-500" />
-            <a href="mailto:contracts@spectrunex.com">contracts@spectrunex.com</a>
-          </div>
-          <div className="flex items-center gap-2">
-            <Globe className="h-4 w-4 text-blue-500" />
-            www.spectrunex.com
-          </div>
-          <Link
-            href="https://www.linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-blue-600 transition"
-            aria-label="LinkedIn"
-          >
-            in
-          </Link>
         </div>
-      </div>
-
-      <div className="container-page pt-8 text-center text-xs text-slate-500 font-mono">
-        © {new Date().getFullYear()} — SPECTRUNEX, LLC. All Rights Reserved.
       </div>
     </footer>
   );
