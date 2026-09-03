@@ -1,167 +1,239 @@
 // src/components/ServicesGrid.tsx
+"use client";
+
 import {
   Cloud,
-  BadgeCheck,
   Shield,
-  Star,
-  Settings,
-  Search,
-  BarChart3,
   Target,
-  Monitor,
-  SquareCode,
+  Search,
   Users,
   GraduationCap,
+  Settings,
+  FileText,
+  Globe,
+  Lock,
+  Cpu,
+  Zap,
+  ArrowRight,
+  BarChart3,
+  Monitor,
+  SquareCode,
 } from "lucide-react";
-import ScrollReveal from "@/components/ScrollReveal";
+import ScrollReveal from "./ScrollReveal";
+import { motion } from "framer-motion";
 
-const servicesList = [
+const services = [
   {
-    title: "FedRAMP Advisory & Readiness",
-    desc: "Complete FedRAMP authorization support from scoping to ATO",
-    icon: (
-      <span className="relative inline-flex h-11 w-11 items-center justify-center">
-        <Cloud className="h-11 w-11 text-blue-400" strokeWidth={1.5} />
-        <BadgeCheck
-          className="absolute -bottom-1 -right-1 h-4 w-4 text-blue-400 bg-[#0B1324] rounded-full"
-          strokeWidth={2}
-        />
-      </span>
-    ),
+    icon: Shield,
+    title: "Threat Intelligence & Incident Response",
+    subtitle: "Unit 42®",
+    description: "World-renowned threat researchers, elite incident responders and expert security consultants guide you with a threat-informed approach.",
+    stats: [
+      { value: "1K+", label: "matters per year" },
+      { value: "24/7/365", label: "incident response" },
+      { value: "200+", label: "threat researchers" },
+    ],
+    color: "orange",
+    features: ["Threat Intelligence", "Incident Response", "Security Consulting"],
   },
   {
-    title: "DoD DISA PA / ILs Support",
-    desc: "Impact Level compliance and authorization assistance",
-    icon: (
-      <span className="relative inline-flex h-11 w-11 items-center justify-center">
-        <Shield className="h-11 w-11 text-blue-400" strokeWidth={1.5} />
-        <Star className="absolute h-4 w-4 text-blue-400 -translate-y-0.5" strokeWidth={2} fill="currentColor" />
-      </span>
-    ),
+    icon: Cloud,
+    title: "Cloud Security & Compliance",
+    subtitle: "Advisory Services",
+    description: "Complete FedRAMP authorization support, DoD DISA PA compliance, CMMC readiness, and cloud security assessments.",
+    stats: [
+      { value: "100%", label: "FedRAMP success rate" },
+      { value: "500+", label: "federal agencies" },
+      { value: "CMMC", label: "certified partners" },
+    ],
+    color: "cyan",
+    features: ["FedRAMP Advisory", "DoD DISA PA", "CMMC Readiness"],
   },
   {
-    title: "CMMC Readiness & Prep",
-    desc: "CMMC certification preparation and gap remediation",
-    icon: <Settings className="h-11 w-11 text-blue-400" strokeWidth={1.5} />,
+    icon: Target,
+    title: "Security Assessments & Testing",
+    subtitle: "Offensive Security",
+    description: "Comprehensive security evaluations, penetration testing, vulnerability management, and continuous security monitoring.",
+    stats: [
+      { value: "99.9%", label: "vulnerability coverage" },
+      { value: "48h", label: "average response time" },
+      { value: "PCI DSS", label: "certified assessors" },
+    ],
+    color: "blue",
+    features: ["Penetration Testing", "Vulnerability Mgmt", "Security Assessments"],
   },
   {
-    title: "Security Assessments",
-    desc: "Comprehensive security evaluations (PCI, ISO 27001, FedRAMP)",
-    icon: (
-      <span className="relative inline-flex h-11 w-11 items-center justify-center">
-        <Search className="h-11 w-11 text-blue-400" strokeWidth={1.5} />
-        <BarChart3
-          className="absolute h-3 w-3 text-blue-400 -translate-x-1 -translate-y-1"
-          strokeWidth={2}
-        />
-      </span>
-    ),
-  },
-  {
-    title: "Pen Test / Vulnerability Mgmt",
-    desc: "Offensive security testing and continuous vulnerability management",
-    icon: <Target className="h-11 w-11 text-blue-400" strokeWidth={1.5} />,
-  },
-  {
+    icon: Users,
     title: "Managed Security Services",
-    desc: "Continuous monitoring and security operations support",
-    icon: (
-      <span className="relative inline-flex h-11 w-11 items-center justify-center">
-        <Monitor className="h-11 w-11 text-blue-400" strokeWidth={1.5} />
-        <Shield
-          className="absolute h-4 w-4 text-blue-400 bg-[#0B1324] -translate-y-1.5"
-          strokeWidth={2}
-          fill="#0B1324"
-        />
-      </span>
-    ),
+    subtitle: "24/7/365 SOC",
+    description: "Continuous monitoring, security operations support, managed detection and response, and expert security staffing.",
+    stats: [
+      { value: "24/7", label: "security monitoring" },
+      { value: "< 10min", label: "threat response" },
+      { value: "100+", label: "security analysts" },
+    ],
+    color: "purple",
+    features: ["Managed SOC", "MDR Services", "Security Staffing"],
   },
   {
-    title: "Secure Application Development",
-    desc: "Full-stack secure software development services",
-    icon: <SquareCode className="h-11 w-11 text-blue-400" strokeWidth={1.5} />,
+    icon: GraduationCap,
+    title: "Training & Certification",
+    subtitle: "Education Services",
+    description: "Customized security awareness programs, technical training, certification preparation, and corporate security education.",
+    stats: [
+      { value: "10K+", label: "professionals trained" },
+      { value: "95%", label: "certification pass rate" },
+      { value: "CISSP", label: "certified instructors" },
+    ],
+    color: "green",
+    features: ["Security Awareness", "Technical Training", "Certification Prep"],
   },
   {
-    title: "Cyber & IT Staffing",
-    desc: "Expert security and IT professionals for your team",
-    icon: <Users className="h-11 w-11 text-blue-400" strokeWidth={1.5} />,
-  },
-  {
-    title: "Corporate & Private Training",
-    desc: "Customized security awareness and technical training programs",
-    icon: <GraduationCap className="h-11 w-11 text-blue-400" strokeWidth={1.5} />,
+    icon: Settings,
+    title: "Implementation & Integration",
+    subtitle: "Professional Services",
+    description: "Platform deployment, integration services, configuration management, and ongoing optimization support.",
+    stats: [
+      { value: "1000+", label: "successful deployments" },
+      { value: "30 days", label: "average time to value" },
+      { value: "99.9%", label: "uptime SLA" },
+    ],
+    color: "orange",
+    features: ["Platform Deployment", "Integration Services", "Configuration Mgmt"],
   },
 ];
 
-/** Faint dot-and-line network decoration, matching the ambient background texture. */
-function NetworkBackdrop() {
-  const dots = [
-    [88, 6], [94, 14], [80, 10], [97, 24], [90, 30],
-    [76, 22], [83, 34], [70, 12], [60, 4], [98, 40],
-  ];
+export default function ServicesGrid() {
   return (
-    <svg
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-40"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <g stroke="#38BDF8" strokeWidth="0.5" opacity="0.35">
-        {dots.map(([x1, y1], i) => {
-          const [x2, y2] = dots[(i + 1) % dots.length];
-          return (
-            <line
-              key={i}
-              x1={`${x1}%`}
-              y1={`${y1}%`}
-              x2={`${x2}%`}
-              y2={`${y2}%`}
-            />
-          );
-        })}
-      </g>
-      {dots.map(([x, y], i) => (
-        <circle key={i} cx={`${x}%`} cy={`${y}%`} r="1.6" fill="#7DD3FC" />
-      ))}
-    </svg>
-  );
-}
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0B0E14] to-[#070A0F] py-24">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-cyber-grid bg-[length:100px_100px] opacity-10" />
+        <div className="absolute left-1/3 top-1/4 h-64 w-64 animate-float rounded-full bg-radial-orange opacity-5" />
+        <div className="absolute right-1/3 bottom-1/4 h-96 w-96 animate-float rounded-full bg-radial-cyan opacity-5" style={{ animationDelay: "2s" }} />
+      </div>
 
-export default function ServicesGrid({ withDetails = false }: { withDetails?: boolean }) {
-  return (
-    <section className="relative overflow-hidden py-24 bg-[#050B14] text-white font-sans">
-      <NetworkBackdrop />
-      <div className="container-page relative">
-        <ScrollReveal speed="fast" animation="fade-up">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white font-display">
-              Comprehensive Security Solutions
-            </h2>
-            <p className="mt-3 text-sky-400 text-sm sm:text-base font-medium">
-              End-to-end services to secure, certify, and scale your organization
-            </p>
-          </div>
+      <div className="container-page relative z-10">
+        {/* Section Header */}
+        <ScrollReveal animation="fade-up" speed="fast" className="text-center mb-16">
+          <p className="section-kicker">Expert Services</p>
+          <h2 className="section-heading mb-6">
+            Intelligence-driven. Response-ready.
+          </h2>
+          <p className="section-copy mx-auto">
+            Unit 42's world-renowned threat researchers, elite incident responders and expert security consultants 
+            will guide you with a threat-informed approach before, during and after an incident.
+          </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {servicesList.map((item, idx) => (
-            <ScrollReveal key={idx} delay={idx * 0.08} speed="normal" animation="zoom-in" className="h-full">
-              <div className="rounded-2xl bg-[#0B1324] border border-blue-600/30 p-8 hover:border-blue-500/60 transition-all duration-300 shadow-xl flex flex-col justify-start h-full">
-                <div className="mb-6">{item.icon}</div>
-                <h3 className="text-xl font-bold text-white font-display mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
-                  {item.desc}
-                </p>
-                {withDetails && (
-                  <div className="mt-5 pt-4 border-t border-white/10 text-xs uppercase tracking-[0.2em] text-sky-300/80">
-                    Advisory • Design • Delivery
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <ScrollReveal 
+              key={index} 
+              animation="scale" 
+              delay={index * 0.1}
+              className="h-full"
+            >
+              <motion.div
+                whileHover={{ y: -8 }}
+                className="group relative h-full rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 backdrop-blur-sm transition-all hover:border-pan-orange/30 hover:shadow-2xl hover:shadow-black/30"
+              >
+                {/* Service Icon */}
+                <div className={`mb-6 inline-flex rounded-2xl p-4 ${
+                  service.color === "orange" ? "bg-pan-orange/10" :
+                  service.color === "cyan" ? "bg-cyan-500/10" :
+                  service.color === "blue" ? "bg-blue-500/10" :
+                  service.color === "purple" ? "bg-purple-500/10" :
+                  "bg-green-500/10"
+                }`}>
+                  <service.icon className={`h-8 w-8 ${
+                    service.color === "orange" ? "text-pan-orange" :
+                    service.color === "cyan" ? "text-cyan-400" :
+                    service.color === "blue" ? "text-blue-400" :
+                    service.color === "purple" ? "text-purple-400" :
+                    "text-green-400"
+                  }`} />
+                </div>
+
+                {/* Service Content */}
+                <div className="mb-6">
+                  <h3 className="mb-2 text-xl font-bold text-white">{service.title}</h3>
+                  <p className="mb-4 text-sm font-semibold text-pan-orange">{service.subtitle}</p>
+                  <p className="mb-6 text-sm text-slate-400">{service.description}</p>
+                  
+                  {/* Stats */}
+                  <div className="mb-6 grid grid-cols-3 gap-3">
+                    {service.stats.map((stat, idx) => (
+                      <div key={idx} className="text-center">
+                        <div className={`text-lg font-bold ${
+                          service.color === "orange" ? "text-pan-orange" :
+                          service.color === "cyan" ? "text-cyan-400" :
+                          service.color === "blue" ? "text-blue-400" :
+                          service.color === "purple" ? "text-purple-400" :
+                          "text-green-400"
+                        }`}>
+                          {stat.value}
+                        </div>
+                        <div className="text-xs text-slate-400">{stat.label}</div>
+                      </div>
+                    ))}
                   </div>
-                )}
-              </div>
+
+                  {/* Features */}
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-sm text-slate-400">
+                        <div className={`h-1.5 w-1.5 rounded-full ${
+                          service.color === "orange" ? "bg-pan-orange" :
+                          service.color === "cyan" ? "bg-cyan-400" :
+                          service.color === "blue" ? "bg-blue-400" :
+                          service.color === "purple" ? "bg-purple-400" :
+                          "bg-green-400"
+                        }`} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Action Link */}
+                <div className="mt-auto pt-4 border-t border-white/10">
+                  <button className="flex items-center gap-2 text-sm font-semibold text-pan-orange hover:text-pan-orange-light">
+                    Learn more about {service.subtitle}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </button>
+                </div>
+
+                {/* Hover Effect Background */}
+                <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-transparent via-white/2 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              </motion.div>
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <ScrollReveal animation="fade-up" delay={0.7} className="mt-16">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-white/5 to-transparent p-8 backdrop-blur-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="mb-3 text-2xl font-bold text-white">Trusted by the best</h3>
+                <p className="text-slate-400">
+                  150+ law firms, 500+ federal agencies, and thousands of enterprises trust 
+                  our threat intelligence and incident response services.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-end">
+                <button className="rounded-full bg-gradient-to-r from-pan-orange to-pan-orange-hover px-8 py-3 text-sm font-bold text-white transition-all hover:scale-105">
+                  Request incident response
+                </button>
+                <button className="rounded-full border border-white/20 bg-transparent px-8 py-3 text-sm font-bold text-white transition-all hover:border-pan-orange/50 hover:bg-pan-orange/5">
+                  Contact Unit 42
+                </button>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

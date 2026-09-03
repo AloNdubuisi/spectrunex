@@ -39,7 +39,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <ServicesGrid withDetails />
+      <ServicesGrid />
       <RecommendedSection />
       <CTASection />
     </>

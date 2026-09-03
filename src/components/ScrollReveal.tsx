@@ -9,7 +9,7 @@ interface ScrollRevealProps {
   className?: string;
   delay?: number;
   speed?: "fast" | "normal" | "slow";
-  animation?: "fade-up" | "fade-in" | "zoom-in" | "slide-left" | "slide-right";
+  animation?: "fade-up" | "fade-in" | "zoom-in" | "slide-left" | "slide-right" | "scale";
 }
 
 export default function ScrollReveal({
@@ -30,7 +30,7 @@ export default function ScrollReveal({
       opacity: 0,
       y: animation === "fade-up" ? 25 : 0,
       x: animation === "slide-left" ? -25 : animation === "slide-right" ? 25 : 0,
-      scale: animation === "zoom-in" ? 0.95 : 1,
+      scale: animation === "zoom-in" || animation === "scale" ? 0.95 : 1,
     },
     visible: {
       opacity: 1,
