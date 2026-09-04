@@ -1,239 +1,387 @@
 // src/components/ServicesGrid.tsx
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  Cloud,
   Shield,
-  Target,
-  Search,
-  Users,
-  GraduationCap,
-  Settings,
-  FileText,
+  Cloud,
+  Cpu,
+  ShieldCheck,
+  PlusCircle,
+  ArrowRight,
+  Sparkles,
+  Zap,
   Globe,
   Lock,
-  Cpu,
-  Zap,
-  ArrowRight,
-  BarChart3,
-  Monitor,
-  SquareCode,
+  Layers,
 } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
-import { motion } from "framer-motion";
+import Link from "next/link";
 
-const services = [
+/* ── Platform Data Configuration ────────────────────────────────────────── */
+interface AnalystAward {
+  provider: "Gartner" | "Forrester" | "IDC";
+  title: string;
+}
+
+interface PlatformData {
+  id: string;
+  tabLabel: string;
+  icon: typeof Shield;
+  kicker: string;
+  titleLines: string[];
+  description: string;
+  stats: {
+    value: string;
+    label: string;
+  }[];
+  ctaText: string;
+  ctaHref: string;
+  awards: AnalystAward[];
+}
+
+const platforms: PlatformData[] = [
   {
+    id: "network-security",
+    tabLabel: "AI-Powered Network Security",
     icon: Shield,
-    title: "Threat Intelligence & Incident Response",
-    subtitle: "Unit 42®",
-    description: "World-renowned threat researchers, elite incident responders and expert security consultants guide you with a threat-informed approach.",
+    kicker: "AI-POWERED NETWORK",
+    titleLines: ["AI-POWERED NETWORK", "SECURITY"],
+    description:
+      "Securing everyone and everything from the latest threats in every location. Built for Zero Trust and powered by AI, the Strata™ Network Security Platform proactively monitors, analyzes and prevents sophisticated threats in real time with less complexity, enabling secure growth and innovation for your organization.",
     stats: [
-      { value: "1K+", label: "matters per year" },
-      { value: "24/7/365", label: "incident response" },
-      { value: "200+", label: "threat researchers" },
+      { value: "95%", label: "OF THE FORTUNE 100" },
+      { value: "70 K", label: "CUSTOMERS" },
     ],
-    color: "orange",
-    features: ["Threat Intelligence", "Incident Response", "Security Consulting"],
+    ctaText: "Explore Network Security",
+    ctaHref: "/services#strata",
+    awards: [
+      {
+        provider: "Gartner",
+        title: "2025 Gartner® Magic Quadrant™ for Hybrid Mesh Firewall",
+      },
+      {
+        provider: "Gartner",
+        title: "2026 Gartner® Magic Quadrant™ for SASE Platforms",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Enterprise Firewall Solutions",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Magic Quadrant™ for Single-Vendor SASE",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Zero Trust Platform Providers",
+      },
+    ],
   },
   {
+    id: "secops",
+    tabLabel: "AI-Driven Security Operations",
+    icon: Zap,
+    kicker: "AI-DRIVEN SECURITY",
+    titleLines: ["AI-DRIVEN SECURITY", "OPERATIONS"],
+    description:
+      "Transforming the SOC from reactive firefighting to autonomous, machine-speed defense. Cortex® XSIAM consolidates SIEM, SOAR, ASM, and XDR into a single unified AI-first platform that triages incidents in seconds, neutralizing threats before damage occurs.",
+    stats: [
+      { value: "92%", label: "REDUCTION IN MEAN TIME TO REMEDIATE" },
+      { value: "4.8 B+", label: "ATTACKS PREVENTED DAILY" },
+    ],
+    ctaText: "Explore Security Operations",
+    ctaHref: "/services#cortex",
+    awards: [
+      {
+        provider: "Gartner",
+        title: "2025 Gartner® Magic Quadrant™ for SIEM & Autonomous SecOps",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Extended Detection and Response (XDR)",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Peer Insights™ Customers' Choice for XDR",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Security Orchestration, Automation and Response",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Market Guide for Autonomous Security Platforms",
+      },
+      {
+        provider: "IDC",
+        title: "IDC MarketScape: Worldwide Modern SOC Platforms Leader",
+      },
+    ],
+  },
+  {
+    id: "cloud-security",
+    tabLabel: "Real-Time Cloud Security",
     icon: Cloud,
-    title: "Cloud Security & Compliance",
-    subtitle: "Advisory Services",
-    description: "Complete FedRAMP authorization support, DoD DISA PA compliance, CMMC readiness, and cloud security assessments.",
+    kicker: "REAL-TIME CLOUD",
+    titleLines: ["REAL-TIME CLOUD", "SECURITY"],
+    description:
+      "Complete Code-to-Cloud™ protection across AWS, Azure, GCP, and Kubernetes. Prisma® Cloud secures multi-cloud environments, protects generative AI applications with Prisma AIRS, and prevents critical vulnerabilities before deployment.",
     stats: [
-      { value: "100%", label: "FedRAMP success rate" },
-      { value: "500+", label: "federal agencies" },
-      { value: "CMMC", label: "certified partners" },
+      { value: "85%", label: "FASTER CLOUD THREAT RESOLUTION" },
+      { value: "100%", label: "FEDRAMP HIGH & DISA PA READINESS" },
     ],
-    color: "cyan",
-    features: ["FedRAMP Advisory", "DoD DISA PA", "CMMC Readiness"],
+    ctaText: "Explore Cloud Security",
+    ctaHref: "/services#prisma",
+    awards: [
+      {
+        provider: "Gartner",
+        title: "2025 Gartner® Magic Quadrant™ for Cloud-Native Application Protection Platforms (CNAPP)",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Cloud Workload Security Leader",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Innovation Leader in AI Security & LLM Defense",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Cloud Security Posture Management",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Market Guide for Cloud Infrastructure Entitlement Mgmt",
+      },
+      {
+        provider: "IDC",
+        title: "IDC MarketScape: Worldwide Cloud Workload Security Leader",
+      },
+    ],
   },
   {
-    icon: Target,
-    title: "Security Assessments & Testing",
-    subtitle: "Offensive Security",
-    description: "Comprehensive security evaluations, penetration testing, vulnerability management, and continuous security monitoring.",
+    id: "identity-security",
+    tabLabel: "Next-Generation Identity Security",
+    icon: ShieldCheck,
+    kicker: "NEXT-GEN IDENTITY",
+    titleLines: ["NEXT-GENERATION", "IDENTITY & AI SECURITY"],
+    description:
+      "Continuous identity verification, privileged access governance, and Precision AI™ threat hunting led by Unit 42. Enforce contextual Zero Trust across every human and non-human identity, machine agent, and API endpoint.",
     stats: [
-      { value: "99.9%", label: "vulnerability coverage" },
-      { value: "48h", label: "average response time" },
-      { value: "PCI DSS", label: "certified assessors" },
+      { value: "100+", label: "ELITE UNIT 42 THREAT RESEARCHERS" },
+      { value: "< 10 min", label: "ACTIVE THREAT CONTAINMENT SLA" },
     ],
-    color: "blue",
-    features: ["Penetration Testing", "Vulnerability Mgmt", "Security Assessments"],
-  },
-  {
-    icon: Users,
-    title: "Managed Security Services",
-    subtitle: "24/7/365 SOC",
-    description: "Continuous monitoring, security operations support, managed detection and response, and expert security staffing.",
-    stats: [
-      { value: "24/7", label: "security monitoring" },
-      { value: "< 10min", label: "threat response" },
-      { value: "100+", label: "security analysts" },
+    ctaText: "Explore Identity & AI Defense",
+    ctaHref: "/services#identity",
+    awards: [
+      {
+        provider: "Gartner",
+        title: "2025 Gartner® Magic Quadrant™ for Identity Threat Detection & Response (ITDR)",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Incident Response & Threat Hunting Services",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Market Guide for Identity Governance & Administration",
+      },
+      {
+        provider: "Forrester",
+        title: "The Forrester Wave™: Zero Trust Identity Security",
+      },
+      {
+        provider: "Gartner",
+        title: "Gartner® Peer Insights™ Leader for Privileged Access Management",
+      },
+      {
+        provider: "IDC",
+        title: "IDC MarketScape: Worldwide Incident Readiness & Response Leader",
+      },
     ],
-    color: "purple",
-    features: ["Managed SOC", "MDR Services", "Security Staffing"],
-  },
-  {
-    icon: GraduationCap,
-    title: "Training & Certification",
-    subtitle: "Education Services",
-    description: "Customized security awareness programs, technical training, certification preparation, and corporate security education.",
-    stats: [
-      { value: "10K+", label: "professionals trained" },
-      { value: "95%", label: "certification pass rate" },
-      { value: "CISSP", label: "certified instructors" },
-    ],
-    color: "green",
-    features: ["Security Awareness", "Technical Training", "Certification Prep"],
-  },
-  {
-    icon: Settings,
-    title: "Implementation & Integration",
-    subtitle: "Professional Services",
-    description: "Platform deployment, integration services, configuration management, and ongoing optimization support.",
-    stats: [
-      { value: "1000+", label: "successful deployments" },
-      { value: "30 days", label: "average time to value" },
-      { value: "99.9%", label: "uptime SLA" },
-    ],
-    color: "orange",
-    features: ["Platform Deployment", "Integration Services", "Configuration Mgmt"],
   },
 ];
 
 export default function ServicesGrid() {
+  const [activeTabId, setActiveTabId] = useState<string>(platforms[0].id);
+
+  const activePlatform =
+    platforms.find((p) => p.id === activeTabId) || platforms[0];
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0B0E14] to-[#070A0F] py-24">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-cyber-grid bg-[length:100px_100px] opacity-10" />
-        <div className="absolute left-1/3 top-1/4 h-64 w-64 animate-float rounded-full bg-radial-orange opacity-5" />
-        <div className="absolute right-1/3 bottom-1/4 h-96 w-96 animate-float rounded-full bg-radial-cyan opacity-5" style={{ animationDelay: "2s" }} />
+    <section className="relative overflow-hidden bg-[#070A0F] pt-20 pb-0 text-white selection:bg-[#FA582D] selection:text-white">
+      {/* Subtle Background Glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-[#FA582D]/8 blur-[140px]" />
+        <div className="absolute bottom-1/3 right-1/4 h-[420px] w-[420px] rounded-full bg-[#F59E0B]/6 blur-[160px]" />
       </div>
 
       <div className="container-page relative z-10">
-        {/* Section Header */}
-        <ScrollReveal animation="fade-up" speed="fast" className="text-center mb-16">
-          <p className="section-kicker">Expert Services</p>
-          <h2 className="section-heading mb-6">
-            Intelligence-driven. Response-ready.
-          </h2>
-          <p className="section-copy mx-auto">
-            Unit 42's world-renowned threat researchers, elite incident responders and expert security consultants 
-            will guide you with a threat-informed approach before, during and after an incident.
-          </p>
-        </ScrollReveal>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ScrollReveal 
-              key={index} 
-              animation="scale" 
-              delay={index * 0.1}
-              className="h-full"
-            >
-              <motion.div
-                whileHover={{ y: -8 }}
-                className="group relative h-full rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 backdrop-blur-sm transition-all hover:border-pan-orange/30 hover:shadow-2xl hover:shadow-black/30"
-              >
-                {/* Service Icon */}
-                <div className={`mb-6 inline-flex rounded-2xl p-4 ${
-                  service.color === "orange" ? "bg-pan-orange/10" :
-                  service.color === "cyan" ? "bg-cyan-500/10" :
-                  service.color === "blue" ? "bg-blue-500/10" :
-                  service.color === "purple" ? "bg-purple-500/10" :
-                  "bg-green-500/10"
-                }`}>
-                  <service.icon className={`h-8 w-8 ${
-                    service.color === "orange" ? "text-pan-orange" :
-                    service.color === "cyan" ? "text-cyan-400" :
-                    service.color === "blue" ? "text-blue-400" :
-                    service.color === "purple" ? "text-purple-400" :
-                    "text-green-400"
-                  }`} />
-                </div>
-
-                {/* Service Content */}
-                <div className="mb-6">
-                  <h3 className="mb-2 text-xl font-bold text-white">{service.title}</h3>
-                  <p className="mb-4 text-sm font-semibold text-pan-orange">{service.subtitle}</p>
-                  <p className="mb-6 text-sm text-slate-400">{service.description}</p>
-                  
-                  {/* Stats */}
-                  <div className="mb-6 grid grid-cols-3 gap-3">
-                    {service.stats.map((stat, idx) => (
-                      <div key={idx} className="text-center">
-                        <div className={`text-lg font-bold ${
-                          service.color === "orange" ? "text-pan-orange" :
-                          service.color === "cyan" ? "text-cyan-400" :
-                          service.color === "blue" ? "text-blue-400" :
-                          service.color === "purple" ? "text-purple-400" :
-                          "text-green-400"
-                        }`}>
-                          {stat.value}
-                        </div>
-                        <div className="text-xs text-slate-400">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Features */}
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-slate-400">
-                        <div className={`h-1.5 w-1.5 rounded-full ${
-                          service.color === "orange" ? "bg-pan-orange" :
-                          service.color === "cyan" ? "bg-cyan-400" :
-                          service.color === "blue" ? "bg-blue-400" :
-                          service.color === "purple" ? "bg-purple-400" :
-                          "bg-green-400"
-                        }`} />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Action Link */}
-                <div className="mt-auto pt-4 border-t border-white/10">
-                  <button className="flex items-center gap-2 text-sm font-semibold text-pan-orange hover:text-pan-orange-light">
-                    Learn more about {service.subtitle}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </button>
-                </div>
-
-                {/* Hover Effect Background */}
-                <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-transparent via-white/2 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              </motion.div>
-            </ScrollReveal>
-          ))}
+        {/* Top Accent Line */}
+        <div className="mb-6 flex items-center">
+          <div className="h-[2px] w-28 bg-gradient-to-r from-[#FA582D] via-[#F59E0B] to-transparent sm:w-44" />
         </div>
 
-        {/* Bottom CTA */}
-        <ScrollReveal animation="fade-up" delay={0.7} className="mt-16">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-white/5 to-transparent p-8 backdrop-blur-sm">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* Big Dynamic Tracked Accent Title */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activePlatform.id + "-title"}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="mb-12 sm:mb-16"
+          >
+            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-[0.16em] sm:tracking-[0.22em] text-[#2563EB] leading-[1.15]">
+              {activePlatform.titleLines.map((line, idx) => (
+                <span key={idx} className="block">
+                  {line}
+                </span>
+              ))}
+            </h3>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Two Column Layout: Content (Left) & Recognition Grid (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start mb-20 sm:mb-24">
+          {/* Left Column: Description, Stats, CTA Button */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePlatform.id + "-left"}
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 16 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="lg:col-span-5 flex flex-col justify-between"
+            >
+              <p className="text-base sm:text-lg leading-relaxed text-slate-300 mb-10 font-normal">
+                {activePlatform.description}
+              </p>
+
+              {/* Stats Row */}
+              <div className="grid grid-cols-2 gap-8 mb-10">
+                {activePlatform.stats.map((stat, idx) => (
+                  <div key={idx} className="flex flex-col">
+                    <span className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight mb-2">
+                      {stat.value}
+                    </span>
+                    <span className="text-[0.72rem] sm:text-xs font-bold uppercase tracking-[0.12em] text-slate-400">
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Primary Action Button (Pill shaped, vibrant yellow/orange gradient with dark text) */}
               <div>
-                <h3 className="mb-3 text-2xl font-bold text-white">Trusted by the best</h3>
-                <p className="text-slate-400">
-                  150+ law firms, 500+ federal agencies, and thousands of enterprises trust 
-                  our threat intelligence and incident response services.
-                </p>
+                <Link
+                  href={activePlatform.ctaHref}
+                  className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] via-[#FA582D] to-[#F59E0B] bg-[length:200%_auto] px-8 py-3.5 text-sm sm:text-base font-bold text-black transition-all duration-300 hover:bg-[position:right_center] hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95"
+                >
+                  <span>{activePlatform.ctaText}</span>
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-end">
-                <button className="rounded-full bg-gradient-to-r from-pan-orange to-pan-orange-hover px-8 py-3 text-sm font-bold text-white transition-all hover:scale-105">
-                  Request incident response
-                </button>
-                <button className="rounded-full border border-white/20 bg-transparent px-8 py-3 text-sm font-bold text-white transition-all hover:border-pan-orange/50 hover:bg-pan-orange/5">
-                  Contact Unit 42
-                </button>
-              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Right Column: Analyst Recognition Cards with Background Hatch Texture */}
+          <div className="lg:col-span-7 relative">
+            {/* Background Diagonal Hatch Pattern in brand amber/orange */}
+            <div
+              className="pointer-events-none absolute -inset-6 sm:-inset-10 opacity-30 z-0 overflow-hidden"
+              aria-hidden="true"
+            >
+              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern
+                    id="diagonal-stripes"
+                    width="24"
+                    height="24"
+                    patternTransform="rotate(45 0 0)"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <line
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="24"
+                      stroke="#FA582D"
+                      strokeWidth="2.5"
+                    />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#diagonal-stripes)" />
+              </svg>
             </div>
+
+            {/* Top Right "See all (+)" link */}
+            <div className="relative z-10 flex justify-end mb-4 pr-1">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[#FA582D] transition-colors"
+              >
+                <span>See all</span>
+                <PlusCircle className="h-4 w-4 text-white" />
+              </Link>
+            </div>
+
+            {/* Recognition Cards Grid (2x2 visible + 2 cards below peeking) */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activePlatform.id + "-awards"}
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
+              >
+                {activePlatform.awards.slice(0, 6).map((award, idx) => {
+                  const isBottomRow = idx >= 4;
+                  return (
+                    <div
+                      key={idx}
+                      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-7 shadow-lg transition-all duration-300 ${isBottomRow
+                        ? "bg-gradient-to-b from-[#E59819] to-[#C8780A] opacity-70 hover:opacity-100"
+                        : "bg-gradient-to-br from-[#F5A623] via-[#E59819] to-[#D97706] hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/20"
+                        }`}
+                    >
+                      {/* Subtile Inner Glow on hover */}
+                      <div className="pointer-events-none absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                      {/* Provider Wordmark */}
+                      <div className="mb-3 flex items-center justify-between">
+                        {award.provider === "Gartner" ? (
+                          <span className="font-sans text-2xl sm:text-[1.7rem] font-black tracking-tight text-black">
+                            Gartner<span className="text-black">.</span>
+                          </span>
+                        ) : award.provider === "Forrester" ? (
+                          <span className="font-serif text-xl sm:text-2xl font-black uppercase tracking-wider text-black">
+                            FORRESTER
+                          </span>
+                        ) : (
+                          <span className="font-sans text-xl sm:text-2xl font-black uppercase tracking-widest text-black">
+                            IDC
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Award Description Title */}
+                      <p className="text-xs sm:text-[0.82rem] font-semibold text-black/90 leading-snug line-clamp-3">
+                        {award.title}
+                      </p>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

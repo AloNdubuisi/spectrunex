@@ -1,126 +1,208 @@
 // src/components/IdentitySection.tsx
 "use client";
 
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, PlusCircle } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Cpu, Lock, KeyRound } from "lucide-react";
-import ScrollReveal from "@/components/ScrollReveal";
 
-const operationalTabs = [
-  { id: "network", name: "Network Security", icon: <ShieldCheck className="h-4 w-4 text-blue-400" /> },
-  { id: "ops", name: "AI-Driven Security Operations", icon: <Cpu className="h-4 w-4 text-blue-400" /> },
-  { id: "cloud", name: "Real-Time Cloud Security", icon: <Lock className="h-4 w-4 text-blue-400" /> },
-  { id: "identity", name: "Next-Generation Identity Security", icon: <KeyRound className="h-4 w-4 text-blue-400" /> },
-];
+interface AnalystAward {
+  provider: "Gartner" | "Forrester" | "KuppingerCole";
+  title: string;
+}
 
-const identityCards = [
+const awards: AnalystAward[] = [
   {
-    category: "Gartner.",
-    title: "Gartner® Market Guide for Access Management",
+    provider: "Gartner",
+    title: "Magic Quadrant® for Privileged Access Management, 2025",
   },
   {
-    category: "ANALYST REPORT",
-    title: "Identity Threat Detection and Response (ITDR) Strategy",
+    provider: "Forrester",
+    title: "The Forrester Wave™: Privileged Identity Management, 2025",
   },
   {
-    category: "BLUEPRINT",
-    title: "Zero Trust Architecture Deployment Blueprint",
+    provider: "KuppingerCole",
+    title: "Leadership Compass: Access Management, 2025",
   },
   {
-    category: "CASE STUDY",
-    title: "Stopping Credential Stuffing Attacks Across Hybrid Environments",
+    provider: "KuppingerCole",
+    title: "Leadership Compass: Identity Threat Detection & Response, 2025",
+  },
+  {
+    provider: "KuppingerCole",
+    title: "Leadership Compass: Secrets Management",
+  },
+  {
+    provider: "KuppingerCole",
+    title: "Leadership Compass: Passwordless Authentication for Enterprises, 2026",
   },
 ];
 
 export default function IdentitySection() {
-  const [activeTab, setActiveTab] = useState(3);
-
   return (
-    <section className="bg-[#050B14] py-24 text-white font-sans overflow-hidden border-b border-white/10 relative">
-      {/* Background Radar / Globe Lines Motif in Brand Blue */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 overflow-hidden">
-        <div className="w-[850px] h-[850px] rounded-full border border-dashed border-blue-500/50 flex items-center justify-center">
-          <div className="w-[650px] h-[650px] rounded-full border border-blue-500/30 flex items-center justify-center" />
-        </div>
+    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#2563EB] selection:text-white">
+      {/* Background Ambience Glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/3 right-1/4 h-[480px] w-[480px] rounded-full bg-[#2563EB]/10 blur-[150px]" />
+        <div className="absolute bottom-10 left-10 h-80 w-80 rounded-full bg-blue-950/20 blur-[140px]" />
       </div>
 
       <div className="container-page relative z-10">
-        {/* Header Title with precise tracking and leading */}
-        <ScrollReveal speed="fast" animation="fade-up">
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-blue-400 uppercase leading-[1.05]">
-              Next-Generation <br /> Identity Security
-            </h2>
-          </div>
-        </ScrollReveal>
+        {/* Big Tracked Headline in Electric Blue */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-14 sm:mb-18"
+        >
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-black uppercase tracking-[0.16em] sm:tracking-[0.24em] text-[#2563EB] leading-[1.12]">
+            <span className="block">NEXT-GENERATION IDENTITY</span>
+            <span className="block">SECURITY</span>
+          </h2>
+        </motion.div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
-          {/* Left Column: Description & Stats */}
-          <div className="lg:col-span-5 space-y-8">
-            <ScrollReveal speed="normal" animation="slide-left">
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed tracking-normal">
-                Continuously verify user identity and device posture with adaptive access controls, preventing credential-based attacks and unauthorized lateral movement across hybrid environments.
-              </p>
+        {/* Two-Column Grid: Content (Left) + Analyst Cards with Fan Mesh Texture (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Description, Stats, and Action Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="lg:col-span-5 flex flex-col items-start"
+          >
+            <p className="text-base sm:text-lg leading-relaxed text-slate-200 mb-10 font-normal max-w-xl">
+              Idira secures every identity for the enterprise – human, machine
+              and agentic – with a unified control plane that discovers risk,
+              applies privilege dynamically, and governs the full lifecycle from
+              first access to final session.
+            </p>
 
-              <div className="grid grid-cols-2 gap-8 pt-6">
-                <div className="space-y-1">
-                  <div className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
-                    100%
-                  </div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400">
-                    CONTINUOUS VERIFICATION
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <div className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
-                    Zero
-                  </div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400">
-                    TRUST COMPROMISE
-                  </div>
-                </div>
+            {/* Stats Row */}
+            <div className="grid grid-cols-2 gap-8 mb-10">
+              <div className="flex flex-col">
+                <span className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight mb-2">
+                  10 K
+                </span>
+                <span className="text-[0.72rem] sm:text-xs font-bold uppercase tracking-[0.14em] text-slate-300">
+                  CUSTOMERS
+                </span>
               </div>
-
-              <div className="pt-6">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-blue-700 shadow-lg shadow-blue-600/25"
-                >
-                  Explore Identity Security →
-                </Link>
+              <div className="flex flex-col">
+                <span className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight mb-2">
+                  55%
+                </span>
+                <span className="text-[0.72rem] sm:text-xs font-bold uppercase tracking-[0.14em] text-slate-300">
+                  OF THE FORTUNE 500
+                </span>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
 
-          {/* Right Column: Brand Blue Analyst Cards */}
-          <div className="lg:col-span-7">
-            <ScrollReveal speed="normal" animation="slide-right">
-              <div className="flex justify-end mb-4">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-slate-300 hover:text-white transition"
-                >
-                  See all <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
+            {/* Action Button (Pill shaped royal blue button with white text) */}
+            <div>
+              <Link
+                href="/services#identity"
+                className="group inline-flex items-center gap-3 rounded-full bg-[#2563EB] px-8 py-3.5 text-sm sm:text-base font-bold text-white transition-all duration-300 hover:bg-[#1D4ED8] hover:scale-105 hover:shadow-xl hover:shadow-blue-600/30 active:scale-95"
+              >
+                <span>Explore Identity Security</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {identityCards.map((card, idx) => (
-                  <div
+          {/* Right Column: Cyan Analyst Cards with Vertical Fan Pattern */}
+          <div className="lg:col-span-7 relative">
+            {/* Background Blue Vertical Lines Fan Pattern */}
+            <div
+              className="pointer-events-none absolute -inset-8 sm:-inset-14 opacity-25 z-0 flex items-center justify-center overflow-hidden"
+              aria-hidden="true"
+            >
+              <svg
+                className="w-full h-full min-h-[440px]"
+                viewBox="0 0 600 450"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {Array.from({ length: 28 }).map((_, i) => {
+                  const x = 160 + i * 14;
+                  return (
+                    <line
+                      key={i}
+                      x1={x}
+                      y1="40"
+                      x2={x - 80 + i * 4}
+                      y2="420"
+                      stroke="#2563EB"
+                      strokeWidth="2"
+                      opacity={0.8 - Math.abs(14 - i) * 0.04}
+                    />
+                  );
+                })}
+              </svg>
+            </div>
+
+            {/* Top Right "See all (+)" Action */}
+            <div className="relative z-10 flex justify-end mb-4 pr-1">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[#2563EB] transition-colors"
+              >
+                <span>See all</span>
+                <PlusCircle className="h-4 w-4 text-white" />
+              </Link>
+            </div>
+
+            {/* 2x2 Cyan Recognition Grid (+ 2 peeking bottom cards) */}
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+              {awards.map((award, idx) => {
+                const isBottomRow = idx >= 4;
+                return (
+                  <motion.div
                     key={idx}
-                    className="group rounded-2xl bg-[#0B1324] border border-blue-900/60 hover:border-blue-500/60 text-white p-6 transition-all duration-300 shadow-xl flex flex-col justify-between min-h-[160px] cursor-pointer"
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.4,
+                      delay: idx * 0.08,
+                      ease: "easeOut",
+                    }}
+                    className={`group relative overflow-hidden rounded-2xl p-6 sm:p-7 shadow-xl transition-all duration-300 ${
+                      isBottomRow
+                        ? "bg-gradient-to-b from-[#6ED0EA] to-[#54C2DE] opacity-60 hover:opacity-100"
+                        : "bg-gradient-to-br from-[#7CE0F6] via-[#6ED0EA] to-[#53C0DC] hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/25"
+                    }`}
                   >
-                    <span className="font-bold text-xs uppercase tracking-[0.15em] text-blue-400">
-                      {card.category}
-                    </span>
-                    <h4 className="font-display font-bold text-sm sm:text-base leading-snug tracking-tight group-hover:text-blue-300 transition">
-                      {card.title}
-                    </h4>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
+                    {/* Inner Hover Highlight */}
+                    <div className="pointer-events-none absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Brand Wordmark */}
+                    <div className="mb-4 flex items-center min-h-[30px]">
+                      {award.provider === "Gartner" ? (
+                        <span className="font-sans text-2xl sm:text-[1.65rem] font-black tracking-tight text-black">
+                          Gartner<span className="text-black">.</span>
+                        </span>
+                      ) : award.provider === "Forrester" ? (
+                        <span className="font-serif text-xl sm:text-2xl font-black uppercase tracking-wider text-black">
+                          FORRESTER
+                        </span>
+                      ) : (
+                        <div className="flex items-center gap-1">
+                          <span className="font-sans text-base sm:text-[1.1rem] font-black lowercase tracking-tight text-black">
+                            kuppingercole
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Award Title Text */}
+                    <p className="text-xs sm:text-[0.84rem] font-semibold text-black/90 leading-snug">
+                      {award.title}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

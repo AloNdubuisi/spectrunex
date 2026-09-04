@@ -1,86 +1,80 @@
 // src/components/CustomerSuccessSection.tsx
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Play, Pause, Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight, Globe, ShieldCheck, Building2 } from "lucide-react";
-import ScrollReveal from "@/components/ScrollReveal";
-
-const caseStudies = [
-  {
-    client: "Global Financial Institution",
-    metric: "99.999%",
-    label: "Uptime & Availability",
-    desc: "Migrated legacy infrastructure to FedRAMP-authorized cloud environments with zero downtime.",
-    category: "Financial Services",
-  },
-  {
-    client: "Federal Defense Contractor",
-    metric: "100%",
-    label: "CMMC Level 2 Compliance",
-    desc: "Achieved full readiness and ATO authorization 4 months ahead of projected schedule.",
-    category: "Defense & Government",
-  },
-  {
-    client: "Multi-Cloud Healthcare Provider",
-    metric: "85%",
-    label: "Reduction in Threat Response Time",
-    desc: "Deployed automated AI-driven security operations and continuous posture management.",
-    category: "Healthcare",
-  },
-];
 
 export default function CustomerSuccessSection() {
-  return (
-    <section className="bg-[#050B14] py-24 text-white font-sans overflow-hidden border-b border-white/10 relative">
-      <div className="container-page relative z-10">
-        <ScrollReveal speed="fast" animation="fade-up">
-          <div className="max-w-3xl mb-16">
-            <div className="h-1 w-16 bg-blue-600 rounded-full mb-6" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-3 block">
-              PROVEN SUCCESS
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
-              Trusted by leading enterprises and government agencies worldwide
-            </h2>
-          </div>
-        </ScrollReveal>
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {caseStudies.map((study, idx) => (
-            <ScrollReveal key={idx} delay={idx * 0.08} speed="normal" animation="zoom-in" className="h-full">
-              <div className="group rounded-2xl bg-[#0B1324] border border-blue-950/80 p-8 hover:border-blue-500/50 transition-all duration-300 shadow-xl flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                      {study.category}
-                    </span>
-                    <Building2 className="h-5 w-5 text-slate-500 group-hover:text-blue-400 transition" />
-                  </div>
-                  <div className="font-display font-black text-4xl sm:text-5xl text-white mb-2 tracking-tight">
-                    {study.metric}
-                  </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-blue-300 mb-4">
-                    {study.label}
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-white mb-3">
-                    {study.client}
-                  </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    {study.desc}
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-white/5">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-400 group-hover:text-blue-300 transition"
-                  >
-                    Read case study <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+  const videoUrl =
+    "https://players.brightcove.net/1050259881001/GHupYS05h_default/index.html?videoId=6360711021112&autoplay=true&muted=true";
+
+  return (
+    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#FA582D] selection:text-white border-b border-white/5">
+      {/* Background Ambience Glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-1/3 h-[450px] w-[450px] rounded-full bg-[#FA582D]/8 blur-[160px]" />
+        <div className="absolute bottom-10 right-1/4 h-80 w-80 rounded-full bg-orange-950/20 blur-[140px]" />
+      </div>
+
+      <div className="container-page relative z-10">
+        {/* Header Row with Title (Left) and See Testimonials (Right) */}
+        <div className="mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.15]">
+              Our customers are securing <br />
+              their{" "}
+              <span className="text-[#FA582D]">digital transformation</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 15 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          >
+            <Link
+              href="/outcomes"
+              className="group inline-flex items-center gap-2 text-sm sm:text-base font-bold text-white hover:text-[#FA582D] transition-colors"
+            >
+              <span>See testimonials</span>
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+            </Link>
+          </motion.div>
         </div>
+
+        {/* ── Featured Widescreen Video Player Showcase ────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0B0E14] shadow-2xl shadow-black/80 hover:border-[#FA582D]/30 transition-all duration-500"
+        >
+          {/* 16:9 Aspect Ratio Video Container */}
+          <div className="relative w-full pb-[56.25%] overflow-hidden bg-black">
+            <iframe
+              src={videoUrl}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              title="SLB (Schlumberger Limited) Optimizes Cybersecurity with Palo Alto Networks Integrated Platform"
+              className="absolute inset-0 h-full w-full border-0 object-cover"
+            />
+          </div>
+
+          {/* Bottom Accent Bar */}
+          <div className="h-1.5 w-full bg-gradient-to-r from-[#FA582D] via-[#F59E0B] to-[#FA582D] opacity-90" />
+        </motion.div>
       </div>
     </section>
   );

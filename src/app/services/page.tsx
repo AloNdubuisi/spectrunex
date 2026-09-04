@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ServicesGrid from "@/components/ServicesGrid";
 import CTASection from "@/components/CTASection";
 import RecommendedSection from "@/components/RecommendedSection";
+import IdentitySection from "@/components/IdentitySection";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site";
 import { Sparkles, ShieldCheck } from "lucide-react";
@@ -42,6 +43,7 @@ export default function ServicesPage() {
       <ServicesGrid />
       <RecommendedSection />
       <CTASection />
+      <IdentitySection />
     </>
   );
 }

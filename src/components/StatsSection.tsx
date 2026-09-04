@@ -1,167 +1,500 @@
 // src/components/StatsSection.tsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import ScrollReveal from "./ScrollReveal";
-
-/* ── Data ─────────────────────────────────────────────────────────────── */
-/* PLACEHOLDER STATS — shaped to match the reference's three-card layout,
-   but these numbers aren't sourced. Swap for your own cited figures before
-   this ships; don't publish stats as fact without something to back them. */
-
-const stats = [
-  {
-    prefix: "",
-    value: 90,
-    decimals: 0,
-    suffix: "%",
-    label: "reduction in MTTR",
-    description: "Drive innovation and digital transformation with AI.",
-  },
-  {
-    prefix: "up to",
-    value: 30.9,
-    decimals: 1,
-    suffix: "B",
-    label: "inline attacks blocked per day",
-    description:
-      "Proactively monitor, analyze, and prevent sophisticated threats in real time with less complexity.",
-  },
-  {
-    prefix: "",
-    value: 480,
-    decimals: 0,
-    suffix: "B",
-    label: "endpoints scanned daily",
-    description: "Enable better, faster security with an integrated, AI-driven product suite.",
-  },
-];
-
-/* ── Real count-up (the original AnimatedCounter just rendered a static
-   number despite the name) — counts from 0 to `value` once it scrolls
-   into view, using an eased requestAnimationFrame loop. ─────────────── */
-
-function AnimatedCounter({ value, decimals = 0, duration = 1.4 }: { value: number; decimals?: number; duration?: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.6 });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    let start: number | null = null;
-    let raf: number;
-    const step = (ts: number) => {
-      if (start === null) start = ts;
-      const progress = Math.min((ts - start) / (duration * 1000), 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(value * eased);
-      if (progress < 1) raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [isInView, value, duration]);
-
-  return (
-    <span ref={ref}>
-      {display.toFixed(decimals)}
-    </span>
-  );
-}
+import { motion } from "framer-motion";
+import {
+  Clock,
+  Cloud,
+  Shield,
+  UploadCloud,
+  Flame,
+  Cpu,
+  Bug,
+  Lock,
+  Layers,
+  Search,
+} from "lucide-react";
 
 export default function StatsSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#070A0F] via-[#0B0E14] to-[#070A0F] py-24">
-      {/* Background: dot-grid texture + slow-pulsing ambient orbs — kept from
-          the original, recolored to a single brand-blue family instead of
-          the orange/cyan/purple mix. */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-[0.15]"
-          style={{
-            backgroundImage: "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "18px 18px",
-          }}
-        />
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-64 w-64 rounded-full"
-            style={{
-              background: `radial-gradient(circle, rgba(59,130,246,${0.1 - i * 0.02}) 0%, transparent 70%)`,
-              left: `${20 + i * 30}%`,
-              top: `${30 + i * 20}%`,
-            }}
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 4 + i, repeat: Infinity, delay: i * 1.5 }}
-          />
-        ))}
+    <section className="relative overflow-hidden bg-[#070A0F] py-24 text-white selection:bg-[#FA582D] selection:text-white border-b border-white/5">
+      {/* Background Ambience Glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-1/3 h-96 w-96 rounded-full bg-[#FA582D]/6 blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 h-[420px] w-[420px] rounded-full bg-orange-950/20 blur-[160px]" />
       </div>
 
       <div className="container-page relative z-10">
-        {/* Header: eyebrow + two-tone headline on the left, pill button on the
-            right — matches the reference's asymmetric layout, not centered. */}
-        <ScrollReveal animation="fade-up" speed="fast">
-          <div className="mb-14 flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-blue-500">
-                Why Spectrunex
-              </p>
-              <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
-                Platformization empowers you to harness AI-ready infrastructure.{" "}
-                <span className="text-blue-400">
-                  And our AI-driven services keep everything secure.
-                </span>
-              </h2>
-            </div>
-            <a
-              href="/platforms"
-              className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-blue-400 hover:text-blue-300"
-            >
-              See our platform approach <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </ScrollReveal>
+        {/* Section Header */}
+        <div className="mb-12 sm:mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-white leading-tight mb-4"
+          >
+            <span className="text-[#FA582D]">So you can defend at</span> speed and scale.
+          </motion.h2>
 
-        {/* Stats grid — three cards, matching the reference exactly (no
-            icons, no per-card progress bar; the original's 8-card,
-            rainbow-colored, icon+progress-bar layout doesn't match it). */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.12 }}
-              className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8"
-            >
-              {/* faint diagonal line texture, confined to the card */}
-              <svg className="pointer-events-none absolute right-0 top-0 h-40 w-40 opacity-[0.12]" aria-hidden="true">
-                <g stroke="#3B82F6" strokeWidth="1">
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <line key={i} x1={i * 16} y1="0" x2={i * 16 - 100} y2="160" />
-                  ))}
-                </g>
+          {/* Timestamp Subtitle */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="flex items-center gap-2 text-sm sm:text-base font-semibold text-slate-300"
+          >
+            <Clock className="h-4 w-4 text-slate-300" />
+            <span>Daily data as of 09.3.26 at 7AM PST</span>
+          </motion.div>
+        </div>
+
+        {/* ── Telemetry 6-Card Dashboard Grid ─────────────────────────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          {/* CARD 1: Cloud Events Processed (Circuit Bus) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+          >
+            {/* Visual: Glowing Circuit Architecture */}
+            <div className="relative mb-8 flex h-48 w-full items-center justify-between">
+              {/* Circuit SVG Lines */}
+              <svg className="absolute inset-0 h-full w-full" fill="none">
+                {/* Horizontal main bus */}
+                <path
+                  d="M 80 96 L 160 96 L 210 50 L 260 50"
+                  stroke="rgba(250, 88, 45, 0.4)"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M 160 96 L 210 142 L 260 142"
+                  stroke="rgba(250, 88, 45, 0.4)"
+                  strokeWidth="2"
+                />
+                <line
+                  x1="80"
+                  y1="96"
+                  x2="160"
+                  y2="96"
+                  stroke="#FA582D"
+                  strokeWidth="3"
+                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                />
+                <line
+                  x1="160"
+                  y1="96"
+                  x2="210"
+                  y2="50"
+                  stroke="#FA582D"
+                  strokeWidth="2.5"
+                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                />
+                <line
+                  x1="210"
+                  y1="50"
+                  x2="260"
+                  y2="50"
+                  stroke="#FA582D"
+                  strokeWidth="2.5"
+                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                />
+                <line
+                  x1="160"
+                  y1="96"
+                  x2="210"
+                  y2="142"
+                  stroke="#FA582D"
+                  strokeWidth="2.5"
+                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                />
+                <line
+                  x1="210"
+                  y1="142"
+                  x2="260"
+                  y2="142"
+                  stroke="#FA582D"
+                  strokeWidth="2.5"
+                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                />
+                {/* Secondary traces */}
+                <path
+                  d="M 60 40 L 140 40 L 180 80"
+                  stroke="rgba(255, 255, 255, 0.08)"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M 60 152 L 140 152 L 180 112"
+                  stroke="rgba(255, 255, 255, 0.08)"
+                  strokeWidth="1.5"
+                />
               </svg>
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-900/10" />
 
-              <div className="relative">
-                <div className="mb-2 flex items-baseline gap-2">
-                  {stat.prefix && (
-                    <span className="text-lg font-semibold text-white">{stat.prefix}</span>
-                  )}
-                  <span className="text-4xl font-black text-blue-400">
-                    <AnimatedCounter value={stat.value} decimals={stat.decimals} />
-                    {stat.suffix === "%" ? " %" : ` ${stat.suffix}`}
-                  </span>
+              {/* Source Node: Cloud Scan */}
+              <div className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/10 bg-[#12161F] p-3 shadow-inner">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FA582D]/10 border border-[#FA582D]/30">
+                  <Cloud className="h-6 w-6 text-[#FA582D]" />
                 </div>
-                <h3 className="mb-3 text-lg font-bold text-white">{stat.label}</h3>
-                <p className="text-sm leading-relaxed text-slate-400">{stat.description}</p>
               </div>
-            </motion.div>
-          ))}
+
+              {/* Destination Nodes: Shield & Cloud Upload */}
+              <div className="relative z-10 flex flex-col gap-6">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-[#12161F] p-2">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FA582D]/15 border border-[#FA582D]/40">
+                    <Shield className="h-5 w-5 text-[#FA582D]" />
+                  </div>
+                </div>
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-[#12161F] p-2">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FA582D]/15 border border-[#FA582D]/40">
+                    <UploadCloud className="h-5 w-5 text-[#FA582D]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Metric & Label */}
+            <div>
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+                1 T
+              </div>
+              <div className="text-sm sm:text-base font-semibold text-slate-300">
+                Cloud Events Processed
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CARD 2: Exploits Detected List */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.08 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+          >
+            {/* Header Kicker */}
+            <div>
+              <div className="mb-4 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-slate-400">
+                EXPLOITS DETECTED
+              </div>
+
+              {/* Exploit List Items */}
+              <div className="space-y-3.5">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                    <Bug className="h-3.5 w-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                      Heartbleed
+                    </div>
+                    <div className="text-[11px] text-slate-400">
+                      Severely impacts enterprise servers
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                    <Cpu className="h-3.5 w-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                      Spectre and Meltdown
+                    </div>
+                    <div className="text-[11px] text-slate-400">
+                      Hardware-based vulnerabilities
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                    <Flame className="h-3.5 w-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                      EternalBlue
+                    </div>
+                    <div className="text-[11px] text-slate-400">
+                      Code exploiting a vulnerability
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                    <Lock className="h-3.5 w-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                      ZeroLogon
+                    </div>
+                    <div className="text-[11px] text-slate-400">
+                      Elevation of privilege (EoP) vulnerability
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Metric & Label */}
+            <div className="mt-6 pt-4 border-t border-white/5">
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+                8.27 K
+              </div>
+              <div className="text-sm sm:text-base font-semibold text-slate-300">
+                Exploit Attempts Detected
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CARD 3: Malware Executions Blocked (Vertical Beams) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.16 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+          >
+            {/* Visual: Vertical descending attack rays with baseline targets */}
+            <div className="relative mb-6 flex h-48 w-full items-center justify-center overflow-hidden">
+              <svg className="h-full w-full" viewBox="0 0 300 200" fill="none">
+                {/* Descending vertical laser lines */}
+                {[45, 95, 150, 205, 255].map((x, i) => (
+                  <g key={i}>
+                    <line
+                      x1={x}
+                      y1="10"
+                      x2={x}
+                      y2={120 + (i % 2 === 0 ? 20 : 0)}
+                      stroke="rgba(250, 88, 45, 0.4)"
+                      strokeWidth="2"
+                    />
+                    <line
+                      x1={x}
+                      y1={70 + (i % 2 === 0 ? 10 : 0)}
+                      x2={x}
+                      y2={120 + (i % 2 === 0 ? 20 : 0)}
+                      stroke="#FA582D"
+                      strokeWidth="3.5"
+                      className="filter drop-shadow-[0_0_6px_#FA582D]"
+                    />
+                    {/* Baseline target points */}
+                    <circle
+                      cx={x}
+                      cy={150}
+                      r="4.5"
+                      fill="#FA582D"
+                      className="filter drop-shadow-[0_0_6px_#FA582D]"
+                    />
+                    <circle
+                      cx={x}
+                      cy={150}
+                      r="10"
+                      stroke="rgba(250, 88, 45, 0.3)"
+                      strokeWidth="1"
+                    />
+                  </g>
+                ))}
+
+                {/* Angled Horizon Baseline */}
+                <line
+                  x1="20"
+                  y1="150"
+                  x2="280"
+                  y2="150"
+                  stroke="rgba(255, 255, 255, 0.15)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
+              </svg>
+
+              {/* Central Shield / Emblem Icon */}
+              <div className="absolute bottom-6 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FA582D] text-black font-black shadow-[0_0_20px_#FA582D]">
+                <Layers className="h-5 w-5 text-black" />
+              </div>
+            </div>
+
+            {/* Metric & Label */}
+            <div>
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+                736.49 K
+              </div>
+              <div className="text-sm sm:text-base font-semibold text-slate-300">
+                Malware Executions Blocked
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CARD 4: New Unique Objects Analyzed (Wireframe Terrain) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.24 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+          >
+            {/* Visual: Glowing 3D Wireframe Waveform */}
+            <div className="relative mb-6 flex h-48 w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-t from-orange-950/20 to-transparent">
+              <svg
+                className="h-full w-full opacity-80"
+                viewBox="0 0 300 180"
+                fill="none"
+              >
+                {/* Horizontal Wave Layers */}
+                {[0, 1, 2, 3, 4, 5, 6].map((row) => {
+                  const yBase = 70 + row * 14;
+                  return (
+                    <path
+                      key={row}
+                      d={`M 10 ${yBase + 10} Q 75 ${yBase - 30 + (row % 2) * 15} 150 ${yBase + 15} T 290 ${yBase - 10}`}
+                      stroke="#FA582D"
+                      strokeWidth={row === 2 || row === 3 ? "2" : "1"}
+                      opacity={0.3 + row * 0.1}
+                    />
+                  );
+                })}
+
+                {/* Vertical Mesh Struts */}
+                {Array.from({ length: 14 }).map((_, col) => {
+                  const x = 20 + col * 20;
+                  return (
+                    <line
+                      key={col}
+                      x1={x}
+                      y1="50"
+                      x2={x + 10}
+                      y2="160"
+                      stroke="rgba(250, 88, 45, 0.25)"
+                      strokeWidth="1"
+                    />
+                  );
+                })}
+              </svg>
+            </div>
+
+            {/* Metric & Label */}
+            <div>
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+                1.5 M
+              </div>
+              <div className="text-sm sm:text-base font-semibold text-slate-300">
+                New Unique Objects Analyzed
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CARD 5: Biometric Fingerprint Attack Objects */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.32 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+          >
+            {/* Visual: Glowing Fingerprint HUD Scanner */}
+            <div className="relative mb-6 flex h-48 w-full items-center justify-center">
+              {/* HUD Reticle Box with Corner Brackets */}
+              <div className="relative flex h-40 w-40 items-center justify-center rounded-xl border border-dashed border-[#FA582D]/30 p-2">
+                {/* Top Right Timer */}
+                <span className="absolute top-2 right-2 text-[10px] font-mono font-bold text-[#FA582D]">
+                  +5&apos;43 ::
+                </span>
+
+                {/* Corner Marks */}
+                <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-[#FA582D]" />
+                <div className="absolute top-0 right-0 h-3 w-3 border-t-2 border-r-2 border-[#FA582D]" />
+                <div className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-[#FA582D]" />
+                <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[#FA582D]" />
+
+                {/* Fingerprint Vector Graphic */}
+                <svg
+                  className="h-28 w-28 text-[#FA582D]"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                >
+                  <path d="M 50 15 A 35 35 0 0 1 85 50" opacity="0.4" />
+                  <path d="M 50 25 A 25 25 0 0 1 75 50" opacity="0.6" />
+                  <path d="M 50 35 A 15 15 0 0 1 65 50" opacity="0.9" />
+                  <path d="M 50 45 A 5 5 0 0 1 55 50 V 75" />
+                  <path d="M 45 50 V 78" />
+                  <path d="M 35 50 C 35 65 42 82 50 88" />
+                  <path d="M 25 50 C 25 70 35 88 50 95" opacity="0.8" />
+                  <path d="M 15 50 C 15 75 28 92 45 98" opacity="0.5" />
+                  <path d="M 65 55 V 72 C 65 80 60 88 50 92" />
+                  <path d="M 75 55 V 70 C 75 82 68 90 58 95" opacity="0.7" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Metric & Label */}
+            <div>
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+                66 K+
+              </div>
+              <div className="text-sm sm:text-base font-semibold text-slate-300">
+                New Unique Attack Objects Identified
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CARD 6: Inline Attacks Prevented (IDE / Script Terminal) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.4 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+          >
+            {/* Visual: Code Editor Terminal */}
+            <div className="relative mb-6 h-48 w-full overflow-hidden rounded-xl border border-white/5 bg-[#070A0F] p-3.5 font-mono text-[11px] leading-relaxed text-slate-400 select-none">
+              <div className="space-y-1">
+                <div>
+                  <span className="text-slate-600 mr-2">000</span>
+                  <span className="text-[#FA582D] font-bold">&lt;?php</span>
+                </div>
+                <div>
+                  <span className="text-slate-600 mr-2">001</span>
+                  <span className="text-slate-500">// main site engine v2.0</span>
+                </div>
+                <div>
+                  <span className="text-slate-600 mr-2">003</span>
+                  <span className="text-purple-400">function</span>{" "}
+                  <span className="text-blue-400">inspect_incoming_telemetry</span>($req) &#123;
+                </div>
+                <div>
+                  <span className="text-slate-600 mr-2">007</span>
+                  &nbsp;&nbsp;<span className="text-yellow-400">$query</span> ={" "}
+                  <span className="text-emerald-400">&quot;SELECT * FROM threat_vectors&quot;</span>;
+                </div>
+                <div>
+                  <span className="text-slate-600 mr-2">012</span>
+                  &nbsp;&nbsp;<span className="text-[#FA582D]">if</span> ($blocked) return{" "}
+                  <span className="text-[#FA582D] font-bold">AUTONOMOUS_DROP</span>;
+                </div>
+                <div>
+                  <span className="text-slate-600 mr-2">020</span>
+                  &#125;
+                </div>
+              </div>
+            </div>
+
+            {/* Metric & Label */}
+            <div>
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+                11.3 B
+              </div>
+              <div className="text-sm sm:text-base font-semibold text-slate-300">
+                Attacks Prevented Inline
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

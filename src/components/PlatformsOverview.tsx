@@ -96,14 +96,14 @@ export default function PlatformsOverview() {
 
       <div className="container-page relative z-10">
         {/* Section Header with Accent Bar */}
-        <ScrollReveal speed="fast" animation="fade-up">
+        {/* <ScrollReveal speed="fast" animation="fade-up">
           <div className="mb-16 max-w-2xl">
             <div className="h-1 w-16 bg-blue-600 rounded-full mb-6" />
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
               Introducing the Platforms, powered by Precision AI<sup>®</sup>
             </h2>
           </div>
-        </ScrollReveal>
+        </ScrollReveal> */}
 
         {/* Active Platform Header Title */}
         <ScrollReveal speed="fast" animation="slide-left">
@@ -185,11 +185,10 @@ export default function PlatformsOverview() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(idx)}
-                className={`flex items-center gap-3 text-left pb-4 relative transition ${
-                  activeTab === idx
+                className={`flex items-center gap-3 text-left pb-4 relative transition ${activeTab === idx
                     ? "text-white opacity-100"
                     : "text-slate-400 hover:text-white opacity-70 hover:opacity-100"
-                }`}
+                  }`}
               >
                 <div className="flex-shrink-0">
                   {tab.icon}

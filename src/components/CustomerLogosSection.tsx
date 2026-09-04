@@ -1,167 +1,238 @@
-// src/components/StatsSection.tsx
+// src/components/CustomerLogosSection.tsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import ScrollReveal from "./ScrollReveal";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-/* ── Data ─────────────────────────────────────────────────────────────── */
-/* PLACEHOLDER STATS — shaped to match the reference's three-card layout,
-   but these numbers aren't sourced. Swap for your own cited figures before
-   this ships; don't publish stats as fact without something to back them. */
-
-const stats = [
+const unit42Stats = [
   {
-    prefix: "",
-    value: 90,
-    decimals: 0,
-    suffix: "%",
-    label: "reduction in MTTR",
-    description: "Drive innovation and digital transformation with AI.",
+    value: "200+",
+    label: "threat researchers",
   },
   {
-    prefix: "up to",
-    value: 30.9,
-    decimals: 1,
-    suffix: "B",
-    label: "inline attacks blocked per day",
-    description:
-      "Proactively monitor, analyze, and prevent sophisticated threats in real time with less complexity.",
+    value: "30 M",
+    label: "malware samples analyzed per day",
   },
   {
-    prefix: "",
-    value: 480,
-    decimals: 0,
-    suffix: "B",
-    label: "endpoints scanned daily",
-    description: "Enable better, faster security with an integrated, AI-driven product suite.",
+    value: "1 K+",
+    label: "incident response engagements a year",
+  },
+  {
+    value: "150+",
+    label: "trusted partner of law firms",
   },
 ];
 
-/* ── Real count-up (the original AnimatedCounter just rendered a static
-   number despite the name) — counts from 0 to `value` once it scrolls
-   into view, using an eased requestAnimationFrame loop. ─────────────── */
+const customerLogos = [
+  {
+    name: "Colgate-Palmolive",
+    render: () => (
+      <div className="flex items-center gap-1.5 opacity-75 hover:opacity-100 transition-opacity">
+        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black font-black text-[9px]">
+          CP
+        </div>
+        <span className="font-bold tracking-tight text-white text-xs sm:text-sm uppercase font-sans">
+          COLGATE-PALMOLIVE
+        </span>
+      </div>
+    ),
+  },
+  {
+    name: "Grant Thornton",
+    render: () => (
+      <div className="flex items-center gap-2 opacity-75 hover:opacity-100 transition-opacity">
+        <div className="h-3.5 w-3.5 rounded-full border-2 border-white" />
+        <span className="font-medium text-white text-xs sm:text-sm">
+          Grant Thornton
+        </span>
+      </div>
+    ),
+  },
+  {
+    name: "Invest Bank",
+    render: () => (
+      <div className="flex items-center gap-1 opacity-75 hover:opacity-100 transition-opacity font-black text-white italic tracking-tighter text-sm sm:text-base">
+        <span>INVEST</span>
+        <span className="text-[#FA582D]">BANK</span>
+      </div>
+    ),
+  },
+  {
+    name: "Sabre",
+    render: () => (
+      <div className="opacity-75 hover:opacity-100 transition-opacity font-serif font-black tracking-wider text-white text-base sm:text-lg italic">
+        Sabre
+      </div>
+    ),
+  },
+  {
+    name: "ADT",
+    render: () => (
+      <div className="flex items-center justify-center rounded-md bg-white/10 px-3 py-1 font-black text-white text-xs sm:text-sm tracking-widest border border-white/20 opacity-75 hover:opacity-100 transition-opacity">
+        ADT
+      </div>
+    ),
+  },
+];
 
-function AnimatedCounter({ value, decimals = 0, duration = 1.4 }: { value: number; decimals?: number; duration?: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.6 });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    let start: number | null = null;
-    let raf: number;
-    const step = (ts: number) => {
-      if (start === null) start = ts;
-      const progress = Math.min((ts - start) / (duration * 1000), 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(value * eased);
-      if (progress < 1) raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [isInView, value, duration]);
-
+export default function CustomerLogosSection() {
   return (
-    <span ref={ref}>
-      {display.toFixed(decimals)}
-    </span>
-  );
-}
-
-export default function StatsSection() {
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#070A0F] via-[#0B0E14] to-[#070A0F] py-24">
-      {/* Background: dot-grid texture + slow-pulsing ambient orbs — kept from
-          the original, recolored to a single brand-blue family instead of
-          the orange/cyan/purple mix. */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-[0.15]"
-          style={{
-            backgroundImage: "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "18px 18px",
-          }}
-        />
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-64 w-64 rounded-full"
-            style={{
-              background: `radial-gradient(circle, rgba(59,130,246,${0.1 - i * 0.02}) 0%, transparent 70%)`,
-              left: `${20 + i * 30}%`,
-              top: `${30 + i * 20}%`,
-            }}
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 4 + i, repeat: Infinity, delay: i * 1.5 }}
-          />
-        ))}
+    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#FA582D] selection:text-white border-b border-white/5">
+      {/* Background Radial Ambiance */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-[#FA582D]/8 blur-[160px]" />
+        <div className="absolute bottom-1/3 right-1/4 h-[450px] w-[450px] rounded-full bg-[#C43818]/10 blur-[180px]" />
       </div>
 
       <div className="container-page relative z-10">
-        {/* Header: eyebrow + two-tone headline on the left, pill button on the
-            right — matches the reference's asymmetric layout, not centered. */}
-        <ScrollReveal animation="fade-up" speed="fast">
-          <div className="mb-14 flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-blue-500">
-                Why Spectrunex
-              </p>
-              <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
-                Platformization empowers you to harness AI-ready infrastructure.{" "}
-                <span className="text-blue-400">
-                  And our AI-driven services keep everything secure.
-                </span>
-              </h2>
-            </div>
-            <a
-              href="/platforms"
-              className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-blue-400 hover:text-blue-300"
-            >
-              See our platform approach <span aria-hidden="true">→</span>
-            </a>
+        {/* Top Accent Line */}
+        <div className="mb-6 flex items-center">
+          <div className="h-[2px] w-36 bg-gradient-to-r from-[#FA582D] to-transparent sm:w-44" />
+        </div>
+
+        {/* Section Heading */}
+        <div className="mb-14 sm:mb-18">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-white leading-[1.12]"
+          >
+            Intelligence-driven. <br />
+            Response-ready.
+          </motion.h2>
+        </div>
+
+        {/* Subtitle & Explore Unit 42 Action Row */}
+        <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#FA582D] mb-2 block">
+              SERVICES
+            </span>
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
+              Threat Intel & <br />
+              Incident Response
+            </h3>
           </div>
-        </ScrollReveal>
 
-        {/* Stats grid — three cards, matching the reference exactly (no
-            icons, no per-card progress bar; the original's 8-card,
-            rainbow-colored, icon+progress-bar layout doesn't match it). */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.12 }}
-              className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8"
+          <div>
+            <Link
+              href="/services#unit42"
+              className="group inline-flex items-center gap-2 rounded-full border border-[#FA582D] px-6 py-2.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-[#FA582D] hover:text-black hover:scale-105 active:scale-95"
             >
-              {/* faint diagonal line texture, confined to the card */}
-              <svg className="pointer-events-none absolute right-0 top-0 h-40 w-40 opacity-[0.12]" aria-hidden="true">
-                <g stroke="#3B82F6" strokeWidth="1">
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <line key={i} x1={i * 16} y1="0" x2={i * 16 - 100} y2="160" />
-                  ))}
-                </g>
-              </svg>
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-900/10" />
+              <span>Explore Unit 42</span>
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
 
-              <div className="relative">
-                <div className="mb-2 flex items-baseline gap-2">
-                  {stat.prefix && (
-                    <span className="text-lg font-semibold text-white">{stat.prefix}</span>
-                  )}
-                  <span className="text-4xl font-black text-blue-400">
-                    <AnimatedCounter value={stat.value} decimals={stat.decimals} />
-                    {stat.suffix === "%" ? " %" : ` ${stat.suffix}`}
-                  </span>
-                </div>
-                <h3 className="mb-3 text-lg font-bold text-white">{stat.label}</h3>
-                <p className="text-sm leading-relaxed text-slate-400">{stat.description}</p>
+        {/* Two-Column Grid: Description & Stats (Left) + 2x2 Red-Orange Metric Cards (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start mb-24 sm:mb-28">
+          {/* Left Column: Description & Dual Metrics */}
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="lg:col-span-5 flex flex-col justify-between"
+          >
+            <p className="text-base sm:text-lg leading-relaxed text-slate-300 mb-10 font-normal">
+              Unit 42&apos;s world-renowned threat researchers, elite incident responders
+              and expert security consultants will guide you with a threat-informed
+              approach before, during and after an incident.
+            </p>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-2 gap-8">
+              <div className="flex flex-col">
+                <span className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight mb-2">
+                  1 K+
+                </span>
+                <span className="text-[0.72rem] sm:text-xs font-bold uppercase tracking-[0.14em] text-slate-300">
+                  MATTERS PER YEAR
+                </span>
               </div>
-            </motion.div>
-          ))}
+              <div className="flex flex-col">
+                <span className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight mb-2">
+                  24 / 7 / 365
+                </span>
+                <span className="text-[0.72rem] sm:text-xs font-bold uppercase tracking-[0.14em] text-slate-300">
+                  INCIDENT RESPONSE
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column: 2x2 Rust-Orange Cards with Concentric Radial Texture */}
+          <div className="lg:col-span-7 relative">
+            {/* Background Concentric Arc Texture */}
+            <div
+              className="pointer-events-none absolute -inset-10 sm:-inset-16 opacity-30 z-0 flex items-center justify-center overflow-hidden"
+              aria-hidden="true"
+            >
+              <svg
+                className="w-full h-full min-h-[440px]"
+                viewBox="0 0 600 450"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <circle
+                    key={i}
+                    cx="300"
+                    cy="225"
+                    r={80 + i * 24}
+                    stroke="#FA582D"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 6"
+                    opacity={0.7 - i * 0.045}
+                  />
+                ))}
+              </svg>
+            </div>
+
+            {/* 2x2 Metric Cards Grid */}
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+              {unit42Stats.map((stat, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.08, ease: "easeOut" }}
+                  className="group relative flex flex-col justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#C43818] via-[#B83214] to-[#9A240A] p-7 sm:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-700/30 min-h-[160px]"
+                >
+                  {/* Subtle Inner Glow */}
+                  <div className="pointer-events-none absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <span className="font-display text-4xl sm:text-[2.65rem] font-black tracking-tight text-white mb-2">
+                    {stat.value}
+                  </span>
+                  <p className="text-xs sm:text-sm font-semibold text-white/90 leading-snug">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ── TRUSTED BY THE BEST Logo Wall ──────────────────────────────────── */}
+      <div className="pt-14 pb-4">
+        <div className="container-page text-center">
+          <div className="mb-8 text-xs font-bold uppercase tracking-[0.24em] text-slate-300">
+            TRUSTED BY THE BEST
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-20">
+            {customerLogos.map((logo, idx) => (
+              <div key={idx} className="flex items-center justify-center">
+                {logo.render()}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

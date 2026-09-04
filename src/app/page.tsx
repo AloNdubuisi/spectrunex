@@ -5,7 +5,10 @@ import PlatformsSection from "@/components/PlatformsSection";
 import CustomerLogosSection from "@/components/CustomerLogosSection";
 import ServicesGrid from "@/components/ServicesGrid";
 import CTASection from "@/components/CTASection";
+import IdentitySection from "@/components/IdentitySection";
 import StatisticsSection from "@/components/StatsSection";
+import SolutionsSection from "@/components/SolutionsSection";
+import CustomerSuccessSection from "@/components/CustomerSuccessSection";
 
 export const metadata: Metadata = {
   title: "Spectrunex | Leader in Cybersecurity & Precision AI™",
@@ -17,10 +20,13 @@ export default function HomePage() {
     <>
       <Hero />
       <PlatformsSection />
-      <StatisticsSection />
-      <CustomerLogosSection />
       <ServicesGrid />
       <CTASection />
+      <IdentitySection />
+      <StatisticsSection />
+      <CustomerLogosSection />
+      <SolutionsSection />
+      <CustomerSuccessSection />
     </>
   );
 }
