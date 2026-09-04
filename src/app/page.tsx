@@ -9,6 +9,7 @@ import IdentitySection from "@/components/IdentitySection";
 import StatisticsSection from "@/components/StatsSection";
 import SolutionsSection from "@/components/SolutionsSection";
 import CustomerSuccessSection from "@/components/CustomerSuccessSection";
+import RecommendedSection from "@/components/RecommendedSection";
 
 export const metadata: Metadata = {
   title: "Spectrunex | Leader in Cybersecurity & Precision AI™",
@@ -27,6 +28,7 @@ export default function HomePage() {
       <CustomerLogosSection />
       <SolutionsSection />
       <CustomerSuccessSection />
+      <RecommendedSection />
     </>
   );
 }

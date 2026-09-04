@@ -9,9 +9,9 @@ import {
   Cloud,
   ShieldCheck,
   ArrowRight,
-  PlusCircle,
 } from "lucide-react";
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
 
 /* ── Platform Configuration ────────────────────────────────────────── */
 interface AnalystAward {
@@ -41,9 +41,9 @@ const platforms: PlatformData[] = [
     tabLabel: "AI-Driven Security Operations",
     icon: Zap,
     themeColor: "#1D4ED8",
-    ctaBgColor: "#00E676",
+    ctaBgColor: "#1D4ED8",
     themeBgGradient: "from-[#1D4ED8]/10 via-[#2563EB]/5 to-transparent",
-    themeCardGradient: "from-[#00E676] via-[#00C853] to-[#009624]",
+    themeCardGradient: "from-[#1D4ED8] via-[#00C853] to-[#009624]",
     themeGlow: "rgba(29, 78, 216, 0.4)",
     titleLines: ["AI-DRIVEN SECURITY", "OPERATIONS"],
     description:
@@ -174,7 +174,7 @@ export default function CTASection() {
     platforms.find((p) => p.id === activeTabId) || platforms[0];
 
   return (
-    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-0 text-white selection:bg-[#00E676] selection:text-black">
+    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-0 text-white selection:bg-[#1D4ED8] selection:text-black">
       {/* Dynamic Background Glow */}
       <div className="pointer-events-none absolute inset-0">
         <div
@@ -185,67 +185,70 @@ export default function CTASection() {
       </div>
 
       <div className="container-page relative z-10">
-        {/* Big Dynamic Tracked Accent Title */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activePlatform.id + "-title"}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="mb-14 sm:mb-18"
-          >
-            <h2
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-black uppercase tracking-[0.16em] sm:tracking-[0.24em] leading-[1.12]"
-              style={{ color: activePlatform.themeColor }}
-            >
-              {activePlatform.titleLines.map((line, idx) => (
-                <span key={idx} className="block">
-                  {line}
-                </span>
-              ))}
-            </h2>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Two Column Layout: Description & Action (Left) + Analyst Grid with Radar Pattern (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-24 sm:mb-28">
-          {/* Left Column: Description & Action Button */}
+        {/* Big Dynamic Tracked Accent Title with Fast Scroll Reveal */}
+        <ScrollReveal speed="fast" animation="fade-up">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activePlatform.id + "-content"}
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 16 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="lg:col-span-5 flex flex-col items-start"
+              key={activePlatform.id + "-title"}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="mb-14 sm:mb-18"
             >
-              <p className="text-base sm:text-lg leading-relaxed text-slate-200 mb-10 font-normal max-w-xl">
-                {activePlatform.description}
-              </p>
-
-              {/* Action Button (Pill shaped vibrant green button with black text) */}
-              <Link
-                href={activePlatform.ctaHref}
-                className="group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-sm sm:text-base font-bold text-black transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
-                style={{
-                  backgroundColor:
-                    activePlatform.ctaBgColor || activePlatform.themeColor,
-                  boxShadow: `0 10px 25px -5px ${
-                    activePlatform.ctaBgColor
-                      ? "rgba(0, 230, 118, 0.4)"
-                      : activePlatform.themeGlow
-                  }`,
-                }}
+              <h2
+                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-black uppercase tracking-[0.16em] sm:tracking-[0.24em] leading-[1.12]"
+                style={{ color: activePlatform.themeColor }}
               >
-                <span>{activePlatform.ctaText}</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+                {activePlatform.titleLines.map((line, idx) => (
+                  <span key={idx} className="block">
+                    {line}
+                  </span>
+                ))}
+              </h2>
             </motion.div>
           </AnimatePresence>
+        </ScrollReveal>
 
-          {/* Right Column: Analyst Recognition Cards with Radar / Concentric Rings Texture */}
-          <div className="lg:col-span-7 relative">
+        {/* Two Column Layout with Fast Scroll Reveal */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-24 sm:mb-28">
+          {/* Left Column: Description & Action Button */}
+          <ScrollReveal speed="fast" animation="slide-left" className="lg:col-span-5">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activePlatform.id + "-content"}
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 16 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="flex flex-col items-start"
+              >
+                <p className="text-base sm:text-lg leading-relaxed text-slate-200 mb-10 font-normal max-w-xl">
+                  {activePlatform.description}
+                </p>
+
+                {/* Action Button */}
+                <Link
+                  href={activePlatform.ctaHref}
+                  className="group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-sm sm:text-base font-bold text-black transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
+                  style={{
+                    backgroundColor:
+                      activePlatform.ctaBgColor || activePlatform.themeColor,
+                    boxShadow: `0 10px 25px -5px ${activePlatform.ctaBgColor
+                        ? "rgba(0, 230, 118, 0.4)"
+                        : activePlatform.themeGlow
+                      }`,
+                  }}
+                >
+                  <span>{activePlatform.ctaText}</span>
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+          </ScrollReveal>
+
+          {/* Right Column: Analyst Recognition Cards with Fast Scroll Reveal */}
+          <ScrollReveal speed="fast" animation="slide-right" className="lg:col-span-7 relative">
             {/* Background Radar / Concentric Oval Lines Texture */}
             <div
               className="pointer-events-none absolute -inset-10 sm:-inset-16 opacity-30 z-0 flex items-center justify-center overflow-hidden"
@@ -280,13 +283,14 @@ export default function CTASection() {
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
               >
                 {activePlatform.awards.map((award, idx) => (
                   <div
                     key={idx}
-                    className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${activePlatform.themeCardGradient} p-6 sm:p-7 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}
+                    className="group relative overflow-hidden rounded-2xl p-6 sm:p-7 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl bg-[#1D4ED8]"
+                    style={{ backgroundColor: "#1D4ED8" }}
                   >
                     {/* Inner Highlight Layer */}
                     <div className="pointer-events-none absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -294,33 +298,33 @@ export default function CTASection() {
                     {/* Logo/Wordmark */}
                     <div className="mb-4 flex items-center min-h-[32px]">
                       {award.provider === "Gartner" ? (
-                        <span className="font-sans text-2xl sm:text-[1.65rem] font-black tracking-tight text-black">
-                          Gartner<span className="text-black">.</span>
+                        <span className="font-sans text-2xl sm:text-[1.65rem] font-black tracking-tight text-white">
+                          Gartner<span className="text-white">.</span>
                         </span>
                       ) : award.provider === "Forrester" ? (
-                        <span className="font-serif text-xl sm:text-2xl font-black uppercase tracking-wider text-black">
+                        <span className="font-serif text-xl sm:text-2xl font-black uppercase tracking-wider text-white">
                           FORRESTER
                         </span>
                       ) : award.provider === "Frost & Sullivan" ? (
-                        <span className="font-serif text-xs sm:text-[0.85rem] font-black tracking-[0.24em] uppercase text-black">
+                        <span className="font-serif text-xs sm:text-[0.85rem] font-black tracking-[0.24em] uppercase text-white">
                           F R O S T & S U L L I V A N
                         </span>
                       ) : (
-                        <span className="font-sans text-xl sm:text-2xl font-black uppercase tracking-widest text-black">
+                        <span className="font-sans text-xl sm:text-2xl font-black uppercase tracking-widest text-white">
                           IDC
                         </span>
                       )}
                     </div>
 
                     {/* Award Details */}
-                    <p className="text-xs sm:text-[0.82rem] font-semibold text-black/90 leading-snug">
+                    <p className="text-xs sm:text-[0.82rem] font-semibold text-white leading-snug">
                       {award.title}
                     </p>
                   </div>
                 ))}
               </motion.div>
             </AnimatePresence>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

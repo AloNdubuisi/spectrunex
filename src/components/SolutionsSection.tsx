@@ -142,7 +142,7 @@ export default function SolutionsSection() {
     solutionCategories[0];
 
   return (
-    <section className="relative min-h-[750px] overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#FA582D] selection:text-white border-b border-white/5">
+    <section className="relative min-h-[750px] overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#1D4ED8] selection:text-white border-b border-white/5">
       {/* ── Background Hero Image with Left Gradient Fade ───────────────── */}
       <div className="absolute inset-0 z-0">
         <div className="relative h-full w-full">
@@ -162,7 +162,7 @@ export default function SolutionsSection() {
       <div className="container-page relative z-10">
         {/* Top Accent Line */}
         <div className="mb-6 flex items-center">
-          <div className="h-[2px] w-36 bg-gradient-to-r from-[#FA582D] to-transparent sm:w-44" />
+          <div className="h-[2px] w-36 bg-gradient-to-r from-[#1D4ED8] to-transparent sm:w-44" />
         </div>
 
         {/* Section Heading */}
@@ -186,19 +186,17 @@ export default function SolutionsSection() {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategoryId(category.id)}
-                  className={`group flex w-full items-center gap-4 rounded-xl px-3 py-2.5 text-left transition-all duration-300 ${
-                    isActive
+                  className={`group flex w-full items-center gap-4 rounded-xl px-3 py-2.5 text-left transition-all duration-300 ${isActive
                       ? "text-white font-bold"
                       : "text-slate-400 hover:text-slate-200"
-                  }`}
+                    }`}
                 >
                   {/* Icon */}
                   <div
-                    className={`flex h-6 w-6 shrink-0 items-center justify-center transition-colors ${
-                      isActive
+                    className={`flex h-6 w-6 shrink-0 items-center justify-center transition-colors ${isActive
                         ? "text-[#00D2FF]"
                         : "text-slate-500 group-hover:text-slate-300"
-                    }`}
+                      }`}
                   >
                     <IconComponent className="h-5 w-5" />
                   </div>

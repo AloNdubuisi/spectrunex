@@ -214,17 +214,17 @@ export default function ServicesGrid() {
     platforms.find((p) => p.id === activeTabId) || platforms[0];
 
   return (
-    <section className="relative overflow-hidden bg-[#070A0F] pt-20 pb-0 text-white selection:bg-[#FA582D] selection:text-white">
+    <section className="relative overflow-hidden bg-[#070A0F] pt-20 pb-0 text-white selection:bg-[#1D4ED8] selection:text-white">
       {/* Subtle Background Glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-[#FA582D]/8 blur-[140px]" />
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-[#1D4ED8]/8 blur-[140px]" />
         <div className="absolute bottom-1/3 right-1/4 h-[420px] w-[420px] rounded-full bg-[#F59E0B]/6 blur-[160px]" />
       </div>
 
       <div className="container-page relative z-10">
         {/* Top Accent Line */}
         <div className="mb-6 flex items-center">
-          <div className="h-[2px] w-28 bg-gradient-to-r from-[#FA582D] via-[#F59E0B] to-transparent sm:w-44" />
+          <div className="h-[2px] w-28 bg-gradient-to-r from-[#1D4ED8] via-[#F59E0B] to-transparent sm:w-44" />
         </div>
 
         {/* Big Dynamic Tracked Accent Title */}
@@ -281,7 +281,7 @@ export default function ServicesGrid() {
               <div>
                 <Link
                   href={activePlatform.ctaHref}
-                  className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] via-[#FA582D] to-[#F59E0B] bg-[length:200%_auto] px-8 py-3.5 text-sm sm:text-base font-bold text-black transition-all duration-300 hover:bg-[position:right_center] hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95"
+                  className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] via-[#1D4ED8] to-[#F59E0B] bg-[length:200%_auto] px-8 py-3.5 text-sm sm:text-base font-bold text-black transition-all duration-300 hover:bg-[position:right_center] hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95"
                 >
                   <span>{activePlatform.ctaText}</span>
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -311,7 +311,7 @@ export default function ServicesGrid() {
                       y1="0"
                       x2="0"
                       y2="24"
-                      stroke="#FA582D"
+                      stroke="#1D4ED8"
                       strokeWidth="2.5"
                     />
                   </pattern>
@@ -324,7 +324,7 @@ export default function ServicesGrid() {
             <div className="relative z-10 flex justify-end mb-4 pr-1">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[#FA582D] transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[#1D4ED8] transition-colors"
               >
                 <span>See all</span>
                 <PlusCircle className="h-4 w-4 text-white" />
@@ -346,33 +346,33 @@ export default function ServicesGrid() {
                   return (
                     <div
                       key={idx}
-                      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-7 shadow-lg transition-all duration-300 ${isBottomRow
-                        ? "bg-gradient-to-b from-[#E59819] to-[#C8780A] opacity-70 hover:opacity-100"
-                        : "bg-gradient-to-br from-[#F5A623] via-[#E59819] to-[#D97706] hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/20"
+                      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-7 shadow-xl border border-blue-500/30 transition-all duration-300 ${isBottomRow
+                        ? "bg-gradient-to-b from-[#1D4ED8]/80 to-[#172554]/80 opacity-70 hover:opacity-100"
+                        : "bg-gradient-to-br from-[#1D4ED8] via-[#1E40AF] to-[#172554] hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-600/30"
                         }`}
                     >
                       {/* Subtile Inner Glow on hover */}
-                      <div className="pointer-events-none absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="pointer-events-none absolute inset-0 bg-[FORRESTER] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                       {/* Provider Wordmark */}
                       <div className="mb-3 flex items-center justify-between">
                         {award.provider === "Gartner" ? (
-                          <span className="font-sans text-2xl sm:text-[1.7rem] font-black tracking-tight text-black">
-                            Gartner<span className="text-black">.</span>
+                          <span className="font-sans text-2xl sm:text-[1.7rem] font-black tracking-tight text-white">
+                            Gartner<span className="text-[#60A5FA]">.</span>
                           </span>
                         ) : award.provider === "Forrester" ? (
-                          <span className="font-serif text-xl sm:text-2xl font-black uppercase tracking-wider text-black">
+                          <span className="font-serif text-xl sm:text-2xl font-black uppercase tracking-wider text-white">
                             FORRESTER
                           </span>
                         ) : (
-                          <span className="font-sans text-xl sm:text-2xl font-black uppercase tracking-widest text-black">
+                          <span className="font-sans text-xl sm:text-2xl font-black uppercase tracking-widest text-white">
                             IDC
                           </span>
                         )}
                       </div>
 
                       {/* Award Description Title */}
-                      <p className="text-xs sm:text-[0.82rem] font-semibold text-black/90 leading-snug line-clamp-3">
+                      <p className="text-xs sm:text-[0.84rem] font-semibold text-white/95 leading-snug line-clamp-3">
                         {award.title}
                       </p>
                     </div>

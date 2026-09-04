@@ -54,7 +54,7 @@ const customerLogos = [
     render: () => (
       <div className="flex items-center gap-1 opacity-75 hover:opacity-100 transition-opacity font-black text-white italic tracking-tighter text-sm sm:text-base">
         <span>INVEST</span>
-        <span className="text-[#FA582D]">BANK</span>
+        <span className="text-[#1D4ED8]">BANK</span>
       </div>
     ),
   },
@@ -78,17 +78,17 @@ const customerLogos = [
 
 export default function CustomerLogosSection() {
   return (
-    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#FA582D] selection:text-white border-b border-white/5">
+    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#1D4ED8] selection:text-white border-b border-white/5">
       {/* Background Radial Ambiance */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-[#FA582D]/8 blur-[160px]" />
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-[#1D4ED8]/8 blur-[160px]" />
         <div className="absolute bottom-1/3 right-1/4 h-[450px] w-[450px] rounded-full bg-[#C43818]/10 blur-[180px]" />
       </div>
 
       <div className="container-page relative z-10">
         {/* Top Accent Line */}
         <div className="mb-6 flex items-center">
-          <div className="h-[2px] w-36 bg-gradient-to-r from-[#FA582D] to-transparent sm:w-44" />
+          <div className="h-[2px] w-36 bg-gradient-to-r from-[#1D4ED8] to-transparent sm:w-44" />
         </div>
 
         {/* Section Heading */}
@@ -108,7 +108,7 @@ export default function CustomerLogosSection() {
         {/* Subtitle & Explore Unit 42 Action Row */}
         <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#FA582D] mb-2 block">
+            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#1D4ED8] mb-2 block">
               SERVICES
             </span>
             <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
@@ -120,7 +120,7 @@ export default function CustomerLogosSection() {
           <div>
             <Link
               href="/services#unit42"
-              className="group inline-flex items-center gap-2 rounded-full border border-[#FA582D] px-6 py-2.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-[#FA582D] hover:text-black hover:scale-105 active:scale-95"
+              className="group inline-flex items-center gap-2 rounded-full border border-[#1D4ED8] px-6 py-2.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-[#1D4ED8] hover:text-black hover:scale-105 active:scale-95"
             >
               <span>Explore Unit 42</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -184,7 +184,7 @@ export default function CustomerLogosSection() {
                     cx="300"
                     cy="225"
                     r={80 + i * 24}
-                    stroke="#FA582D"
+                    stroke="#1D4ED8"
                     strokeWidth="1.5"
                     strokeDasharray="4 6"
                     opacity={0.7 - i * 0.045}
@@ -202,7 +202,7 @@ export default function CustomerLogosSection() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.08, ease: "easeOut" }}
-                  className="group relative flex flex-col justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#C43818] via-[#B83214] to-[#9A240A] p-7 sm:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-700/30 min-h-[160px]"
+                  className="group relative flex flex-col justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#1D4ED8] via-[#1E40AF] to-[#172554] border border-blue-500/30 p-7 sm:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-600/30 min-h-[160px]"
                 >
                   {/* Subtle Inner Glow */}
                   <div className="pointer-events-none absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

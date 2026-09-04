@@ -10,7 +10,7 @@ const config: Config = {
       colors: {
         pan: {
           orange: {
-            DEFAULT: "#FA582D",
+            DEFAULT: "#1D4ED8",
             hover: "#FF6F47",
             light: "#FF8A65",
             dark: "#D94118",

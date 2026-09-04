@@ -138,7 +138,7 @@ interface BounceProps {
 
 export function Bounce({ children, type = "normal", className = "" }: BounceProps) {
   const variantKey = type === "hard" ? "bounceHard" : type === "soft" ? "bounceSoft" : "bounce";
-  
+
   return (
     <motion.div
       variants={bounceVariants}
@@ -160,7 +160,7 @@ interface PulseProps {
 
 export function Pulse({ children, type = "normal", className = "" }: PulseProps) {
   const variantKey = type === "glow" ? "pulseGlow" : "pulse";
-  
+
   return (
     <motion.div
       variants={pulseVariants}
@@ -182,7 +182,7 @@ interface FloatProps {
 
 export function Float({ children, speed = "normal", className = "" }: FloatProps) {
   const variantKey = speed === "slow" ? "floatSlow" : speed === "fast" ? "floatFast" : "float";
-  
+
   return (
     <motion.div
       variants={floatVariants}
@@ -204,7 +204,7 @@ interface HoverProps {
 
 export function Hover({ children, type = "normal", className = "" }: HoverProps) {
   const variantKey = type === "lift" ? "hoverLift" : type === "scale" ? "hoverScale" : "hover";
-  
+
   return (
     <motion.div
       whileHover={variantKey}
@@ -247,7 +247,7 @@ export function AnimatedBorder({ children, className = "", speed = 3 }: Animated
       <motion.div
         className="absolute -inset-1 rounded-lg"
         style={{
-          background: `linear-gradient(90deg, #FA582D, #00D2FF, #FA582D)`,
+          background: `linear-gradient(90deg, #1D4ED8, #00D2FF, #1D4ED8)`,
           backgroundSize: "200% 100%",
         }}
         animate={{
@@ -299,7 +299,7 @@ interface AnimatedProgressPulseProps {
 
 export function AnimatedProgressPulse({ value, max = 100, color = "pan-orange", className = "" }: AnimatedProgressPulseProps) {
   const width = (value / max) * 100;
-  
+
   return (
     <div className={`h-2 rounded-full bg-white/10 overflow-hidden ${className}`}>
       <motion.div

@@ -60,7 +60,7 @@ export default function AnalystSection() {
           <div className="lg:col-span-5 space-y-8">
             <ScrollReveal speed="normal" animation="slide-left">
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed tracking-normal">
-                Transform the SOC and enable better, faster security with the #1 AI-driven SecOps platform powered by unified data, artificial intelligence and automation.
+                Transform the SOC and enable better, faster security with the #1 AI-driven SecOps platform powered by unified data, artificial intelligence and automation.ghhhhhhhhhh
               </p>
 
               <div className="grid grid-cols-2 gap-8 pt-6">
@@ -85,7 +85,7 @@ export default function AnalystSection() {
               <div className="pt-6">
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-blue-700 shadow-lg shadow-blue-600/25"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#1D4ED8] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-blue-700 shadow-lg shadow-blue-600/25"
                 >
                   Explore SecOps →
                 </Link>
@@ -100,7 +100,7 @@ export default function AnalystSection() {
                 {analystCards.map((card, idx) => (
                   <div
                     key={idx}
-                    className="group rounded-2xl bg-[#0B1324] border border-blue-900/60 hover:border-blue-500/60 text-white p-6 transition-all duration-300 shadow-xl flex flex-col justify-between min-h-[160px] cursor-pointer"
+                    className="group rounded-2xl bg-[#1D4ED8] border border-blue-900/60 hover:border-blue-500/60 text-white p-6 transition-all duration-300 shadow-xl flex flex-col justify-between min-h-[160px] cursor-pointer"
                   >
                     <span className="font-bold text-xs uppercase tracking-[0.15em] text-blue-400">
                       {card.category}

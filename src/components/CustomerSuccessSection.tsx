@@ -14,10 +14,10 @@ export default function CustomerSuccessSection() {
     "https://players.brightcove.net/1050259881001/GHupYS05h_default/index.html?videoId=6360711021112&autoplay=true&muted=true";
 
   return (
-    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#FA582D] selection:text-white border-b border-white/5">
+    <section className="relative overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#1D4ED8] selection:text-white border-b border-white/5">
       {/* Background Ambience Glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/3 h-[450px] w-[450px] rounded-full bg-[#FA582D]/8 blur-[160px]" />
+        <div className="absolute top-1/4 left-1/3 h-[450px] w-[450px] rounded-full bg-[#1D4ED8]/8 blur-[160px]" />
         <div className="absolute bottom-10 right-1/4 h-80 w-80 rounded-full bg-orange-950/20 blur-[140px]" />
       </div>
 
@@ -33,7 +33,7 @@ export default function CustomerSuccessSection() {
             <h2 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.15]">
               Our customers are securing <br />
               their{" "}
-              <span className="text-[#FA582D]">digital transformation</span>
+              <span className="text-[#1D4ED8]">digital transformation</span>
             </h2>
           </motion.div>
 
@@ -45,7 +45,7 @@ export default function CustomerSuccessSection() {
           >
             <Link
               href="/outcomes"
-              className="group inline-flex items-center gap-2 text-sm sm:text-base font-bold text-white hover:text-[#FA582D] transition-colors"
+              className="group inline-flex items-center gap-2 text-sm sm:text-base font-bold text-white hover:text-[#1D4ED8] transition-colors"
             >
               <span>See testimonials</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -59,7 +59,7 @@ export default function CustomerSuccessSection() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0B0E14] shadow-2xl shadow-black/80 hover:border-[#FA582D]/30 transition-all duration-500"
+          className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0B0E14] shadow-2xl shadow-black/80 hover:border-[#1D4ED8]/30 transition-all duration-500"
         >
           {/* 16:9 Aspect Ratio Video Container */}
           <div className="relative w-full pb-[56.25%] overflow-hidden bg-black">
@@ -73,7 +73,7 @@ export default function CustomerSuccessSection() {
           </div>
 
           {/* Bottom Accent Bar */}
-          <div className="h-1.5 w-full bg-gradient-to-r from-[#FA582D] via-[#F59E0B] to-[#FA582D] opacity-90" />
+          <div className="h-1.5 w-full bg-gradient-to-r from-[#1D4ED8] via-[#F59E0B] to-[#1D4ED8] opacity-90" />
         </motion.div>
       </div>
     </section>

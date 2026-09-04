@@ -107,16 +107,15 @@ export default function PrecisionAISimulator() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
         {/* Section Heading with Fast Reveal */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-600 ease-out transform ${
-            isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
-          }`}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-600 ease-out transform ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+            }`}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#FA582D]/40 bg-[#FA582D]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#FA582D] mb-4 shadow-[0_0_20px_rgba(250,88,45,0.3)]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#1D4ED8]/40 bg-[#1D4ED8]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#1D4ED8] mb-4 shadow-[0_0_20px_rgba(250,88,45,0.3)]">
             <Sparkles className="h-3.5 w-3.5 animate-spin" style={{ animationDuration: "6s" }} />
             <span>Interactive Security Simulation</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
-            Experience <span className="text-[#FA582D]">Precision AI™</span> in action.
+            Experience <span className="text-[#1D4ED8]">Precision AI™</span> in action.
           </h2>
           <p className="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
             See how our unified AI engines detect, analyze, and neutralize advanced nation-state attacks in milliseconds.
@@ -125,9 +124,8 @@ export default function PrecisionAISimulator() {
 
         {/* Interactive Scenario Switcher with Fast Stagger */}
         <div
-          className={`flex flex-wrap items-center justify-center gap-3 mb-10 transition-all duration-600 delay-100 ease-out transform ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`flex flex-wrap items-center justify-center gap-3 mb-10 transition-all duration-600 delay-100 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           {simulationScenarios.map((item) => {
             const isActive = activeScenarioId === item.id;
@@ -139,11 +137,10 @@ export default function PrecisionAISimulator() {
                   setSimulatedIndex(4);
                   setRunning(false);
                 }}
-                className={`px-5 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-2 border ${
-                  isActive
-                    ? "bg-[#FA582D] text-white border-[#FA582D] shadow-xl shadow-[#FA582D]/30 scale-105"
+                className={`px-5 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-2 border ${isActive
+                    ? "bg-[#1D4ED8] text-white border-[#1D4ED8] shadow-xl shadow-[#1D4ED8]/30 scale-105"
                     : "bg-[#0F141E] text-slate-300 border-white/10 hover:border-slate-400 hover:text-white"
-                }`}
+                  }`}
               >
                 <Cpu className="h-4 w-4" />
                 <span>{item.title}</span>
@@ -154,9 +151,8 @@ export default function PrecisionAISimulator() {
 
         {/* Live Simulation Terminal Console with Bouncing Elevation */}
         <div
-          className={`max-w-4xl mx-auto rounded-3xl bg-[#0C1018] border border-white/15 shadow-2xl overflow-hidden transition-all duration-700 delay-200 ease-out transform ${
-            isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
-          }`}
+          className={`max-w-4xl mx-auto rounded-3xl bg-[#0C1018] border border-white/15 shadow-2xl overflow-hidden transition-all duration-700 delay-200 ease-out transform ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
+            }`}
         >
           {/* Console Header Bar */}
           <div className="bg-[#111722] border-b border-white/10 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
@@ -178,7 +174,7 @@ export default function PrecisionAISimulator() {
               <button
                 onClick={handleRunSimulation}
                 disabled={running}
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#FA582D] hover:bg-[#ff6f47] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white transition-all shadow-md hover:scale-105 disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#1D4ED8] hover:bg-[#ff6f47] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white transition-all shadow-md hover:scale-105 disabled:opacity-50"
               >
                 <Play className="h-3 w-3 fill-current" />
                 {running ? "Simulating..." : "Replay Attack"}
@@ -190,9 +186,9 @@ export default function PrecisionAISimulator() {
           <div className="p-6 sm:p-8 space-y-6">
             {/* AI Prompt Input Bar */}
             <div className="rounded-2xl bg-[#070A0F] border border-white/10 p-4 flex items-start gap-3">
-              <Bot className="h-5 w-5 text-[#FA582D] flex-shrink-0 mt-0.5" />
+              <Bot className="h-5 w-5 text-[#1D4ED8] flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-xs font-mono text-[#FA582D] font-bold uppercase">
+                <p className="text-xs font-mono text-[#1D4ED8] font-bold uppercase">
                   Telemetry Trigger:
                 </p>
                 <p className="text-sm text-slate-200 font-mono mt-0.5">
@@ -208,15 +204,14 @@ export default function PrecisionAISimulator() {
                 return (
                   <div
                     key={idx}
-                    className={`rounded-xl p-3.5 border transition-all duration-400 transform flex items-start justify-between gap-4 ${
-                      isStepVisible
+                    className={`rounded-xl p-3.5 border transition-all duration-400 transform flex items-start justify-between gap-4 ${isStepVisible
                         ? log.status === "detected"
                           ? "bg-red-500/10 border-red-500/40 text-red-200 scale-100"
                           : log.status === "action"
-                          ? "bg-yellow-500/10 border-yellow-500/40 text-yellow-200 scale-100"
-                          : "bg-emerald-500/10 border-emerald-500/40 text-emerald-200 scale-100"
+                            ? "bg-yellow-500/10 border-yellow-500/40 text-yellow-200 scale-100"
+                            : "bg-emerald-500/10 border-emerald-500/40 text-emerald-200 scale-100"
                         : "opacity-15 border-transparent bg-transparent scale-95"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-start gap-3">
                       <span className="text-slate-400 font-bold">{log.step}</span>

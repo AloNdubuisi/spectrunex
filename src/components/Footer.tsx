@@ -1,14 +1,15 @@
+"use client"
 // src/components/Footer.tsx
 import Link from "next/link";
-import { 
-  Shield, 
-  Lock, 
-  Cpu, 
-  Globe, 
-  ArrowUpRight, 
-  Twitter, 
-  Linkedin, 
-  Youtube, 
+import {
+  Shield,
+  Lock,
+  Cpu,
+  Globe,
+  ArrowUpRight,
+  Twitter,
+  Linkedin,
+  Youtube,
   Facebook,
   Instagram,
   Mail,
@@ -83,6 +84,10 @@ export default function Footer() {
     { icon: Facebook, label: "Facebook", href: "https://facebook.com/spectrunex" },
     { icon: Instagram, label: "Instagram", href: "https://instagram.com/spectrunex" },
   ];
+
+  function setOpen(arg0: boolean): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <footer className="bg-[#03070E] text-slate-400 font-sans border-t border-white/10">
@@ -209,13 +214,18 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Brand & Copyright */}
             <div className="flex flex-col sm:flex-row items-center gap-6">
-              <Link href="/" className="flex items-center gap-2 text-white font-display font-bold text-xl">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-pan-orange to-pan-orange-hover">
-                  <Shield className="h-5 w-5 text-white" />
-                </div>
-                <span>SPECTRUNEX<span className="text-pan-orange">®</span></span>
-              </Link>
-              
+              {/* Brand Logo */}
+              <div className="flex h-10 w-10 items-center justify-center">
+                {/* Brand Logo */}
+                <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+                  <img
+                    src="./logo.png"
+                    alt="Spectrunex"
+                    className="h-10 sm:h-10 w-auto object-contain"
+                  />
+                </Link>
+              </div>
+
               <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
                 <p>© {new Date().getFullYear()} Spectrunex Networks, LLC. All rights reserved.</p>
                 <div className="flex items-center gap-2">

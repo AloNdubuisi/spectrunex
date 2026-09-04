@@ -17,10 +17,10 @@ import {
 
 export default function StatsSection() {
   return (
-    <section className="relative overflow-hidden bg-[#070A0F] py-24 text-white selection:bg-[#FA582D] selection:text-white border-b border-white/5">
+    <section className="relative overflow-hidden bg-[#070A0F] py-24 text-white selection:bg-[#1D4ED8] selection:text-white border-b border-white/5">
       {/* Background Ambience Glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/3 h-96 w-96 rounded-full bg-[#FA582D]/6 blur-[150px]" />
+        <div className="absolute top-1/4 left-1/3 h-96 w-96 rounded-full bg-[#1D4ED8]/6 blur-[150px]" />
         <div className="absolute bottom-1/4 right-1/4 h-[420px] w-[420px] rounded-full bg-orange-950/20 blur-[160px]" />
       </div>
 
@@ -34,7 +34,7 @@ export default function StatsSection() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-white leading-tight mb-4"
           >
-            <span className="text-[#FA582D]">So you can defend at</span> speed and scale.
+            <span className="text-[#1D4ED8]">So you can defend at</span> speed and scale.
           </motion.h2>
 
           {/* Timestamp Subtitle */}
@@ -58,7 +58,7 @@ export default function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#1D4ED8]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
           >
             {/* Visual: Glowing Circuit Architecture */}
             <div className="relative mb-8 flex h-48 w-full items-center justify-between">
@@ -80,45 +80,45 @@ export default function StatsSection() {
                   y1="96"
                   x2="160"
                   y2="96"
-                  stroke="#FA582D"
+                  stroke="#1D4ED8"
                   strokeWidth="3"
-                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                  className="filter drop-shadow-[0_0_8px_#1D4ED8]"
                 />
                 <line
                   x1="160"
                   y1="96"
                   x2="210"
                   y2="50"
-                  stroke="#FA582D"
+                  stroke="#1D4ED8"
                   strokeWidth="2.5"
-                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                  className="filter drop-shadow-[0_0_8px_#1D4ED8]"
                 />
                 <line
                   x1="210"
                   y1="50"
                   x2="260"
                   y2="50"
-                  stroke="#FA582D"
+                  stroke="#1D4ED8"
                   strokeWidth="2.5"
-                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                  className="filter drop-shadow-[0_0_8px_#1D4ED8]"
                 />
                 <line
                   x1="160"
                   y1="96"
                   x2="210"
                   y2="142"
-                  stroke="#FA582D"
+                  stroke="#1D4ED8"
                   strokeWidth="2.5"
-                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                  className="filter drop-shadow-[0_0_8px_#1D4ED8]"
                 />
                 <line
                   x1="210"
                   y1="142"
                   x2="260"
                   y2="142"
-                  stroke="#FA582D"
+                  stroke="#1D4ED8"
                   strokeWidth="2.5"
-                  className="filter drop-shadow-[0_0_8px_#FA582D]"
+                  className="filter drop-shadow-[0_0_8px_#1D4ED8]"
                 />
                 {/* Secondary traces */}
                 <path
@@ -135,21 +135,21 @@ export default function StatsSection() {
 
               {/* Source Node: Cloud Scan */}
               <div className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/10 bg-[#12161F] p-3 shadow-inner">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FA582D]/10 border border-[#FA582D]/30">
-                  <Cloud className="h-6 w-6 text-[#FA582D]" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1D4ED8]/10 border border-[#1D4ED8]/30">
+                  <Cloud className="h-6 w-6 text-[#1D4ED8]" />
                 </div>
               </div>
 
               {/* Destination Nodes: Shield & Cloud Upload */}
               <div className="relative z-10 flex flex-col gap-6">
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-[#12161F] p-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FA582D]/15 border border-[#FA582D]/40">
-                    <Shield className="h-5 w-5 text-[#FA582D]" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1D4ED8]/15 border border-[#1D4ED8]/40">
+                    <Shield className="h-5 w-5 text-[#1D4ED8]" />
                   </div>
                 </div>
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-[#12161F] p-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FA582D]/15 border border-[#FA582D]/40">
-                    <UploadCloud className="h-5 w-5 text-[#FA582D]" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1D4ED8]/15 border border-[#1D4ED8]/40">
+                    <UploadCloud className="h-5 w-5 text-[#1D4ED8]" />
                   </div>
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function StatsSection() {
 
             {/* Metric & Label */}
             <div>
-              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#1D4ED8] mb-1">
                 1 T
               </div>
               <div className="text-sm sm:text-base font-semibold text-slate-300">
@@ -172,7 +172,7 @@ export default function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.08 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#1D4ED8]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
           >
             {/* Header Kicker */}
             <div>
@@ -183,11 +183,11 @@ export default function StatsSection() {
               {/* Exploit List Items */}
               <div className="space-y-3.5">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#1D4ED8]/15 text-[#1D4ED8]">
                     <Bug className="h-3.5 w-3.5" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                    <div className="text-xs sm:text-sm font-bold text-[#1D4ED8]">
                       Heartbleed
                     </div>
                     <div className="text-[11px] text-slate-400">
@@ -197,11 +197,11 @@ export default function StatsSection() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#1D4ED8]/15 text-[#1D4ED8]">
                     <Cpu className="h-3.5 w-3.5" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                    <div className="text-xs sm:text-sm font-bold text-[#1D4ED8]">
                       Spectre and Meltdown
                     </div>
                     <div className="text-[11px] text-slate-400">
@@ -211,11 +211,11 @@ export default function StatsSection() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#1D4ED8]/15 text-[#1D4ED8]">
                     <Flame className="h-3.5 w-3.5" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                    <div className="text-xs sm:text-sm font-bold text-[#1D4ED8]">
                       EternalBlue
                     </div>
                     <div className="text-[11px] text-slate-400">
@@ -225,11 +225,11 @@ export default function StatsSection() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#FA582D]/15 text-[#FA582D]">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#1D4ED8]/15 text-[#1D4ED8]">
                     <Lock className="h-3.5 w-3.5" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-bold text-[#FA582D]">
+                    <div className="text-xs sm:text-sm font-bold text-[#1D4ED8]">
                       ZeroLogon
                     </div>
                     <div className="text-[11px] text-slate-400">
@@ -242,7 +242,7 @@ export default function StatsSection() {
 
             {/* Metric & Label */}
             <div className="mt-6 pt-4 border-t border-white/5">
-              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#1D4ED8] mb-1">
                 8.27 K
               </div>
               <div className="text-sm sm:text-base font-semibold text-slate-300">
@@ -257,7 +257,7 @@ export default function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.16 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#1D4ED8]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
           >
             {/* Visual: Vertical descending attack rays with baseline targets */}
             <div className="relative mb-6 flex h-48 w-full items-center justify-center overflow-hidden">
@@ -278,17 +278,17 @@ export default function StatsSection() {
                       y1={70 + (i % 2 === 0 ? 10 : 0)}
                       x2={x}
                       y2={120 + (i % 2 === 0 ? 20 : 0)}
-                      stroke="#FA582D"
+                      stroke="#1D4ED8"
                       strokeWidth="3.5"
-                      className="filter drop-shadow-[0_0_6px_#FA582D]"
+                      className="filter drop-shadow-[0_0_6px_#1D4ED8]"
                     />
                     {/* Baseline target points */}
                     <circle
                       cx={x}
                       cy={150}
                       r="4.5"
-                      fill="#FA582D"
-                      className="filter drop-shadow-[0_0_6px_#FA582D]"
+                      fill="#1D4ED8"
+                      className="filter drop-shadow-[0_0_6px_#1D4ED8]"
                     />
                     <circle
                       cx={x}
@@ -313,14 +313,14 @@ export default function StatsSection() {
               </svg>
 
               {/* Central Shield / Emblem Icon */}
-              <div className="absolute bottom-6 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FA582D] text-black font-black shadow-[0_0_20px_#FA582D]">
+              <div className="absolute bottom-6 flex h-10 w-10 items-center justify-center rounded-xl bg-[#1D4ED8] text-black font-black shadow-[0_0_20px_#1D4ED8]">
                 <Layers className="h-5 w-5 text-black" />
               </div>
             </div>
 
             {/* Metric & Label */}
             <div>
-              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#1D4ED8] mb-1">
                 736.49 K
               </div>
               <div className="text-sm sm:text-base font-semibold text-slate-300">
@@ -335,7 +335,7 @@ export default function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.24 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#1D4ED8]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
           >
             {/* Visual: Glowing 3D Wireframe Waveform */}
             <div className="relative mb-6 flex h-48 w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-t from-orange-950/20 to-transparent">
@@ -351,7 +351,7 @@ export default function StatsSection() {
                     <path
                       key={row}
                       d={`M 10 ${yBase + 10} Q 75 ${yBase - 30 + (row % 2) * 15} 150 ${yBase + 15} T 290 ${yBase - 10}`}
-                      stroke="#FA582D"
+                      stroke="#1D4ED8"
                       strokeWidth={row === 2 || row === 3 ? "2" : "1"}
                       opacity={0.3 + row * 0.1}
                     />
@@ -378,7 +378,7 @@ export default function StatsSection() {
 
             {/* Metric & Label */}
             <div>
-              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#1D4ED8] mb-1">
                 1.5 M
               </div>
               <div className="text-sm sm:text-base font-semibold text-slate-300">
@@ -393,26 +393,26 @@ export default function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.32 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#1D4ED8]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
           >
             {/* Visual: Glowing Fingerprint HUD Scanner */}
             <div className="relative mb-6 flex h-48 w-full items-center justify-center">
               {/* HUD Reticle Box with Corner Brackets */}
-              <div className="relative flex h-40 w-40 items-center justify-center rounded-xl border border-dashed border-[#FA582D]/30 p-2">
+              <div className="relative flex h-40 w-40 items-center justify-center rounded-xl border border-dashed border-[#1D4ED8]/30 p-2">
                 {/* Top Right Timer */}
-                <span className="absolute top-2 right-2 text-[10px] font-mono font-bold text-[#FA582D]">
+                <span className="absolute top-2 right-2 text-[10px] font-mono font-bold text-[#1D4ED8]">
                   +5&apos;43 ::
                 </span>
 
                 {/* Corner Marks */}
-                <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-[#FA582D]" />
-                <div className="absolute top-0 right-0 h-3 w-3 border-t-2 border-r-2 border-[#FA582D]" />
-                <div className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-[#FA582D]" />
-                <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[#FA582D]" />
+                <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-[#1D4ED8]" />
+                <div className="absolute top-0 right-0 h-3 w-3 border-t-2 border-r-2 border-[#1D4ED8]" />
+                <div className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-[#1D4ED8]" />
+                <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[#1D4ED8]" />
 
                 {/* Fingerprint Vector Graphic */}
                 <svg
-                  className="h-28 w-28 text-[#FA582D]"
+                  className="h-28 w-28 text-[#1D4ED8]"
                   viewBox="0 0 100 100"
                   fill="none"
                   stroke="currentColor"
@@ -435,7 +435,7 @@ export default function StatsSection() {
 
             {/* Metric & Label */}
             <div>
-              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#1D4ED8] mb-1">
                 66 K+
               </div>
               <div className="text-sm sm:text-base font-semibold text-slate-300">
@@ -450,14 +450,14 @@ export default function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.4 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#FA582D]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0B0E14] p-7 transition-all duration-300 hover:border-[#1D4ED8]/40 hover:shadow-2xl hover:shadow-orange-500/10 min-h-[360px]"
           >
             {/* Visual: Code Editor Terminal */}
             <div className="relative mb-6 h-48 w-full overflow-hidden rounded-xl border border-white/5 bg-[#070A0F] p-3.5 font-mono text-[11px] leading-relaxed text-slate-400 select-none">
               <div className="space-y-1">
                 <div>
                   <span className="text-slate-600 mr-2">000</span>
-                  <span className="text-[#FA582D] font-bold">&lt;?php</span>
+                  <span className="text-[#1D4ED8] font-bold">&lt;?php</span>
                 </div>
                 <div>
                   <span className="text-slate-600 mr-2">001</span>
@@ -475,8 +475,8 @@ export default function StatsSection() {
                 </div>
                 <div>
                   <span className="text-slate-600 mr-2">012</span>
-                  &nbsp;&nbsp;<span className="text-[#FA582D]">if</span> ($blocked) return{" "}
-                  <span className="text-[#FA582D] font-bold">AUTONOMOUS_DROP</span>;
+                  &nbsp;&nbsp;<span className="text-[#1D4ED8]">if</span> ($blocked) return{" "}
+                  <span className="text-[#1D4ED8] font-bold">AUTONOMOUS_DROP</span>;
                 </div>
                 <div>
                   <span className="text-slate-600 mr-2">020</span>
@@ -487,7 +487,7 @@ export default function StatsSection() {
 
             {/* Metric & Label */}
             <div>
-              <div className="font-display text-4xl sm:text-5xl font-black text-[#FA582D] mb-1">
+              <div className="font-display text-4xl sm:text-5xl font-black text-[#1D4ED8] mb-1">
                 11.3 B
               </div>
               <div className="text-sm sm:text-base font-semibold text-slate-300">
