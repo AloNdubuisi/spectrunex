@@ -90,7 +90,7 @@ export default function AboutPage() {
       </section>
 
       <AnalystSection />
-      <CTASection />
+      {/* <CTASection /> */}
     </>
   );
 }

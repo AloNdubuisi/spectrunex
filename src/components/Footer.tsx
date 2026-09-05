@@ -23,56 +23,56 @@ export default function Footer() {
     {
       title: "Products & Platforms",
       links: [
-        { label: "Network Security", href: "/platforms/network" },
-        { label: "Security Operations", href: "/platforms/security-ops" },
-        { label: "Cloud Security", href: "/platforms/cloud" },
-        { label: "Identity Security", href: "/platforms/identity" },
-        { label: "Threat Intelligence", href: "/solutions/threat-intel" },
-        { label: "Incident Response", href: "/solutions/incident-response" },
+        { label: "Network Security", href: "#" },
+        { label: "Security Operations", href: "#" },
+        { label: "Cloud Security", href: "#" },
+        { label: "Identity Security", href: "#" },
+        { label: "Threat Intelligence", href: "#" },
+        { label: "Incident Response", href: "#" },
       ],
     },
     {
       title: "Solutions",
       links: [
-        { label: "By Industry", href: "/solutions/industries" },
-        { label: "By Use Case", href: "/solutions/use-cases" },
-        { label: "Zero Trust", href: "/solutions/zero-trust" },
-        { label: "Cloud Security", href: "/solutions/cloud-security" },
-        { label: "AI Security", href: "/solutions/ai-security" },
-        { label: "IoT Security", href: "/solutions/iot-security" },
+        { label: "By Industry", href: "#" },
+        { label: "By Use Case", href: "#" },
+        { label: "Zero Trust", href: "#" },
+        { label: "Cloud Security", href: "#" },
+        { label: "AI Security", href: "#" },
+        { label: "IoT Security", href: "#" },
       ],
     },
     {
       title: "Compliance & Advisory",
       links: [
-        { label: "FedRAMP Authorization", href: "/compliance/fedramp" },
-        { label: "DoD DISA PA / ILs", href: "/compliance/dod" },
-        { label: "CMMC Readiness", href: "/compliance/cmmc" },
-        { label: "Security Assessments", href: "/services/assessments" },
-        { label: "Risk Management", href: "/services/risk-management" },
-        { label: "Compliance Consulting", href: "/services/consulting" },
+        { label: "FedRAMP Authorization", href: "#" },
+        { label: "DoD DISA PA / ILs", href: "#" },
+        { label: "CMMC Readiness", href: "#" },
+        { label: "Security Assessments", href: "#" },
+        { label: "Risk Management", href: "#" },
+        { label: "Compliance Consulting", href: "#" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { label: "Documentation", href: "/resources/docs" },
-        { label: "Learning Center", href: "/resources/learning" },
-        { label: "Blog & Insights", href: "/resources/blog" },
-        { label: "Events & Webinars", href: "/resources/events" },
-        { label: "Case Studies", href: "/resources/case-studies" },
-        { label: "Whitepapers", href: "/resources/whitepapers" },
+        { label: "Documentation", href: "#" },
+        { label: "Learning Center", href: "#" },
+        { label: "Blog & Insights", href: "#" },
+        { label: "Events & Webinars", href: "#" },
+        { label: "Case Studies", href: "#" },
+        { label: "Whitepapers", href: "#" },
       ],
     },
     {
       title: "Company",
       links: [
         { label: "About Us", href: "/about" },
-        { label: "Leadership", href: "/about/leadership" },
-        { label: "Careers", href: "/careers" },
-        { label: "Newsroom", href: "/newsroom" },
-        { label: "Partners", href: "/partners" },
-        { label: "Contact Us", href: "/contact" },
+        { label: "Leadership", href: "#" },
+        { label: "Careers", href: "#" },
+        { label: "Newsroom", href: "#" },
+        { label: "Partners", href: "#" },
+        { label: "Contact Us", href: "#" },
       ],
     },
   ];
@@ -85,10 +85,6 @@ export default function Footer() {
     { icon: Instagram, label: "Instagram", href: "https://instagram.com/spectrunex" },
   ];
 
-  function setOpen(arg0: boolean): void {
-    throw new Error("Function not implemented.");
-  }
-
   return (
     <footer className="bg-[#03070E] text-slate-400 font-sans border-t border-white/10">
       {/* Footer Top Section */}
@@ -98,7 +94,7 @@ export default function Footer() {
             {/* Contact Information */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-pan-orange to-pan-orange-hover">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1D4ED8]">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -112,7 +108,7 @@ export default function Footer() {
                   <Phone className="h-5 w-5 text-pan-orange mt-0.5" />
                   <div>
                     <p className="text-sm font-medium text-white">Contact Sales</p>
-                    <p className="text-sm text-slate-400">(202) 948-9063</p>
+                    <p className="text-sm text-slate-400">1-878-867-6643</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -125,8 +121,8 @@ export default function Footer() {
                 <div className="flex items-start gap-3 sm:col-span-2">
                   <MapPin className="h-5 w-5 text-pan-orange mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-white">Global Headquarters</p>
-                    <p className="text-sm text-slate-400">8101 Sandy Spring Rd, Laurel, MD 20707</p>
+                    <p className="text-sm font-medium text-white">Spectrunex Office</p>
+                    <p className="text-sm text-slate-400">3 Bethesda Metro Center, Suite 730, Bethesda, MD 20814</p>
                   </div>
                 </div>
               </div>
@@ -137,7 +133,7 @@ export default function Footer() {
               <h3 className="text-lg font-bold text-white">Quick Actions</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Link
-                  href="/demo"
+                  href="#"
                   className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
                 >
                   <div>
@@ -147,7 +143,7 @@ export default function Footer() {
                   <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Link>
                 <Link
-                  href="/support"
+                  href="#"
                   className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
                 >
                   <div>
@@ -157,7 +153,7 @@ export default function Footer() {
                   <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Link>
                 <Link
-                  href="/partners"
+                  href="#"
                   className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
                 >
                   <div>
@@ -167,7 +163,7 @@ export default function Footer() {
                   <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Link>
                 <Link
-                  href="/training"
+                  href="#"
                   className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
                 >
                   <div>
@@ -217,7 +213,7 @@ export default function Footer() {
               {/* Brand Logo */}
               <div className="flex h-10 w-10 items-center justify-center">
                 {/* Brand Logo */}
-                <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+                <Link href="/" className="flex items-center">
                   <img
                     src="./logo.png"
                     alt="Spectrunex"
@@ -257,11 +253,11 @@ export default function Footer() {
 
               {/* Legal Links */}
               <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
-                <Link href="/privacy" className="hover:text-slate-300 transition">Privacy Policy</Link>
-                <Link href="/terms" className="hover:text-slate-300 transition">Terms of Service</Link>
-                <Link href="/security" className="hover:text-slate-300 transition">Security Trust Center</Link>
-                <Link href="/accessibility" className="hover:text-slate-300 transition">Accessibility</Link>
-                <Link href="/sitemap" className="hover:text-slate-300 transition">Sitemap</Link>
+                <Link href="#" className="hover:text-slate-300 transition">Privacy Policy</Link>
+                <Link href="#" className="hover:text-slate-300 transition">Terms of Service</Link>
+                <Link href="#" className="hover:text-slate-300 transition">Security Trust Center</Link>
+                <Link href="#" className="hover:text-slate-300 transition">Accessibility</Link>
+                <Link href="#" className="hover:text-slate-300 transition">Sitemap</Link>
                 <div className="flex items-center gap-2">
                   <Globe className="h-3.5 w-3.5" />
                   <select className="bg-transparent text-xs focus:outline-none">
@@ -273,13 +269,6 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Disclaimer */}
-          <div className="mt-8 pt-6 border-t border-white/5">
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Spectrunex, the Spectrunex logo, Strata™, Cortex®, Prisma®, Idira®, and Precision AI™ are trademarks or registered trademarks of Spectrunex Networks, LLC in the United States and/or other countries. All other trademarks, service marks, registered marks, or registered service marks are the property of their respective owners. Product and service offerings are subject to change without notice. This website contains forward-looking statements that involve risks and uncertainties. All specifications are subject to change without notice.
-            </p>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ const platforms: PlatformData[] = [
       { value: "70 K", label: "CUSTOMERS" },
     ],
     ctaText: "Explore Network Security",
-    ctaHref: "/services#strata",
+    ctaHref: "/network-security",
     awards: [
       {
         provider: "Gartner",
@@ -86,7 +86,7 @@ const platforms: PlatformData[] = [
     id: "secops",
     tabLabel: "AI-Driven Security Operations",
     icon: Zap,
-    kicker: "AI-DRIVEN SECURITY",
+    kicker: "AI-DRIVEN SECURITYmmmmmmmmmm",
     titleLines: ["AI-DRIVEN SECURITY", "OPERATIONS"],
     description:
       "Transforming the SOC from reactive firefighting to autonomous, machine-speed defense. Cortex® XSIAM consolidates SIEM, SOAR, ASM, and XDR into a single unified AI-first platform that triages incidents in seconds, neutralizing threats before damage occurs.",

@@ -186,8 +186,8 @@ export default function PlatformsOverview() {
                 key={tab.id}
                 onClick={() => setActiveTab(idx)}
                 className={`flex items-center gap-3 text-left pb-4 relative transition ${activeTab === idx
-                    ? "text-white opacity-100"
-                    : "text-slate-400 hover:text-white opacity-70 hover:opacity-100"
+                  ? "text-white opacity-100"
+                  : "text-slate-400 hover:text-white opacity-70 hover:opacity-100"
                   }`}
               >
                 <div className="flex-shrink-0">

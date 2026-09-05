@@ -235,8 +235,8 @@ export default function CTASection() {
                     backgroundColor:
                       activePlatform.ctaBgColor || activePlatform.themeColor,
                     boxShadow: `0 10px 25px -5px ${activePlatform.ctaBgColor
-                        ? "rgba(0, 230, 118, 0.4)"
-                        : activePlatform.themeGlow
+                      ? "rgba(0, 230, 118, 0.4)"
+                      : activePlatform.themeGlow
                       }`,
                   }}
                 >

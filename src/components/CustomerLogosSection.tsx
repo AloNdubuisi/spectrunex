@@ -219,22 +219,6 @@ export default function CustomerLogosSection() {
           </div>
         </div>
       </div>
-      {/* ── TRUSTED BY THE BEST Logo Wall ──────────────────────────────────── */}
-      <div className="pt-14 pb-4">
-        <div className="container-page text-center">
-          <div className="mb-8 text-xs font-bold uppercase tracking-[0.24em] text-slate-300">
-            TRUSTED BY THE BEST
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-20">
-            {customerLogos.map((logo, idx) => (
-              <div key={idx} className="flex items-center justify-center">
-                {logo.render()}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
