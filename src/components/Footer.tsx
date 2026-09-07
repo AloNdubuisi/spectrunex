@@ -94,7 +94,7 @@ export default function Footer() {
             {/* Contact Information */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1D4ED8]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1D4ED8] text-white">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>

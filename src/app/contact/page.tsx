@@ -17,15 +17,15 @@ const details = [
   {
     icon: Phone,
     label: "Global Enterprise Sales",
-    value: "(202) 948-9063",
-    href: "tel:(202) 948-9063",
+    value: "1-878-867-6643",
+    href: "tel:18788676643",
     sub: "Toll-free North America",
   },
   {
     icon: ShieldAlert,
     label: "Unit 42 Emergency Hotline",
-    value: "(202) 948-9063",
-    href: "tel:(202) 948-9063",
+    value: "1-878-867-6643",
+    href: "tel:18788676643",
     sub: "24/7/365 Rapid Breach Response",
   },
   {
@@ -37,9 +37,10 @@ const details = [
   },
   {
     icon: MapPin,
-    label: "Headquarters",
-    value: `${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`,
-    sub: "8101 Sandy Spring Rd, Laurel, MD 20707",
+    label: "Spectrunex Office",
+    value: "3 Bethesda Metro Center, Suite 730",
+    href: undefined,
+    sub: "Bethesda, MD 20814",
   },
 ];
 

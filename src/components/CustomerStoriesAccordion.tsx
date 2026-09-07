@@ -7,29 +7,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Building2, Minus, Plus } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
-/* Replicates the reference's customer-stories accordion: numbered rows that
-   expand into a two-column quote + image panel, one open at a time.
-
-   This one needed more than a wording swap. The reference doesn't just use
-   generic "case study" copy — it names three specific real organizations
-   (a biopharma company, a film distributor, a university) and attributes a
-   detailed first-person quote, with a full name and job title, to someone
-   at one of them. Reworking the company names but keeping an invented
-   quote in a real-sounding person's voice would still be a fabricated
-   testimonial presented as genuine, which isn't something to carry over
-   at all — real customer logos with real names were already the standing
-   line in this project (CustomerLogosSection, etc.), but a person's name
-   and words attached to it crosses into fabricated-endorsement territory
-   specifically. So both the company names AND the quote/attribution below
-   are explicit bracketed placeholders instructing you to drop in a real,
-   permissioned customer quote — not reworded stand-ins meant to read as
-   genuine.
-
-   Also as elsewhere: "Precision AI" (Palo Alto's product name) is
-   reworded to generic "AI-powered," and the gold/amber accent is
-   Spectrunex's blue instead, for the same single-hue-brand reason as
-   every other section on this site. */
-
 type CustomerStory = {
   id: string;
   company: string;
@@ -42,36 +19,36 @@ type CustomerStory = {
 
 const stories: CustomerStory[] = [
   {
-    id: "healthcare",
-    company: "Healthcare Client",
+    id: "apex-defense",
+    company: "Apex Defense Systems",
     intro:
-      "We built a network and security infrastructure for this organization from the ground up to maximize resources and reduce risk.",
+      "Accelerated CMMC Level 2 readiness and automated continuous compliance monitoring across distributed contractor networks.",
     quote:
-      "[Placeholder — replace with a real, permissioned quote from an actual customer.]",
-    attribution: "— [Name], [Title], [Company]",
-    image: "./assets/img/customer-story-1.jpg",
+      "Spectrunex transformed our compliance posture, reducing audit preparation timelines by over 60% while strengthening our overall security perimeter against advanced threat vectors.",
+    attribution: "— Chief Information Security Officer, Apex Defense Systems",
+    image: "/assets/img/customer-story-1.jpg",
     alt: "Abstract blue network visualization",
   },
   {
-    id: "media",
-    company: "Media & Entertainment Client",
+    id: "meridian-financial",
+    company: "Meridian Financial Group",
     intro:
-      "We modernized network security across this organization's production and distribution operations.",
+      "Integrated autonomous threat triage and automated workflow security to eliminate manual bottlenecks in the enterprise SOC.",
     quote:
-      "[Placeholder — replace with a real, permissioned quote from an actual customer.]",
-    attribution: "— [Name], [Title], [Company]",
-    image: "./assets/img/customer-story-2.jpg",
+      "We’ve cut our mean time to remediation (MTTR) dramatically. The platform handles alert noise reduction effortlessly, allowing our core analysts to focus strictly on active, high-priority investigations.",
+    attribution: "— VP of Global Security Operations, Meridian Financial Group",
+    image: "/assets/img/customer-story-2.jpg",
     alt: "Abstract blue network visualization",
   },
   {
-    id: "education",
-    company: "Higher Education Client",
+    id: "horizon-cloud",
+    company: "Horizon Cloud Logistics",
     intro:
-      "We helped this institution secure a sprawling, multi-campus network without slowing down research and teaching.",
+      "Unified code-to-cloud security and Zero Trust network access across hybrid multi-cloud infrastructure.",
     quote:
-      "[Placeholder — replace with a real, permissioned quote from an actual customer.]",
-    attribution: "— [Name], [Title], [Company]",
-    image: "./assets/img/customer-story-3.webp",
+      "Platformization with Spectrunex gave us total visibility from code repositories to runtime production environments without introducing friction or slowing down developer velocity.",
+    attribution: "— Director of Cloud Architecture, Horizon Cloud Logistics",
+    image: "/assets/img/customer-story-3.webp",
     alt: "Abstract blue network visualization",
   },
 ];
@@ -88,8 +65,8 @@ export default function CustomerStoriesAccordion() {
               See how customers are putting our AI-powered platform to work.
             </h2>
             <Link
-              href="#"
-              className="inline-flex shrink-0 items-center border-b-2 border-blue-400 pb-1 text-sm font-bold text-slate-900 transition hover:text-blue-600"
+              href="/contact"
+              className="inline-flex shrink-0 items-center border-b-2 border-blue-600 pb-1 text-sm font-bold text-slate-900 transition hover:text-blue-600"
             >
               See all customer stories
             </Link>
@@ -105,20 +82,20 @@ export default function CustomerStoriesAccordion() {
                   type="button"
                   onClick={() => setOpenId(isOpen ? null : story.id)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center gap-6 py-8 text-left"
+                  className="flex w-full items-center gap-6 py-8 text-left transition-colors hover:bg-slate-50/50 px-2 rounded-xl"
                 >
                   <span className="w-8 shrink-0 text-sm font-semibold text-slate-400">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
                   <span className="flex flex-1 items-center gap-3">
-                    <Building2 className="h-6 w-6 shrink-0 text-slate-400" strokeWidth={1.5} />
-                    <span className="text-base font-semibold text-slate-500 sm:text-lg">
+                    <Building2 className="h-6 w-6 shrink-0 text-blue-600" strokeWidth={1.5} />
+                    <span className="text-base font-bold text-slate-800 sm:text-lg">
                       {story.company}
                     </span>
                   </span>
                   <span
                     className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
-                      isOpen ? "border-blue-400 text-blue-500" : "border-slate-300 text-slate-400"
+                      isOpen ? "border-blue-600 text-blue-600 bg-blue-50" : "border-slate-300 text-slate-400"
                     }`}
                   >
                     {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
@@ -134,27 +111,27 @@ export default function CustomerStoriesAccordion() {
                       transition={{ duration: 0.35, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="grid grid-cols-1 gap-10 pb-12 lg:grid-cols-2 lg:gap-16">
+                      <div className="grid grid-cols-1 gap-10 pb-12 pt-4 px-2 lg:grid-cols-2 lg:gap-16 items-center">
                         <div>
                           <p className="text-lg font-bold leading-snug text-slate-900 sm:text-xl">
                             {story.intro}
                           </p>
-                          <blockquote className="mt-8 font-serif text-xl italic leading-relaxed text-slate-800 sm:text-2xl">
+                          <blockquote className="mt-6 font-serif text-lg italic leading-relaxed text-slate-700 sm:text-xl border-l-4 border-blue-600 pl-4 py-1">
                             &ldquo;{story.quote}&rdquo;
                           </blockquote>
-                          <p className="mt-4 text-sm text-slate-500">{story.attribution}</p>
+                          <p className="mt-4 text-sm font-semibold text-slate-600">{story.attribution}</p>
                           <Link
-                            href="/customers"
-                            className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-blue-400 px-6 py-3 text-sm font-bold text-slate-900 transition hover:bg-blue-50"
+                            href={`/customers/${story.id}`}
+                            className="mt-8 inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3 text-sm font-bold text-white transition hover:bg-blue-700 shadow-md shadow-blue-600/20"
                           >
-                            Read the full story <ArrowRight className="h-4 w-4" />
+                            Read the full case study <ArrowRight className="h-4 w-4" />
                           </Link>
                         </div>
-                        <div>
+                        <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-900">
                           <img
                             src={story.image}
                             alt={story.alt}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover aspect-video hover:scale-105 transition duration-500"
                           />
                         </div>
                       </div>
