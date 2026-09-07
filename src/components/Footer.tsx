@@ -115,7 +115,7 @@ export default function Footer() {
                   <Mail className="h-5 w-5 text-pan-orange mt-0.5" />
                   <div>
                     <p className="text-sm font-medium text-white">Email Support</p>
-                    <p className="text-sm text-slate-400">contact@spectrunex.com</p>
+                    <p className="text-sm text-slate-400">contracts@spectrunex.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 sm:col-span-2">
