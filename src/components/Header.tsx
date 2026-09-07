@@ -6,13 +6,13 @@ import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 const services = [
-  { label: "FedRAMP® Advisory Services", href: "/services#fedramp-advisory" },
-  { label: "Cyber Security", href: "/services#cyber-security" },
-  { label: "Cloud Services", href: "/services#cloud-services" },
-  { label: "Infrastructure Services", href: "/services#infrastructure-services" },
-  { label: "Application & Software Development", href: "/services#application-software-development" },
-  { label: "Hardware Sales & Support", href: "/services#hardware-sales-support" },
-  { label: "ITSM Support Services", href: "/services#itsm-support-services" },
+  { label: "FedRAMP & DoD DISA® advisory services", href: "/services/fedramp-disa-advisory" },
+  { label: "Staffing Agency Services", href: "/services/staffing-agency-services" },
+  { label: "Cyber Security", href: "/services/cyber-security" },
+  { label: "ITSM Support Services", href: "/services/itsm-support-services" },
+  { label: "Cloud Services", href: "/services/cloud-services" },
+  { label: "Application & Software Development", href: "/services/application-software-development" },
+  { label: "Hardware Sales & Support", href: "/services/hardware-sales-support" },
 ];
 
 export default function Header() {
@@ -25,7 +25,7 @@ export default function Header() {
         {/* Brand Logo */}
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           <img
-            src="./logo.png"
+            src="/logo.png"
             alt="Spectrunex"
             className="h-10 sm:h-10 w-auto object-contain"
           />
@@ -49,18 +49,13 @@ export default function Header() {
               SERVICES <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
             </Link>
 
-            {/* Dropdown panel: hidden by default, shown on hover/focus of the
-                trigger or the panel itself (invisible/opacity so it stays
-                keyboard/focus-accessible rather than unmounting). A small
-                pt-2 spacer above keeps the hover path continuous between
-                the link and the panel. */}
-            <div className="absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 invisible transition-all duration-150 group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible">
+            <div className="absolute left-1/2 top-full w-80 -translate-x-1/2 pt-3 opacity-0 invisible transition-all duration-150 group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible">
               <ul className="overflow-hidden rounded-xl border border-white/10 bg-[#0B1220] py-2 shadow-2xl">
                 {services.map((service) => (
                   <li key={service.href}>
                     <Link
                       href={service.href}
-                      className="block px-5 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-blue-400"
+                      className="block px-5 py-2.5 text-xs font-medium text-slate-300 transition hover:bg-white/5 hover:text-blue-400 leading-snug"
                     >
                       {service.label}
                     </Link>
@@ -105,7 +100,6 @@ export default function Header() {
           <Link href="/" onClick={() => setOpen(false)} className="block text-base font-semibold text-white">HOME</Link>
           <Link href="/about" onClick={() => setOpen(false)} className="block text-base font-semibold text-slate-300">ABOUT US</Link>
 
-          {/* Services — expandable on mobile since there's no hover */}
           <div>
             <button
               type="button"
