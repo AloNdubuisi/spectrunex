@@ -60,7 +60,7 @@ export default function AnalystSection() {
           <div className="lg:col-span-5 space-y-8">
             <ScrollReveal speed="normal" animation="slide-left">
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed tracking-normal">
-                Transform the SOC and enable better, faster security with the #1 AI-driven SecOps platform powered by unified data, artificial intelligence and automation.ghhhhhhhhhh
+                Transform the SOC and enable better, faster security with the #1 AI-driven SecOps platform powered by unified data, artificial intelligence and automation.
               </p>
 
               <div className="grid grid-cols-2 gap-8 pt-6">

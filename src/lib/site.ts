@@ -21,7 +21,7 @@ export const siteConfig = {
     "Unit 42 Threat Intelligence",
     "AI Automation",
   ],
-  email: "contact@spectrunex.com",
+  email: "contracts@spectrunex.com",
   phone: "(202) 948-9063",
   address: {
     street: "8101 Sandy Spring Rd, Laurel, MD 20707",
