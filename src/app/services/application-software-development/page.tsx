@@ -99,7 +99,6 @@ export default function ApplicationSoftwareDevelopmentPage() {
               </h2>
             </div>
           </ScrollReveal>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {devLifecycleStages.map((stage, idx) => (
               <ScrollReveal key={idx} delay={idx * 0.05} animation="zoom-in" className="h-full" speed="normal">

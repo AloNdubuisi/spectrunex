@@ -142,13 +142,13 @@ export default function SolutionsSection() {
     solutionCategories[0];
 
   return (
-    <section className="relative min-h-[750px] overflow-hidden bg-[#070A0F] pt-24 pb-20 text-white selection:bg-[#1D4ED8] selection:text-white border-b border-white/5">
-      {/* ── Background Hero Image with Left Gradient Fade ───────────────── */}
+    <section className="relative min-h-[750px] overflow-hidden pt-24 pb-20 text-white selection:text-white border-b border-white/5">
+      {/* ---- Background Hero Image with Left Gradient Fade ------------ */}
       <div className="absolute inset-0 z-0">
         <div className="relative h-full w-full">
           {/* External Hero Image */}
           <img
-            src="https://www.paloaltonetworks.com/content/dam/pan/en_US/images/homepage-2025/HP-AIRS-solutions.jpg"
+            src="/assets/img/secure-bg.jpg"
             alt="Cybersecurity Architect working with AI Solutions"
             className="h-full w-full object-cover object-center lg:object-right opacity-85"
           />
