@@ -12,7 +12,7 @@ import CustomerSuccessSection from "@/components/CustomerSuccessSection";
 import RecommendedSection from "@/components/RecommendedSection";
 
 export const metadata: Metadata = {
-  title: "Spectrunex | Leader in Cybersecurity & Precision AI™",
+  title: "Spectrunex | Information Security & Mission Support",
   description: "Spectrunex helps organizations achieve FedRAMP, DoD DISA PA, CMMC, and other federal and state compliance while delivering enterprise-grade cybersecurity.",
 };
 

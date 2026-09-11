@@ -3,8 +3,7 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Pause, Volume2, VolumeX } from "lucide-react";
-import Link from "next/link";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 
 export default function CustomerSuccessSection() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -35,34 +34,28 @@ export default function CustomerSuccessSection() {
   return (
     <section className="relative overflow-hidden text-white selection:text-white border-b border-white/5 py-16 sm:py-20">
       <div className="container-page relative z-10">
-        {/* Header Row with Title (Left) and See Testimonials (Right) */}
-        <div className="mb-10 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* Section Heading */}
+        <div className="mb-10 sm:mb-12 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
+            <p className="mb-4 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-[#2563EB]">
+              Mission Delivery
+            </p>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.15]">
-              Our customers are securing <br />
-              their{" "}
-              <span className="text-[#1D4ED8]">digital transformation</span>
+              Federal and enterprise teams <br />
+              build on{" "}
+              <span className="text-[#1D4ED8]">Spectrunex</span>
             </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          >
-            <Link
-              href="/outcomes"
-              className="group inline-flex items-center gap-2 text-sm sm:text-base font-bold text-white hover:text-[#1D4ED8] transition-colors"
-            >
-              <span>See testimonials</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-            </Link>
+            <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-300">
+              From FedRAMP and DoD DISA authorization to cybersecurity staffing, ITSM
+              support, cloud migration, and hardware lifecycle management — Spectrunex
+              delivers the people, process, and technology that keep critical missions
+              running securely.
+            </p>
           </motion.div>
         </div>
 
@@ -102,7 +95,7 @@ export default function CustomerSuccessSection() {
                   {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 fill-current" />}
                 </button>
                 <div className="hidden sm:block text-xs font-semibold tracking-wide text-slate-200 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
-                  Featured Case Study Showcase
+                  Inside Spectrunex
                 </div>
               </div>
 

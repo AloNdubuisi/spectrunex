@@ -132,46 +132,20 @@ export default function Footer() {
             <div className="space-y-6">
               <h3 className="text-lg font-bold text-white">Quick Actions</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Link
-                  href="#"
-                  className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
-                >
+                <div className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5">
                   <div>
                     <p className="font-medium text-white">Request a Demo</p>
                     <p className="text-xs text-slate-400">See our platforms in action</p>
                   </div>
                   <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
-                <Link
-                  href="#"
-                  className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
-                >
+                </div>
+                <div className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5">
                   <div>
                     <p className="font-medium text-white">Support Portal</p>
                     <p className="text-xs text-slate-400">Get technical assistance</p>
                   </div>
                   <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
-                <Link
-                  href="#"
-                  className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
-                >
-                  <div>
-                    <p className="font-medium text-white">Partner Portal</p>
-                    <p className="text-xs text-slate-400">For partners and resellers</p>
-                  </div>
-                  <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
-                <Link
-                  href="#"
-                  className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5"
-                >
-                  <div>
-                    <p className="font-medium text-white">Training & Certification</p>
-                    <p className="text-xs text-slate-400">Upskill your team</p>
-                  </div>
-                  <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -189,13 +163,10 @@ export default function Footer() {
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link
-                      href={link.href}
-                      className="group flex items-center text-sm text-slate-400 transition-colors hover:text-white"
-                    >
+                    <span className="group flex cursor-default items-center text-sm text-slate-400 transition-colors hover:text-white">
                       <ChevronRight className="mr-2 h-3 w-3 opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1" />
                       {link.label}
-                    </Link>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -240,24 +211,23 @@ export default function Footer() {
               {/* Social Links */}
               <div className="flex items-center gap-4">
                 {socialLinks.map((social) => (
-                  <Link
+                  <span
                     key={social.label}
-                    href={social.href}
                     aria-label={social.label}
-                    className="rounded-lg p-2 text-slate-400 transition-all hover:bg-white/5 hover:text-pan-orange"
+                    className="cursor-default rounded-lg p-2 text-slate-400 transition-all hover:bg-white/5 hover:text-pan-orange"
                   >
                     <social.icon className="h-5 w-5" />
-                  </Link>
+                  </span>
                 ))}
               </div>
 
               {/* Legal Links */}
               <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
-                <Link href="#" className="hover:text-slate-300 transition">Privacy Policy</Link>
-                <Link href="#" className="hover:text-slate-300 transition">Terms of Service</Link>
-                <Link href="#" className="hover:text-slate-300 transition">Security Trust Center</Link>
-                <Link href="#" className="hover:text-slate-300 transition">Accessibility</Link>
-                <Link href="#" className="hover:text-slate-300 transition">Sitemap</Link>
+                <span className="cursor-default hover:text-slate-300 transition">Privacy Policy</span>
+                <span className="cursor-default hover:text-slate-300 transition">Terms of Service</span>
+                <span className="cursor-default hover:text-slate-300 transition">Security Trust Center</span>
+                <span className="cursor-default hover:text-slate-300 transition">Accessibility</span>
+                <span className="cursor-default hover:text-slate-300 transition">Sitemap</span>
                 <div className="flex items-center gap-2">
                   <Globe className="h-3.5 w-3.5" />
                   <select className="bg-transparent text-xs focus:outline-none">

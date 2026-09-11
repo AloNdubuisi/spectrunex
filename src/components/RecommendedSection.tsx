@@ -52,16 +52,16 @@ const roleTabs: { id: string; label: string; cards: RoleCard[] }[] = [
       },
       {
         title: "Under Attack? We're Here.",
-        copy: "Unit 42® Incident Response helps you breach. Work with you to contain and remedy threats whenever and wherever.",
+        copy: "Spectrunex works alongside your team to contain the incident, remediate the underlying gap, and document what happened.",
         linkText: "Our experts are standing by",
-        href: "/services#unit42",
+        href: "/services/cyber-security",
         imgUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80",
       },
       {
         title: "AI-powered security platforms",
         copy: "Transform your security operations using AI-powered solutions to streamline your security posture and eliminate risk.",
         linkText: "Get expert insights",
-        href: "/services#cortex",
+        href: "/services/cyber-security",
         imgUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80",
       },
     ],
@@ -78,14 +78,14 @@ const roleTabs: { id: string; label: string; cards: RoleCard[] }[] = [
         imgUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80",
       },
       {
-        title: "SecOps Certification Program",
-        copy: "Earn industry-recognized credentials in Cortex XSIAM automation, threat hunting, and automated SOC workflows.",
+        title: "Security Awareness Training",
+        copy: "Practical security training for the people who operate your systems, mapped to the controls you are assessed against.",
         linkText: "Explore certifications",
         href: "/services",
         imgUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80",
       },
       {
-        title: "Unit 42 Threat Telemetry",
+        title: "Vulnerability Advisories",
         copy: "Access actionable Indicators of Compromise (IoCs) and proactive vulnerability advisories directly from researchers.",
         linkText: "View threat feeds",
         href: "/services",
@@ -93,7 +93,7 @@ const roleTabs: { id: string; label: string; cards: RoleCard[] }[] = [
       },
       {
         title: "Developer & API Hub",
-        copy: "Integrate Prisma Cloud API security policies into your CI/CD pipeline and code-to-cloud workflows.",
+        copy: "Build security review into your CI/CD pipeline so findings surface during development rather than at assessment.",
         linkText: "Read documentation",
         href: "/services",
         imgUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&auto=format&fit=crop&q=80",
@@ -113,7 +113,7 @@ const roleTabs: { id: string; label: string; cards: RoleCard[] }[] = [
       },
       {
         title: "Managed Security Providers",
-        copy: "Deliver autonomous 24/7 MDR services powered by Cortex XSIAM and Strata Cloud Manager to your client base.",
+        copy: "Extend Spectrunex advisory, staffing, and service desk capacity to your own client base under your brand.",
         linkText: "Become an MSSP",
         href: "/contact",
         imgUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80",
@@ -161,7 +161,7 @@ const roleTabs: { id: string; label: string; cards: RoleCard[] }[] = [
       },
       {
         title: "Product Release Roadmap",
-        copy: "Preview upcoming Precision AI features, autonomous SecOps enhancements, and cloud runtime capabilities.",
+        copy: "See where our advisory, cloud, and service management offerings are heading over the coming quarters.",
         linkText: "See what's next",
         href: "/services",
         imgUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80",
@@ -195,7 +195,7 @@ const articles = [
   },
   {
     tag: "REPORT",
-    title: "Unit 42 2026 Incident Response Benchmark: Autonomous Remediation at Scale",
+    title: "Incident Response Benchmark 2026: What Slows Federal Remediation Down",
     imgUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80",
     href: "/services",
     cardTheme: "warm",

@@ -29,8 +29,8 @@ import ScrollReveal from "./ScrollReveal";
    corridor photo. So four tabs, three underlying images. Drop your three
    files in at the paths below and all four panels resolve correctly.
 
-   As before, two content changes from the literal reference: "Precision
-   AI®" (Palo Alto's own product name) is reworded to generic "AI-powered,"
+   As before, two content changes from the literal reference: a
+   third-party vendor's product name is reworded to generic "AI-powered,"
    and the photos are named placeholders rather than the screenshots
    themselves, since those are the reference site's own photography. */
 

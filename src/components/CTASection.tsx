@@ -14,8 +14,13 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 
 /* ── Platform Configuration ────────────────────────────────────────── */
-interface AnalystAward {
-  provider: "Gartner" | "Forrester" | "Frost & Sullivan" | "IDC";
+/* Credential cards replace the previous third-party analyst placements
+   (Gartner/Forrester/Frost & Sullivan wordmarks). Spectrunex holds no
+   placements in those reports, so each card now names a standard,
+   framework, or capability Spectrunex actually delivers against — all
+   sourced from the individual service pages. */
+interface Credential {
+  mark: string;
   title: string;
 }
 
@@ -32,136 +37,136 @@ interface PlatformData {
   description: string;
   ctaText: string;
   ctaHref: string;
-  awards: AnalystAward[];
+  credentials: Credential[];
 }
 
 const platforms: PlatformData[] = [
   {
     id: "secops",
-    tabLabel: "AI-Driven Security Operations",
+    tabLabel: "Security Operations & Support",
     icon: Zap,
     themeColor: "#1D4ED8",
     ctaBgColor: "#1D4ED8",
     themeBgGradient: "from-[#1D4ED8]/10 via-[#2563EB]/5 to-transparent",
     themeCardGradient: "from-[#1D4ED8] via-[#00C853] to-[#009624]",
     themeGlow: "rgba(29, 78, 216, 0.4)",
-    titleLines: ["AI-DRIVEN SECURITY", "OPERATIONS"],
+    titleLines: ["SECURITY OPERATIONS", "& SUPPORT"],
     description:
-      "Transform the SOC and enable better, faster security with the #1 AI-driven SecOps platform powered by unified data, artificial intelligence, and end-to-end autonomous triage.",
-    ctaText: "Explore SecOps",
-    ctaHref: "/services#cortex",
-    awards: [
+      "Keep authorized systems operating inside their boundaries. Spectrunex delivers continuous monitoring, incident and problem management, and Tier 0-4 service desk support built on an ITIL-based methodology.",
+    ctaText: "Explore ITSM Support",
+    ctaHref: "/services/itsm-support-services",
+    credentials: [
       {
-        provider: "Gartner",
-        title: "Gartner® Magic Quadrant™ for Endpoint Protection Platforms",
+        mark: "FISMA",
+        title: "Compliance support, audit reviews, and continuous monitoring",
       },
       {
-        provider: "Forrester",
-        title: "The Forrester Wave™: Managed Detection and Response Services",
+        mark: "NIST 800-53",
+        title: "Security control selection, implementation, and assessment",
       },
       {
-        provider: "Frost & Sullivan",
-        title: "Frost & Sullivan MDR Radar Leader",
+        mark: "A&A / ATO",
+        title: "Assessment & Authorization support from kickoff through ATO",
       },
       {
-        provider: "Forrester",
-        title: "Forrester Wave™: Extended Detection And Response Platforms, Q2 2024",
+        mark: "TIER 0-4",
+        title: "Round-the-clock service desk, incident, and problem management",
       },
     ],
   },
   {
     id: "network-security",
-    tabLabel: "AI-Powered Network Security",
+    tabLabel: "Network & Infrastructure Security",
     icon: Shield,
     themeColor: "#2563EB",
     themeBgGradient: "from-[#2563EB]/10 via-[#3B82F6]/5 to-transparent",
     themeCardGradient: "from-[#F5A623] via-[#E59819] to-[#D97706]",
     themeGlow: "rgba(37, 99, 235, 0.4)",
-    titleLines: ["AI-POWERED NETWORK", "SECURITY"],
+    titleLines: ["NETWORK & INFRASTRUCTURE", "SECURITY"],
     description:
-      "Securing everyone and everything from the latest threats in every location. Built for Zero Trust and powered by AI, the Strata™ Network Security Platform proactively monitors, analyzes and prevents sophisticated threats in real time.",
+      "Design, deploy, and maintain the infrastructure your mission runs on. Spectrunex handles Zero Trust segmentation and policy design alongside the switching, routing, wireless, firewall, and structured cabling work behind it.",
     ctaText: "Explore Network Security",
-    ctaHref: "/services#strata",
-    awards: [
+    ctaHref: "/network-security",
+    credentials: [
       {
-        provider: "Gartner",
-        title: "2025 Gartner® Magic Quadrant™ for Hybrid Mesh Firewall",
+        mark: "DoD DISA",
+        title: "Impact Level scoping and Provisional Authorization advisory",
       },
       {
-        provider: "Gartner",
-        title: "2026 Gartner® Magic Quadrant™ for SASE Platforms",
+        mark: "ZERO TRUST",
+        title: "Segmentation, least-privilege access, and policy enforcement design",
       },
       {
-        provider: "Forrester",
-        title: "The Forrester Wave™: Enterprise Firewall Solutions",
+        mark: "NETWORK HARDWARE",
+        title: "Switching, routing, wireless, and firewall deployment & maintenance",
       },
       {
-        provider: "Gartner",
-        title: "Gartner® Magic Quadrant™ for Single-Vendor SASE",
+        mark: "STRUCTURED CABLING",
+        title: "Data centre build-out and structured cabling systems",
       },
     ],
   },
   {
     id: "cloud-security",
-    tabLabel: "Real-Time Cloud Security",
+    tabLabel: "Cloud Services & Migration",
     icon: Cloud,
     themeColor: "#00D2FF",
     themeBgGradient: "from-[#00D2FF]/10 via-[#0284C7]/5 to-transparent",
     themeCardGradient: "from-[#00D2FF] via-[#0284C7] to-[#0369A1]",
     themeGlow: "rgba(0, 210, 255, 0.4)",
-    titleLines: ["REAL-TIME CLOUD", "SECURITY"],
+    titleLines: ["CLOUD SERVICES", "& MIGRATION"],
     description:
-      "Complete Code-to-Cloud™ protection across AWS, Azure, GCP, and Kubernetes. Prisma® Cloud secures multi-cloud environments, protects generative AI applications with Prisma AIRS, and prevents critical vulnerabilities before deployment.",
-    ctaText: "Explore Cloud Security",
-    ctaHref: "/services#prisma",
-    awards: [
+      "Meet Federal Cloud First mandates without rework. Spectrunex delivers PaaS, SaaS, and IaaS solutions, infrastructure virtualization, and application migration across private, public, and hybrid environments.",
+    ctaText: "Explore Cloud Services",
+    ctaHref: "/services/cloud-services",
+    credentials: [
       {
-        provider: "Gartner",
-        title: "2025 Gartner® Magic Quadrant™ for CNAPP",
+        mark: "FedRAMP",
+        title: "Boundary scoping, gap analysis, and authorization package support",
       },
       {
-        provider: "Forrester",
-        title: "The Forrester Wave™: Cloud Workload Security Leader",
+        mark: "PaaS / SaaS / IaaS",
+        title: "Cloud delivery models aligned to Federal Cloud First mandates",
       },
       {
-        provider: "Gartner",
-        title: "Gartner® Innovation Leader in AI Security & LLM Defense",
+        mark: "FIPS",
+        title: "Cryptographic and encryption compliance for cloud workloads",
       },
       {
-        provider: "Forrester",
-        title: "The Forrester Wave™: Cloud Security Posture Management",
+        mark: "HYBRID CLOUD",
+        title: "Private, public, and hybrid architecture support services",
       },
     ],
   },
   {
     id: "identity-security",
-    tabLabel: "Next-Generation Identity Security",
+    tabLabel: "Identity & Access Assurance",
     icon: ShieldCheck,
     themeColor: "#A855F7",
     themeBgGradient: "from-[#A855F7]/10 via-[#9333EA]/5 to-transparent",
     themeCardGradient: "from-[#C084FC] via-[#A855F7] to-[#7E22CE]",
     themeGlow: "rgba(168, 85, 247, 0.4)",
-    titleLines: ["NEXT-GENERATION", "IDENTITY SECURITY"],
+    titleLines: ["IDENTITY & ACCESS", "ASSURANCE"],
     description:
-      "Continuous identity verification, privileged access governance, and Precision AI™ threat hunting led by Unit 42. Enforce contextual Zero Trust across every human and non-human identity, machine agent, and API endpoint.",
-    ctaText: "Explore Identity Security",
-    ctaHref: "/services#identity",
-    awards: [
+      "Govern who can reach what, and prove it to an auditor. Spectrunex supports HSPD-12 credentialing, identity and access management frameworks, risk and vulnerability review, and the security policy that governs them.",
+    ctaText: "Explore Cyber Security",
+    ctaHref: "/services/cyber-security",
+    credentials: [
       {
-        provider: "Gartner",
-        title: "2025 Gartner® Magic Quadrant™ for Identity Threat Detection & Response (ITDR)",
+        mark: "HSPD-12",
+        title: "Credentialing, PIV enablement, and identity management support",
       },
       {
-        provider: "Forrester",
-        title: "The Forrester Wave™: Incident Response & Threat Hunting Services",
+        mark: "IAM",
+        title: "Identity, networking, data, and application security frameworks",
       },
       {
-        provider: "Gartner",
-        title: "Gartner® Market Guide for Identity Governance & Administration",
+        mark: "RISK & VULNERABILITY",
+        title: "Assessments, architectural reviews, and mitigation recommendations",
       },
       {
-        provider: "Forrester",
-        title: "The Forrester Wave™: Zero Trust Identity Security",
+        mark: "POLICY & STANDARDS",
+        title: "Develop, update, and review IT security policy and procedures",
       },
     ],
   },
@@ -276,17 +281,17 @@ export default function CTASection() {
               </svg>
             </div>
 
-            {/* Recognition Cards Grid (2x2) */}
+            {/* Credential Cards Grid (2x2) */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={activePlatform.id + "-awards-grid"}
+                key={activePlatform.id + "-credentials-grid"}
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
               >
-                {activePlatform.awards.map((award, idx) => (
+                {activePlatform.credentials.map((credential, idx) => (
                   <div
                     key={idx}
                     className="group relative overflow-hidden rounded-2xl p-6 sm:p-7 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl bg-[#1D4ED8]"
@@ -295,30 +300,22 @@ export default function CTASection() {
                     {/* Inner Highlight Layer */}
                     <div className="pointer-events-none absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    {/* Logo/Wordmark */}
+                    {/* Credential Mark */}
                     <div className="mb-4 flex items-center min-h-[32px]">
-                      {award.provider === "Gartner" ? (
-                        <span className="font-sans text-2xl sm:text-[1.65rem] font-black tracking-tight text-white">
-                          Gartner<span className="text-white">.</span>
-                        </span>
-                      ) : award.provider === "Forrester" ? (
-                        <span className="font-serif text-xl sm:text-2xl font-black uppercase tracking-wider text-white">
-                          FORRESTER
-                        </span>
-                      ) : award.provider === "Frost & Sullivan" ? (
-                        <span className="font-serif text-xs sm:text-[0.85rem] font-black tracking-[0.24em] uppercase text-white">
-                          F R O S T & S U L L I V A N
+                      {credential.mark.length > 12 ? (
+                        <span className="font-sans text-xs sm:text-[0.85rem] font-black uppercase tracking-[0.18em] text-white">
+                          {credential.mark}
                         </span>
                       ) : (
-                        <span className="font-sans text-xl sm:text-2xl font-black uppercase tracking-widest text-white">
-                          IDC
+                        <span className="font-sans text-xl sm:text-2xl font-black uppercase tracking-wide text-white">
+                          {credential.mark}
                         </span>
                       )}
                     </div>
 
-                    {/* Award Details */}
+                    {/* Credential Detail */}
                     <p className="text-xs sm:text-[0.82rem] font-semibold text-white leading-snug">
-                      {award.title}
+                      {credential.title}
                     </p>
                   </div>
                 ))}

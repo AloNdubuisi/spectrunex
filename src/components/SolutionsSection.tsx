@@ -49,7 +49,7 @@ const solutionCategories: SolutionCategory[] = [
     cards: [
       {
         title: "Defend against unknown zero-day attacks inline with Next-Gen Firewalls",
-        href: "/services#strata",
+        href: "/network-security",
       },
       {
         title: "Deliver unified Zero Trust Network Architecture (ZTNA 2.0) across branches",
@@ -64,7 +64,7 @@ const solutionCategories: SolutionCategory[] = [
     cards: [
       {
         title: "Protect multi-cloud infrastructure and container runtimes from code to cloud",
-        href: "/services#prisma",
+        href: "/services/cloud-services",
       },
       {
         title: "Prevent posture drift and enforce real-time compliance with CSPM",
@@ -79,7 +79,7 @@ const solutionCategories: SolutionCategory[] = [
     cards: [
       {
         title: "Continuous verification and risk scoring for human, machine, and agentic access",
-        href: "/services#identity",
+        href: "/services/cyber-security",
       },
       {
         title: "Discover shadow credentials and enforce privileged access governance",
@@ -94,11 +94,11 @@ const solutionCategories: SolutionCategory[] = [
     cards: [
       {
         title: "Replace legacy SIEMs with autonomous SecOps and AI incident triage",
-        href: "/services#cortex",
+        href: "/services/cyber-security",
       },
       {
-        title: "Reduce mean time to remediate (MTTR) by 92% with Cortex XSIAM",
-        href: "/services#xsiam",
+        title: "Shorten mean time to remediate with documented incident and problem management",
+        href: "/services/cyber-security",
       },
     ],
   },
@@ -108,11 +108,11 @@ const solutionCategories: SolutionCategory[] = [
     icon: Radio,
     cards: [
       {
-        title: "Elite Unit 42 incident responders available 24/7/365 globally",
-        href: "/services#unit42",
+        title: "Certified information assurance practitioners available 24/7/365",
+        href: "/services/cyber-security",
       },
       {
-        title: "Threat intelligence feeds and proactive proactive breach assessments",
+        title: "Risk and vulnerability assessments with actionable mitigation plans",
         href: "/services#threat-hunting",
       },
     ],

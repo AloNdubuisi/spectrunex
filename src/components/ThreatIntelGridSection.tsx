@@ -8,7 +8,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const allThreatCards = [
   {
-    category: "UNIT 42 THREAT INTEL",
+    category: "THREAT ADVISORY",
     title: "Novel Phishing Campaigns Targeting Enterprise Cloud Admins via SEO Poisoning",
     date: "Research",
     href: "/services",
@@ -49,7 +49,7 @@ const allThreatCards = [
   },
   {
     category: "WEBINAR",
-    title: "Autonomous SOC Operations: Eliminating Alert Fatigue with Precision AI",
+    title: "Reducing Alert Fatigue: Turning Detection Volume Into Accountable Action",
     date: "On-Demand",
     href: "/services",
     badgeColor: "text-orange-400 border-orange-500/30 bg-orange-500/10",
@@ -84,7 +84,7 @@ export default function ThreatIntelGridSection() {
             <div>
               <div className="h-1 w-16 bg-blue-600 rounded-full mb-6" />
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-3 block">
-                UNIT 42 & THREAT INTELLIGENCE
+                THREAT ADVISORY & RESEARCH
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
                 Latest research, advisories, and threat briefings

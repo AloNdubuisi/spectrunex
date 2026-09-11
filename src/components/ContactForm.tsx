@@ -94,11 +94,14 @@ export default function ContactForm() {
             className="mt-1.5 w-full rounded-xl border border-white/10 bg-[#090D14] px-4 py-3 text-sm text-white outline-none transition focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             defaultValue="all"
           >
-            <option value="all">Complete Cybersecurity Platform (Strata + Prisma + Cortex)</option>
-            <option value="strata">Strata™ Next-Gen Firewalls &amp; SASE</option>
-            <option value="prisma">Prisma® Cloud &amp; AI Security (AIRS)</option>
-            <option value="cortex">Cortex® XSIAM Autonomous SOC</option>
-            <option value="unit42">Unit 42® Incident Response / Retainer</option>
+            <option value="all">Not sure yet / multiple services</option>
+            <option value="fedramp-disa-advisory">FedRAMP &amp; DoD DISA® Advisory Services</option>
+            <option value="cyber-security">Cyber Security &amp; Information Assurance</option>
+            <option value="cloud-services">Cloud Services</option>
+            <option value="itsm-support-services">ITSM Support Services</option>
+            <option value="staffing-agency-services">Staffing Agency Services</option>
+            <option value="application-software-development">Application &amp; Software Development</option>
+            <option value="hardware-sales-support">Hardware Sales &amp; Support</option>
           </select>
         </div>
       </div>

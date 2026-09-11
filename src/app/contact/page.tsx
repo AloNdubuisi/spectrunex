@@ -7,33 +7,33 @@ import { siteConfig } from "@/lib/site";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Contact Enterprise Sales & Incident Response",
+  title: "Contact Spectrunex",
   description:
-    "Connect with Spectrunex cybersecurity experts for technical demonstrations, platform architecture scoping, or emergency Unit 42 incident response.",
+    "Talk to Spectrunex about FedRAMP and DoD DISA advisory, cybersecurity staffing, ITSM support, cloud services, application development, or hardware sourcing.",
   alternates: { canonical: "/contact" },
 };
 
 const details = [
   {
     icon: Phone,
-    label: "Global Enterprise Sales",
+    label: "Contracts & New Business",
     value: "1-878-867-6643",
     href: "tel:18788676643",
-    sub: "Toll-free North America",
+    sub: "Mon-Fri, 8am-6pm ET",
   },
   {
     icon: ShieldAlert,
-    label: "Unit 42 Emergency Hotline",
+    label: "Security Support Line",
     value: "1-878-867-6643",
     href: "tel:18788676643",
-    sub: "24/7/365 Rapid Breach Response",
+    sub: "24/7/365 support for active engagements",
   },
   {
     icon: Mail,
     label: "Direct Email Inquiry",
     value: siteConfig.email,
     href: `mailto:${siteConfig.email}`,
-    sub: "Architecture & Partner Requests",
+    sub: "Capability statements, RFP & teaming requests",
   },
   {
     icon: MapPin,
@@ -60,13 +60,17 @@ export default function ContactPage() {
           <ScrollReveal speed="fast" animation="fade-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-blue-400 mb-4">
               <Radio className="h-3.5 w-3.5 animate-pulse" />
-              <span>Connect with Cybersecurity Specialists</span>
+              <span>Connect with us</span>
             </div>
             <h1 className="max-w-3xl font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-              Talk to an Enterprise Security Architect
+              Let&apos;s scope your next mission
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-              Learn how Strata, Prisma Cloud, and Cortex XSIAM can protect your multi-cloud environment and automate security operations.
+              Tell us what you&apos;re working on and a Spectrunex advisor will respond within
+              one business day. We support Federal, State, and commercial customers across
+              FedRAMP &amp; DoD DISA advisory, cybersecurity and information assurance,
+              staffing, ITSM support, cloud services, application development, and hardware
+              sales &amp; support.
             </p>
           </ScrollReveal>
         </div>

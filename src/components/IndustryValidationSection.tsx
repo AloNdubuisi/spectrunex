@@ -54,7 +54,7 @@ const recognitions: RecognitionItem[] = [
     analyst: "Frost & Sullivan",
     report: "Frost Radar™: Zero Trust Architecture",
     category: "Zero Trust Platform Providers",
-    highlight: "Acknowledged for Precision AI™ threat mitigation across cloud, endpoints, and data networks.",
+    highlight: "Recognized for risk mitigation across cloud, endpoint, and network environments.",
   },
   {
     analyst: "Gartner®",

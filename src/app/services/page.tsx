@@ -12,13 +12,11 @@ import { siteConfig } from "@/lib/site";
    CTASection/IdentitySection are no longer rendered here). They're still
    available as components if you want a CTA back on this page later.
 
-   The old metadata also had real Palo Alto trademarks baked in ("Strata™
-   Network Security, Prisma® Cloud Security, and Cortex® Autonomous SecOps
-   powered by Precision AI™") — the same category of issue flagged
-   throughout this project, just surfaced in page <meta> this time instead
-   of visible copy. Replaced with copy describing Spectrunex's own,
-   already-established services. Breadcrumb label updated from "Platforms
-   & Solutions" to "Services" to match this page's actual heading. */
+   The old metadata also had third-party vendor product names baked into
+   it — the same category of issue flagged throughout this project, just
+   surfaced in page <meta> rather than visible copy. Replaced with copy
+   describing Spectrunex's own services. Breadcrumb label updated from
+   "Platforms & Solutions" to "Services" to match this page's heading. */
 
 export const metadata: Metadata = {
   title: "Services | Spectrunex",

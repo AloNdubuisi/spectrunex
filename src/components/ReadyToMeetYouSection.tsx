@@ -15,19 +15,16 @@ import ScrollReveal from "./ScrollReveal";
 
    Two trademark/claim swaps here, on top of the usual gold→blue recolor:
 
-   1. Card 1's subtitle in the reference reads "PAN-OS 12.1 ORION" — PAN-OS
-      is Palo Alto's real, trademarked OS product name. Reworded to a
-      generic Spectrunex-equivalent, "Spectrunex OS 12.1."
-   2. Card 2's body in the reference name-drops "Unit 42® Incident
-      Response" — Unit 42® is Palo Alto's real, trademarked threat-intel/IR
-      brand (already flagged and swapped elsewhere in this project).
-      Reworded to generic "our Incident Response team."
+   1. Card 1's subtitle in the reference is a third-party vendor's OS
+      product name. Reworded to a Spectrunex equivalent, "Spectrunex OS 12.1."
+   2. Card 2's body in the reference name-drops a third-party vendor's
+      incident-response brand. Reworded to "our Incident Response team."
 
-   Also: the newsletter strip's fine print in the reference reads "...in
-   accordance with Palo Alto Networks Privacy Statement and Terms of Use."
-   That's a legal reference to a specific company's own policy documents,
-   not a design element — changed to "Spectrunex Privacy Statement and
-   Terms of Use" since this is Spectrunex's site and Spectrunex's form.
+   Also: the newsletter strip's fine print in the reference points at
+   another company's own privacy policy and terms. That's a legal
+   reference to their documents, not a design element — changed to
+   "Spectrunex Privacy Statement and Terms of Use" since this is
+   Spectrunex's site and Spectrunex's form.
 
    Only the Executives tab has real card copy, matching your screenshots.
    Specialists / Partners / Customers are stubbed with placeholder content,

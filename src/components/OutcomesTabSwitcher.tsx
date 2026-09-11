@@ -15,14 +15,12 @@ import ScrollReveal from "./ScrollReveal";
    Two things were deliberately changed from the reference rather than
    copied 1:1:
 
-   1. Headline — the reference reads "Precision AI powered platform,
-      securing your entire network." "Precision AI®" is Palo Alto Networks'
-      own registered product name for their detection engine, not a generic
-      phrase — claiming Spectrunex has "Precision AI" would be using a real
-      competitor's trademark as if it were Spectrunex's own feature, same
-      class of issue as the Strata™/Cortex®/Unit 42® names flagged
-      elsewhere in this project. Reworded to the generic "AI-powered"
-      framing already used across the rest of this site.
+   1. Headline — the reference's headline is built around a third-party
+      vendor's registered product name for their detection engine, not a
+      generic phrase. Presenting it as a Spectrunex feature would mean
+      using another company's trademark as our own, the same class of
+      issue flagged elsewhere in this project. Reworded to the generic
+      "AI-powered" framing used across the rest of this site.
 
    2. Photos — the four images from the reference screenshots (the glass
       office building, the person with glasses reflecting code, the tighter

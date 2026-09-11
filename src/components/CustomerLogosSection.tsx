@@ -5,22 +5,22 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-const unit42Stats = [
+const responseStats = [
   {
-    value: "200+",
-    label: "threat researchers",
+    value: "24/7/365",
+    label: "support for active engagements",
   },
   {
-    value: "30 M",
-    label: "malware samples analyzed per day",
+    value: "Tier 0-4",
+    label: "service desk coverage",
   },
   {
-    value: "1 K+",
-    label: "incident response engagements a year",
+    value: "NIST 800-53",
+    label: "control framework alignment",
   },
   {
-    value: "150+",
-    label: "trusted partner of law firms",
+    value: "7",
+    label: "core service lines",
   },
 ];
 
@@ -105,7 +105,7 @@ export default function CustomerLogosSection() {
           </motion.h2>
         </div>
 
-        {/* Subtitle & Explore Unit 42 Action Row */}
+        {/* Subtitle & Explore Cyber Security Action Row */}
         <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#1D4ED8] mb-2 block">
@@ -119,10 +119,10 @@ export default function CustomerLogosSection() {
 
           <div>
             <Link
-              href="/services#unit42"
+              href="/services/cyber-security"
               className="group inline-flex items-center gap-2 rounded-full border border-[#1D4ED8] px-6 py-2.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-[#1D4ED8] hover:text-black hover:scale-105 active:scale-95"
             >
-              <span>Explore Unit 42</span>
+              <span>Explore Cyber Security</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
@@ -139,9 +139,10 @@ export default function CustomerLogosSection() {
             className="lg:col-span-5 flex flex-col justify-between"
           >
             <p className="text-base sm:text-lg leading-relaxed text-slate-300 mb-10 font-normal">
-              Unit 42&apos;s world-renowned threat researchers, elite incident responders
-              and expert security consultants will guide you with a threat-informed
-              approach before, during and after an incident.
+              Spectrunex&apos;s certified information assurance professionals support you
+              before, during, and after an incident &mdash; from risk and vulnerability
+              assessment through mitigation planning and the policy work that keeps the
+              same gap from reopening.
             </p>
 
             {/* Stats Row */}
@@ -195,7 +196,7 @@ export default function CustomerLogosSection() {
 
             {/* 2x2 Metric Cards Grid */}
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-              {unit42Stats.map((stat, idx) => (
+              {responseStats.map((stat, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, scale: 0.96 }}

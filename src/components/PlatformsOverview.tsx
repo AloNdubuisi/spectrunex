@@ -11,7 +11,7 @@ const platformTabs = [
     id: "network",
     name: "AI-Powered Network Security",
     title: "AI-POWERED NETWORK SECURITY",
-    desc: "Securing everyone and everything from the latest threats in every location. Built for Zero Trust and powered by AI, the Strata™ Network Security Platform proactively monitors, analyzes and prevents sophisticated threats in real time with less complexity, enabling secure growth and innovation for your organization.",
+    desc: "Securing the systems your mission depends on, wherever they run. Spectrunex designs Zero Trust network architectures and delivers the infrastructure work behind them — switching, routing, wireless, firewalls, and structured cabling — then maintains what we build.",
     stats: [
       { value: "95%", label: "OF THE FORTUNE 100" },
       { value: "70 K", label: "CUSTOMERS" },
@@ -30,7 +30,7 @@ const platformTabs = [
     id: "ops",
     name: "AI-Driven Security Operations",
     title: "AI-DRIVEN SECURITY OPERATIONS",
-    desc: "Transform your SOC with autonomous threat detection, investigation, and remediation powered by Precision AI. Outpace attackers with automated workflows and unmatched visibility across your entire digital attack surface.",
+    desc: "Mature your security operations with documented detection, investigation, and remediation practices. Spectrunex builds the incident and problem management workflows that turn alert volume into accountable action.",
     stats: [
       { value: "90%", label: "REDUCTION IN MTTR" },
       { value: "5x", label: "FASTER INVESTIGATION" },
@@ -100,7 +100,7 @@ export default function PlatformsOverview() {
           <div className="mb-16 max-w-2xl">
             <div className="h-1 w-16 bg-blue-600 rounded-full mb-6" />
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
-              Introducing the Platforms, powered by Precision AI<sup>®</sup>
+              Our Practice Areas
             </h2>
           </div>
         </ScrollReveal> */}

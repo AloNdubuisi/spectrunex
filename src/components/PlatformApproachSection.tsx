@@ -27,11 +27,9 @@ import ScrollReveal from "./ScrollReveal";
    Two things changed from the literal reference, same reasoning as every
    other section in this project:
 
-   1. The diagram's center label reads "STRATA NETWORK SECURITY PLATFORM"
-      in the reference — "Strata" is Palo Alto's own registered product
-      name (already flagged elsewhere in this project alongside Cortex®/
-      Prisma® Cloud/Unit 42®), not a generic label, so it's swapped for
-      Spectrunex's own platform name.
+   1. The diagram's center label in the reference is a third-party
+      vendor's registered product name, not a generic label, so it's
+      swapped for Spectrunex's own platform name.
    2. The reference's accent color here is gold/amber. Every other section
       on this site was deliberately recolored to Spectrunex's single blue
       brand hue rather than the original's multi-color treatment (see

@@ -122,7 +122,7 @@ export default function AIWorldSection() {
                   WHY SPECTRUNEX
                 </span>
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display leading-tight text-white">
-                  Platformization empowers you to harness AI-ready infrastructure. And leverage services powered by Precision AI<sup>®</sup> to keep everything secure.
+                  A consolidated platform lets you harness AI-ready infrastructure, with security and service management support that keeps every layer of it accountable.
                 </h3>
               </div>
               <div>
