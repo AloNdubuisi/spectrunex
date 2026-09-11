@@ -1,6 +1,7 @@
 // src/components/Header.tsx
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -24,9 +25,12 @@ export default function Header() {
       <div className="container-page flex items-center justify-between py-4">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <img
+          <Image
             src="/logo.png"
             alt="Spectrunex"
+            width={160}
+            height={40}
+            priority
             className="h-10 sm:h-10 w-auto object-contain"
           />
         </Link>

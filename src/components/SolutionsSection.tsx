@@ -147,10 +147,13 @@ export default function SolutionsSection() {
       <div className="absolute inset-0 z-0">
         <div className="relative h-full w-full">
           {/* External Hero Image */}
-          <img
+          <Image
             src="/assets/img/secure-bg.jpg"
             alt="Cybersecurity Architect working with AI Solutions"
-            className="h-full w-full object-cover object-center lg:object-right opacity-85"
+            fill
+            loading="lazy"
+            sizes="100vw"
+            className="object-cover object-center lg:object-right opacity-85"
           />
 
           {/* Left Dark Gradient Overlay to guarantee maximum text contrast */}

@@ -1,11 +1,12 @@
 // src/components/ServicesOverviewSection.tsx
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const servicesData = [
   {
-    src: "./assets/img/services-consulting.jpg",
+    src: "/assets/img/services-consulting.jpg",
     alt: "Advisors meeting with a client team around a conference table",
     title: "FedRAMP & DoD DISA® Advisory Services",
     slug: "fedramp-disa-advisory",
@@ -18,7 +19,7 @@ const servicesData = [
     ],
   },
   {
-    src: "./assets/img/services-staffing.jpg",
+    src: "/assets/img/services-staffing.jpg",
     alt: "Team reviewing hiring and staffing plans",
     title: "Staffing Agency Services",
     slug: "staffing-agency-services",
@@ -31,7 +32,7 @@ const servicesData = [
     ],
   },
   {
-    src: "./assets/img/services-security.jpg",
+    src: "/assets/img/services-security.jpg",
     alt: "Security-themed digital graphic",
     title: "Cyber Security",
     slug: "cyber-security",
@@ -44,7 +45,7 @@ const servicesData = [
     ],
   },
   {
-    src: "./assets/img/itsm.jpg",
+    src: "/assets/img/itsm.jpg",
     alt: "Service desk analysts supporting end users",
     title: "ITSM Support Services",
     slug: "itsm-support-services",
@@ -57,7 +58,7 @@ const servicesData = [
     ],
   },
   {
-    src: "./assets/img/cloud-img.jpg",
+    src: "/assets/img/cloud-img.jpg",
     alt: "Cloud infrastructure visualization",
     title: "Cloud Services",
     slug: "cloud-services",
@@ -70,7 +71,7 @@ const servicesData = [
     ],
   },
   {
-    src: "./assets/img/application-img.jpg",
+    src: "/assets/img/application-img.jpg",
     alt: "Software engineers reviewing code on screen",
     title: "Application & Software Development",
     slug: "application-software-development",
@@ -83,7 +84,7 @@ const servicesData = [
     ],
   },
   {
-    src: "./assets/img/hardware-1.jpg",
+    src: "/assets/img/hardware-1.jpg",
     alt: "Data center racks and network equipment",
     title: "Hardware Sales & Support",
     slug: "hardware-sales-support",
@@ -102,10 +103,13 @@ export default function ServicesOverviewSection() {
     <>
       {/* Hero banner */}
       <section className="relative h-[280px] overflow-hidden bg-[#0B0E14] sm:h-[340px]">
-        <img
-          src="./assets/img/services-bg.jpg"
+        <Image
+          src="/assets/img/services-bg.jpg"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-[#050B14]/55" />
@@ -165,10 +169,13 @@ export default function ServicesOverviewSection() {
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0F141E] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-2xl hover:shadow-blue-600/20"
                 >
                   <div className="relative h-[200px] w-full overflow-hidden">
-                    <img
+                    <Image
                       src={service.src}
                       alt={service.alt}
-                      className="h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F141E] via-[#0F141E]/40 to-transparent" />
                     <span className="absolute bottom-4 left-5 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-blue-300">

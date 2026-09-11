@@ -1,5 +1,6 @@
 "use client"
 // src/components/Footer.tsx
+import Image from "next/image";
 import Link from "next/link";
 import {
   Shield,
@@ -134,14 +135,14 @@ export default function Footer() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5">
                   <div>
-                    <p className="font-medium text-white">Request a Demo</p>
+                    <a href="/contact" className="font-medium text-white">Request a Demo</a>
                     <p className="text-xs text-slate-400">See our platforms in action</p>
                   </div>
                   <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
                 <div className="group flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4 transition-all hover:border-pan-orange/30 hover:bg-pan-orange/5">
                   <div>
-                    <p className="font-medium text-white">Support Portal</p>
+                    <a href="/contact" className="font-medium text-white">Support Portal</a>
                     <p className="text-xs text-slate-400">Get technical assistance</p>
                   </div>
                   <ArrowUpRight className="h-5 w-5 text-pan-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -185,9 +186,12 @@ export default function Footer() {
               <div className="flex h-10 w-10 items-center justify-center">
                 {/* Brand Logo */}
                 <Link href="/" className="flex items-center">
-                  <img
-                    src="./logo.png"
+                  <Image
+                    src="/logo.png"
                     alt="Spectrunex"
+                    width={160}
+                    height={40}
+                    loading="lazy"
                     className="h-10 sm:h-10 w-auto object-contain"
                   />
                 </Link>

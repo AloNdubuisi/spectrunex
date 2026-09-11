@@ -114,6 +114,35 @@ export default function DiveDeeperSection() {
   const [active, setActive] = useState(0);
   const slide = slides[active];
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  /* These six clips total ~32 MB. They used to mount with preload="metadata"
+     and start playing on mount, so simply opening the page fetched metadata
+     for all six and streamed one — all well before the section scrolled into
+     view. Playback and preloading are now both gated on visibility. */
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const go = (dir: 1 | -1) => {
     setActive((prev) => (prev + dir + slides.length) % slides.length);
@@ -122,6 +151,7 @@ export default function DiveDeeperSection() {
   // Explicitly drive playback on every change of `active` — see the note
   // above on why the `autoPlay` attribute alone isn't reliable here.
   useEffect(() => {
+    if (!inView) return;
     videoRefs.current.forEach((video, idx) => {
       if (!video) return;
       if (idx === active) {
@@ -131,10 +161,13 @@ export default function DiveDeeperSection() {
         video.pause();
       }
     });
-  }, [active]);
+  }, [active, inView]);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#0B1830] via-[#0A0D14] to-[#050505] py-24 text-white font-sans lg:py-28">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-gradient-to-br from-[#0B1830] via-[#0A0D14] to-[#050505] py-24 text-white font-sans lg:py-28"
+    >
       <div className="container-page">
         <ScrollReveal speed="fast" animation="fade-up">
           <p className="mb-16 text-2xl font-bold uppercase tracking-[0.15em] text-slate-200 sm:text-3xl">
@@ -177,7 +210,7 @@ export default function DiveDeeperSection() {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload={inView && idx === active ? "metadata" : "none"}
                       className="h-full w-full object-cover"
                     />
                   </motion.button>

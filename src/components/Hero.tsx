@@ -1,6 +1,16 @@
 // src/components/Hero.tsx
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
+
+/* Horizontal crop of the hero photograph.
+   The focal content of hero-banner.jpg — the glowing logo and the woman with
+   the tablet — sits in the right third of the source (roughly 68% and 78%
+   across); the left half is dark cityscape that the text scrim covers anyway.
+   Because the image overflows its box horizontally, this value pans the crop
+   window: RAISE it to move the subject further LEFT / toward centre, LOWER it
+   to move the subject back toward the right edge. */
+const HERO_FOCUS_X = "88%";
 
 export default function Hero() {
   return (
@@ -9,16 +19,22 @@ export default function Hero() {
           contained — this is a photographic scene, not a discrete graphic like the old
           Capitol/shield asset, so cropping its edges to fill the frame is the normal,
           expected treatment (exactly how the reference site itself uses it). It's still
-          confined to a right-hand box so the left stays clear for text, and object-position
-          is biased right-of-center so the subject and the light-beam graphic stay in frame
-          at every width. bg-[#050B14] on the section is only the fallback if it fails to load. */}
-      <div className="absolute inset-y-0 right-0 w-full sm:w-[92%] md:w-[85%] lg:w-[78%] xl:w-[72%]">
-        <img
-          src="./assets/img/hero-banner.jpg"
+          confined to a right-hand box so the left stays clear for text; see HERO_FOCUS_X
+          above for how the crop is panned to keep the subject off the right edge.
+          bg-[#050B14] on the section is only the fallback if it fails to load. */}
+      <div className="absolute inset-y-0 right-0 w-full sm:w-[95%] md:w-[90%] lg:w-[84%] xl:w-[80%]">
+        <Image
+          src="/assets/img/hero-banner.jpg"
           alt=""
           aria-hidden="true"
-          className="h-full w-full object-cover"
-          style={{ objectPosition: "65% center" }}
+          fill
+          /* This is the LCP element, so it is fetched at high priority rather
+             than lazily. `sizes` lets Next generate a right-sized AVIF/WebP
+             per breakpoint instead of shipping the full-width original. */
+          priority
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+          className="object-cover"
+          style={{ objectPosition: `${HERO_FOCUS_X} center` }}
         />
       </div>
       {/* Light left-to-right and bottom-to-top scrims — just enough to guarantee text

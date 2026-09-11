@@ -1,5 +1,6 @@
 // src/app/about/page.tsx
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ShieldCheck,
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-/* ─── About page feature image ──────────────────────────────────────
+/* ------- About page feature image -------------
    To swap this out: drop your file into /public/assets/img/ and change
    `src` below to match its filename. Keep the leading slash.
    `alt` describes the photo for screen readers and SEO — always update
@@ -153,10 +154,13 @@ export default function AboutPage() {
               {/* Feature image — edit `featureImage` at the top of this file */}
               <figure className="m-0 mt-8">
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0F141E]">
-                  <img
+                  <Image
                     src={featureImage.src}
                     alt={featureImage.alt}
-                    className="h-full w-full object-cover"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
                   />
                 </div>
                 {featureImage.caption ? (

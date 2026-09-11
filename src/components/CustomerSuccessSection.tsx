@@ -1,26 +1,75 @@
 // src/components/CustomerSuccessSection.tsx
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 
 export default function CustomerSuccessSection() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  /* The clip is ~8 MB. Previously it carried `autoPlay` with no `preload`,
+     so every visitor downloaded all of it during initial page load even
+     though the section sits far below the fold. We now attach `src` only
+     once the section is actually near the viewport, which keeps those bytes
+     off the critical path entirely. */
+  const [shouldLoad, setShouldLoad] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const videoUrl = "/assets/videos/customer-success.mp4";
-  const posterUrl = "/assets/img/customer-success-poster.jpg";
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    // No IntersectionObserver (older browsers) — just load it.
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  // Begin playback once the source has been attached.
+  useEffect(() => {
+    if (!shouldLoad) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise) {
+      playPromise.then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+    }
+  }, [shouldLoad]);
 
   const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!shouldLoad) {
+      setShouldLoad(true);
+      return;
+    }
+
+    if (isPlaying) {
+      video.pause();
+      setIsPlaying(false);
+    } else {
+      video.play().then(() => setIsPlaying(true)).catch(() => undefined);
     }
   };
 
@@ -68,12 +117,11 @@ export default function CustomerSuccessSection() {
           className="group relative overflow-hidden rounded-2xl border border-white/10 transition-all duration-500 bg-black"
         >
           {/* 16:9 Aspect Ratio Video Container */}
-          <div className="relative w-full pb-[56.25%] overflow-hidden">
+          <div ref={containerRef} className="relative w-full pb-[56.25%] overflow-hidden">
             <video
               ref={videoRef}
-              src={videoUrl}
-              poster={posterUrl}
-              autoPlay
+              {...(shouldLoad ? { src: videoUrl } : {})}
+              preload="none"
               loop
               muted
               playsInline
